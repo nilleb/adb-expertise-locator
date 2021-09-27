@@ -1,0 +1,567 @@
+GET s_1_adb_people_v1/_search
+{
+      "_source": {
+        "include": [ "author" ],
+        "exclude": [ "texts", "documents" ]
+    },
+  "query": {
+    "match_all": {}
+  }
+}
+
+###
+
+DELETE s_1_adb_people_v1/_doc/None
+
+###
+
+GET s_1_adb_people_v1/_search
+{
+  "_source": {
+    "include": [
+      "author"
+    ],
+    "exclude": [
+      "texts",
+      "documents"
+    ]
+  },
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "author": {
+              "query": "groff"
+            }
+          }
+        },
+        {
+          "match": {
+            "texts": {
+              "query": "groff",
+              "analyzer": "search_synonyms"
+            }
+          }
+        },
+        {
+          "nested": {
+            "path": "keywords",
+            "score_mode": "sum",
+            "query": {
+              "function_score": {
+                "query": {
+                  "match": {
+                    "keywords.keyword": "groff"
+                  }
+                },
+                "field_value_factor": {
+                  "field": "keywords.count"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  },
+  "highlight": {
+    "fields": {
+      "texts": {
+        "pre_tags": "<strong>",
+        "post_tags": "</strong>"
+      }
+    }
+  },
+  "suggest": {
+    "text": "myquery",
+    "suggest-1": {
+      "term": {
+        "field": "author"
+      }
+    },
+    "suggest-2": {
+      "term": {
+        "field": "keywords.keyword"
+      }
+    }
+  }
+}
+###
+
+GET s_1_adb_people_v1
+###
+
+DELETE s_1_adb_people_v1
+
+"highlight.max_analyzed_offset" : 100000,
+###
+
+PUT s_1_adb_people_v1
+{
+    "settings": {
+        "index": {
+            "analysis": {
+                "analyzer": {
+                    "search_synonyms": {
+                        "tokenizer": "whitespace",
+                        "filter": ["lowercase", "graph_synonyms"]
+                    }
+                },
+                "filter": {
+                    "graph_synonyms": {
+                        "type": "synonym_graph",
+                        "synonyms": "test=tset"
+                    }
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "keywords": {
+                "type": "nested",
+                "properties": {
+                    "keyword": {"type": "keyword", "ignore_above": 256},
+                    "count": {"type": "float"}
+                }
+            }
+        }
+    }
+}
+
+###
+
+PUT s_1_adb_people_v1/_settings
+{
+       "index": {
+            "highlight.max_analyzed_offset" : 100000
+       }
+}
+
+###
+
+PUT s_1_adb_people_v1
+{
+    "settings": {
+        "index": {
+            "analysis": {
+                "analyzer": {
+                    "search_synonyms": {
+                        "tokenizer": "whitespace",
+                        "filter": ["lowercase", "graph_synonyms"]
+                    }
+                },
+                "filter": {
+                    "graph_synonyms": {
+                        "type": "synonym_graph",
+                        "synonyms": ["toto=tata"]
+                    }
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "keywords": {
+                "type": "nested",
+                "properties": {
+                    "keyword": {"type": "keyword", "ignore_above": 256},
+                    "count": {"type": "float"}
+                }
+            }
+        }
+    }
+}
+
+###
+GET /
+
+###
+GET s_1_adb_people_v1/_search
+{
+  "_source": {
+    "includes": [
+      "author"
+    ],
+    "excludes": [
+      "texts",
+      "documents"
+    ]
+  },
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "author": {
+              "query": "groff"
+            }
+          }
+        },
+        {
+          "match": {
+            "texts_cut": {
+              "query": "groff",
+              "analyzer": "search_synonyms"
+            }
+          }
+        },
+        {
+          "nested": {
+            "path": "keywords",
+            "score_mode": "sum",
+            "query": {
+              "function_score": {
+                "query": {
+                  "match": {
+                    "keywords.keyword": "groff"
+                  }
+                },
+                "field_value_factor": {
+                  "field": "keywords.count"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  },
+  "highlight": {
+    "fields": {
+      "texts_cut": {
+        "pre_tags": "<strong>",
+        "post_tags": "</strong>"
+      }
+    }
+  },
+  "suggest": {
+    "text": "myquery",
+    "suggest-1": {
+      "term": {
+        "field": "author"
+      }
+    },
+    "suggest-2": {
+      "term": {
+        "field": "keywords.keyword"
+      }
+    }
+  }
+}
+
+###
+
+GET s_1_adb_people_v1/_search
+{
+  "_source": {
+    "include": [
+      "author"
+    ],
+    "exclude": [
+      "texts",
+      "documents"
+    ]
+  },
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "author": {
+              "query": "groff"
+            }
+          }
+        },
+        {
+          "match": {
+            "texts": {
+              "query": "groff",
+              "analyzer": "search_synonyms"
+            }
+          }
+        },
+        {
+          "nested": {
+            "path": "keywords",
+            "score_mode": "sum",
+            "query": {
+              "function_score": {
+                "query": {
+                  "match": {
+                    "keywords.keyword": "groff"
+                  }
+                },
+                "field_value_factor": {
+                  "field": "keywords.count"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  },
+  "suggest": {
+    "text": "myquery",
+    "suggest-1": {
+      "term": {
+        "field": "author"
+      }
+    },
+    "suggest-2": {
+      "term": {
+        "field": "keywords.keyword"
+      }
+    }
+  }
+}
+
+###
+
+GET s_1_adb_people_v1/_search
+
+{
+  "query": {
+    "match_all" : {}
+  },
+  "aggs" : {
+      "mydata_agg" : {
+    "terms": {"field" : "mydata"}
+    }
+  }
+}
+
+###
+
+GET s_1_adb_people_v1/_search
+{
+  "size": 0,
+  "aggs": {
+    "keywords": {
+      "significant_text": {
+        "field": "keywords.keyword"
+      }
+    }
+  }
+}
+
+###
+
+GET s_1_adb_people_v1/_search
+{
+  "_source": {
+    "includes": [
+      "author", "keywords.keyword", "keywords.count"
+    ],
+    "excludes": [
+      "texts",
+      "documents"
+    ]
+  },
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "texts": {
+              "query": "water consumption",
+              "analyzer": "search_synonyms"
+            }
+          }
+        },
+        {
+          "nested": {
+            "path": "keywords",
+            "score_mode": "sum",
+            "query": {
+              "function_score": {
+                "query": {
+                  "match": {
+                    "keywords.keyword": "water consumption"
+                  }
+                },
+                "field_value_factor": {
+                  "field": "keywords.count"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  }
+}
+
+###
+
+GET s_1_adb_people_v1/_search
+{
+  "_source": {
+    "includes": [
+      "author", "keywords.keyword", "keywords.count"
+    ],
+    "excludes": [
+      "texts",
+      "documents"
+    ]
+  },
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "fuzzy": {
+            "author": {
+              "value": "maxvel"
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  }
+}
+
+###
+
+GET s_1_adb_people_v1/_search
+{
+  "_source": {
+    "includes": [
+      "author",
+      "keywords.keyword",
+      "keywords.count"
+    ]
+  },
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "fuzzy": {
+            "author": {
+              "value": "sustainable development"
+            }
+          }
+        },
+        {
+          "match": {
+            "texts": {
+              "query": "sustainable development",
+              "analyzer": "search_synonyms"
+            }
+          }
+        },
+        {
+          "nested": {
+            "path": "keywords",
+            "score_mode": "sum",
+            "query": {
+              "function_score": {
+                "query": {
+                  "match": {
+                    "keywords.keyword": "sustainable development"
+                  }
+                },
+                "field_value_factor": {
+                  "field": "keywords.count"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  },
+  "highlight": {
+    "require_field_match": false,
+    "max_analyzed_offset": 10000,
+    "fields": {
+      "texts_cut": {
+        "pre_tags": "<strong>",
+        "post_tags": "</strong>"
+      }
+    }
+  }
+}
+
+###
+
+GET s_1_adb_people_v1/_search
+{
+  "_source": {
+    "includes": [
+      "author",
+      "keywords.keyword",
+      "keywords.count"
+    ]
+  },
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "fuzzy": {
+            "author": {
+              "value": "sustainable development"
+            }
+          }
+        },
+        {
+          "match": {
+            "texts": {
+              "query": "sustainable development",
+              "analyzer": "search_synonyms"
+            }
+          }
+        },
+        {
+          "nested": {
+            "path": "keywords",
+            "score_mode": "sum",
+            "query": {
+              "function_score": {
+                "query": {
+                  "match": {
+                    "keywords.keyword": "sustainable development"
+                  }
+                },
+                "field_value_factor": {
+                  "field": "keywords.count"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  },
+  "highlight": {
+    "require_field_match": false,
+    "max_analyzed_offset": 10000,
+    "fields": {
+      "texts_cut": {
+        "pre_tags": "<strong>",
+        "post_tags": "</strong>"
+      }
+    }
+  },
+    "suggest": {
+    "text": "myquery",
+    "suggest-1": {
+      "term": {
+        "field": "author"
+      }
+    },
+    "suggest-2": {
+      "term": {
+        "field": "keywords.keyword"
+      }
+    }
+  }
+}

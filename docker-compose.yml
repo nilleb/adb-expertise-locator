@@ -1,0 +1,60 @@
+version: "3.7"
+services:
+  elasticsearch:
+    image: elasticsearch:7.14.1
+    container_name: es
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+      bootstrap.memory_lock: "true"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+      - essynonyms-volume:/usr/share/elasticsearch/config/analysis
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail localhost:9200/_cluster/health || exit 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    networks:
+      - my-network
+  db:
+    image: postgres:12
+    networks:
+      - my-network
+    environment:
+      POSTGRES_DB: adb
+      POSTGRES_PASSWORD: changeme
+    volumes:
+      - postgresqldata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.14.1
+    container_name: kibana
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+      bootstrap.memory_lock: "true"
+      ELASTICSEARCH_HOSTS: http://es:9200
+    ports:
+      - "5601:5601"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  postgresqldata:
+    external: true  # docker volume create --name=adb-pgdata-volume
+    name: adb-pgdata-volume
+  esdata:
+    external: true  # docker volume create --name=adb-esdata-volume
+    name: adb-esdata-volume
+  essynonyms-volume:
+    external: true  # docker volume create --name=adb-essynonyms-volume
+    name: adb-essynonyms-volume

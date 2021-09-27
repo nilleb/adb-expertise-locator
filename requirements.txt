@@ -1,0 +1,8 @@
+pdfminer.six
+prompt_toolkit
+requests
+slugify
+googlesearch
+elasticsearch
+bs4
+nltk
