@@ -2,7 +2,7 @@ pdfminer.six
 prompt_toolkit
 requests
 slugify
-googlesearch
+googlesearch-python
 elasticsearch
 bs4
 nltk
