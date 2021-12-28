@@ -62,4 +62,4 @@ the script `index.py` is supposed to complete this workflow.
 
 ## search
 
-launch `python es_query.sh "query string"`
+launch `python query.py "query string"`

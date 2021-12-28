@@ -1,8 +1,11 @@
 pdfminer.six
 prompt_toolkit
 requests
-slugify
+python-slugify
 googlesearch-python
 elasticsearch
 bs4
 nltk
+pyyaml
+fastapi
+uvicorn[standard]

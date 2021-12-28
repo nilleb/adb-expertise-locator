@@ -1,4 +1,16 @@
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_doc/j-hugot
+Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+Host: localhost:9200
+
+GET /s_adb_people_v1/_doc/gina-sinang
+Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+Host: localhost:9200
+
+GET /s_adb_people_v1/_search
+Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+Host: localhost:9200
+Content-Type: application/json
+
 {
       "_source": {
         "include": [ "author" ],
@@ -11,11 +23,11 @@ GET s_1_adb_people_v1/_search
 
 ###
 
-DELETE s_1_adb_people_v1/_doc/None
+DELETE /s_adb_people_v1/_doc/None
 
 ###
 
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_search
 {
   "_source": {
     "include": [
@@ -90,15 +102,15 @@ GET s_1_adb_people_v1/_search
 }
 ###
 
-GET s_1_adb_people_v1
+GET /s_adb_people_v1
 ###
 
-DELETE s_1_adb_people_v1
+DELETE /s_adb_people_v1
 
 "highlight.max_analyzed_offset" : 100000,
 ###
 
-PUT s_1_adb_people_v1
+PUT /s_adb_people_v1
 {
     "settings": {
         "index": {
@@ -133,7 +145,7 @@ PUT s_1_adb_people_v1
 
 ###
 
-PUT s_1_adb_people_v1/_settings
+PUT /s_adb_people_v1/_settings
 {
        "index": {
             "highlight.max_analyzed_offset" : 100000
@@ -142,7 +154,7 @@ PUT s_1_adb_people_v1/_settings
 
 ###
 
-PUT s_1_adb_people_v1
+PUT /s_adb_people_v1
 {
     "settings": {
         "index": {
@@ -179,7 +191,7 @@ PUT s_1_adb_people_v1
 GET /
 
 ###
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_search
 {
   "_source": {
     "includes": [
@@ -255,7 +267,7 @@ GET s_1_adb_people_v1/_search
 
 ###
 
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_search
 {
   "_source": {
     "include": [
@@ -323,7 +335,7 @@ GET s_1_adb_people_v1/_search
 
 ###
 
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_search
 
 {
   "query": {
@@ -338,7 +350,7 @@ GET s_1_adb_people_v1/_search
 
 ###
 
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_search
 {
   "size": 0,
   "aggs": {
@@ -352,7 +364,7 @@ GET s_1_adb_people_v1/_search
 
 ###
 
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_search
 {
   "_source": {
     "includes": [
@@ -400,7 +412,7 @@ GET s_1_adb_people_v1/_search
 
 ###
 
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_search
 {
   "_source": {
     "includes": [
@@ -429,7 +441,7 @@ GET s_1_adb_people_v1/_search
 
 ###
 
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_search
 {
   "_source": {
     "includes": [
@@ -492,7 +504,19 @@ GET s_1_adb_people_v1/_search
 
 ###
 
-GET s_1_adb_people_v1/_search
+GET /s_adb_people_v1/_settings
+Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+Host: localhost:9200
+Content-Type: application/json
+
+
+###
+
+GET /s_adb_people_v1/_search
+Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+Host: localhost:9200
+Content-Type: application/json
+
 {
   "_source": {
     "includes": [
@@ -563,5 +587,30 @@ GET s_1_adb_people_v1/_search
         "field": "keywords.keyword"
       }
     }
+  }
+}
+
+###
+
+PUT /s_adb_people_v1
+Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+Host: localhost:9200
+Content-Type: application/json
+
+< configuration/index_settings.json
+
+###
+
+POST /_reindex
+Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+Host: localhost:9200
+Content-Type: application/json
+
+{
+  "source": {
+    "index": "s_adb_people_v1"
+  },
+  "dest": {
+    "index": "s_adb_people_v2"
   }
 }

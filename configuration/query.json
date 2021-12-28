@@ -1,0 +1,72 @@
+{
+    "_source": {
+        "includes": [
+            "author",
+            "keywords.keyword",
+            "keywords.count"
+        ]
+    },
+    "query": {
+        "bool": {
+            "should": [
+                {
+                    "fuzzy": {
+                        "author": {
+                            "value": "{{query_string}}"
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "texts": {
+                            "query": "{{query_string}}",
+                            "analyzer": "search_synonyms"
+                        }
+                    }
+                },
+                {
+                    "nested": {
+                        "path": "keywords",
+                        "score_mode": "sum",
+                        "query": {
+                            "function_score": {
+                                "query": {
+                                    "match": {
+                                        "keywords.keyword": "{{query_string}}"
+                                    }
+                                },
+                                "field_value_factor": {
+                                    "field": "keywords.count"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "minimum_should_match": 1
+        }
+    },
+    "highlight": {
+        "require_field_match": false,
+        "max_analyzed_offset": 10000,
+        "fields": {
+            "texts_cut": {
+                "pre_tags": "<strong>",
+                "post_tags": "</strong>"
+            }
+        }
+    },
+    "suggest": {
+        "text": "{{query_string}}",
+        "suggest-1": {
+            "term": {
+                "field": "author"
+            }
+        },
+        "suggest-2": {
+            "term": {
+                "field": "keywords.keyword"
+            }
+        }
+    }
+}

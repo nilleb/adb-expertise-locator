@@ -1,15 +1,20 @@
 version: "3.7"
 services:
   elasticsearch:
-    image: elasticsearch:7.14.1
-    container_name: es
+    image: elasticsearch:7.16.2
+    container_name: adb-es
     environment:
       discovery.type: single-node
-      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+      ES_JAVA_OPTS: "-Xms2048m -Xmx2048m"
+      ES_HEAP_SIZE: 2g
       bootstrap.memory_lock: "true"
+      ELASTIC_PASSWORD: 3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+      cluster.name: "dockercluster"
+      node.name: "node-master"
+      xpack.security.enabled: "true"
     volumes:
-      - esdata:/usr/share/elasticsearch/data
-      - essynonyms-volume:/usr/share/elasticsearch/config/analysis
+      - adb-esdata:/usr/share/elasticsearch/data
+      - adb-essynonyms-volume:/usr/share/elasticsearch/config/analysis
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -28,7 +33,7 @@ services:
       POSTGRES_DB: adb
       POSTGRES_PASSWORD: changeme
     volumes:
-      - postgresqldata:/var/lib/postgresql/data
+      - adb-pgdata-volume:/var/lib/postgresql/data
     ports:
       - "5432:5432"
   kibana:
@@ -49,12 +54,12 @@ networks:
     driver: bridge
 
 volumes:
-  postgresqldata:
+  adb-pgdata-volume:
     external: true  # docker volume create --name=adb-pgdata-volume
     name: adb-pgdata-volume
-  esdata:
+  adb-esdata:
     external: true  # docker volume create --name=adb-esdata-volume
     name: adb-esdata-volume
-  essynonyms-volume:
+  adb-essynonyms-volume:
     external: true  # docker volume create --name=adb-essynonyms-volume
     name: adb-essynonyms-volume
