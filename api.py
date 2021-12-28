@@ -1,3 +1,4 @@
+import uuid
 import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -5,6 +6,8 @@ from pydantic import BaseModel, Json
 from typing import Optional, List
 import json
 from backends.es import search as es_search
+
+logging.basicConfig(level=logging.INFO)
 
 app = FastAPI()
 
@@ -83,14 +86,17 @@ def prepare_response(query, res):
 
     response["results"] = []
 
+    logging.info(json.dumps(res))
+
     for hit in res["hits"]["hits"]:
         result = {
-            "uid": hit["_source"]["identifier"],
+            "uid": hit.get("_id", str(uuid.uuid4())),
             "score": hit["_score"],
-            "title": hit["_source"].get("title", "unknown"),
+            "title": hit["_source"].get("author", "unknown"),
             "highlight": get_highlight(hit),
             "source": json.dumps(hit["_source"]),
-            "kind": hit["_source"].get("kind", "linear"),
+            "kind": hit["_source"].get("kind", "author"),
+            "url": f'{hit.get("_index")}/_doc/{hit.get("_id")}',
         }
         response["results"].append(result)
 
