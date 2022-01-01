@@ -1,4 +1,8 @@
-GET /s_adb_people_v1/_doc/j-hugot
+GET /s_adb_people_v1/_doc/jules-hugot
+Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+Host: localhost:9200
+
+GET /s_adb_people_v1/_doc/edwin-e-david
 Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
 Host: localhost:9200
 
@@ -511,7 +515,7 @@ Content-Type: application/json
 
 
 ###
-
+@query_string = hugot
 GET /s_adb_people_v1/_search
 Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
 Host: localhost:9200
@@ -529,16 +533,14 @@ Content-Type: application/json
     "bool": {
       "should": [
         {
-          "fuzzy": {
-            "author": {
-              "value": "sustainable development"
-            }
+          "match": {
+              "author": {"query": "{{query_string}}", "boost": 2}
           }
         },
         {
           "match": {
             "texts": {
-              "query": "sustainable development",
+              "query": "{{query_string}}",
               "analyzer": "search_synonyms"
             }
           }
@@ -551,7 +553,7 @@ Content-Type: application/json
               "function_score": {
                 "query": {
                   "match": {
-                    "keywords.keyword": "sustainable development"
+                    "keywords.keyword": "{{query_string}}"
                   }
                 },
                 "field_value_factor": {
@@ -590,6 +592,55 @@ Content-Type: application/json
   }
 }
 
+###
+GET /s_adb_people_v1/_explain/jules-hugot
+Authorization: Basic elastic:3WnQtogV2Tf9h4kjQ5hPAAKeg6jwypVFPSJNm6iaTE5QMTcYavg4tKph8eb6
+Host: localhost:9200
+Content-Type: application/json
+
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+              "author": {
+                  "query": "{{query_string}}",
+                  "boost": 2
+              }
+          }
+        },
+        {
+          "match": {
+            "texts": {
+              "query": "{{query_string}}",
+              "analyzer": "search_synonyms"
+            }
+          }
+        },
+        {
+          "nested": {
+            "path": "keywords",
+            "score_mode": "sum",
+            "query": {
+              "function_score": {
+                "query": {
+                  "match": {
+                    "keywords.keyword": "{{query_string}}"
+                  }
+                },
+                "field_value_factor": {
+                  "field": "keywords.count"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  }
+}
 ###
 
 PUT /s_adb_people_v1

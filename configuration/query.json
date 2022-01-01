@@ -10,9 +10,10 @@
         "bool": {
             "should": [
                 {
-                    "fuzzy": {
+                    "match": {
                         "author": {
-                            "value": "{{query_string}}"
+                            "query": "{{query_string}}",
+                            "boost": 2
                         }
                     }
                 },
