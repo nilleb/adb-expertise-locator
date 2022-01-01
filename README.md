@@ -63,3 +63,9 @@ the script `index.py` is supposed to complete this workflow.
 ## search
 
 launch `python query.py "query string"`
+
+## hints for the future
+
+- exclude from the texts the authors section
+- should be middle names considered? (edwin e david is the same author than edwin david)?
+- consider grouped keywords (eg. recognize "board approved", "terms and conditions")
