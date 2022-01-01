@@ -8657,6 +8657,11 @@ vue3-autocomplete@^1.0.4:
     typescript "^4.0.3"
     vue "^3.0.0"
 
+vue3-simple-typeahead@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/vue3-simple-typeahead/-/vue3-simple-typeahead-1.0.5.tgz#a9ae8b3bf3e6019ef9cb3245c77b1b3da7772ee8"
+  integrity sha512-WCLhDUenFJaivPXRecSs4z/LSySlprs9yJRXssS3YLCvJhPIxRqoeLInYVUl7R2epDdJ9UFVw0RbbBadFIJJdg==
+
 vue@^3.0.0:
   version "3.2.21"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.21.tgz#55f5665172d95cf97e806b9aad0a375180be23a1"
