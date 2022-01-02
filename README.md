@@ -69,3 +69,10 @@ launch `python query.py "query string"`
 - exclude from the texts the authors section
 - should be middle names considered? (edwin e david is the same author than edwin david)?
 - consider grouped keywords (eg. recognize "board approved", "terms and conditions")
+- \n\n should be considered as a strong line separator and we should not cross it (eg. Sustainable \n\nS. Lee)
+
+## todo
+
+- format the document on the ui
+- persist the query as a SPA parameter
+- add a route to display a single document

@@ -64,3 +64,11 @@ def search(query):
         index=ES_INDEX_NAME,
         **body,
     )
+
+
+def document(uid):
+    es = Elasticsearch(http_auth=("elastic", ES_SERVER_PASSWORD))
+    return es.get(
+        id=uid,
+        index=ES_INDEX_NAME,
+    )

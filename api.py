@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Json
 from typing import Optional, List
 import json
-from backends.es import search as es_search
+from backends.es import search as es_search, document
 
 logging.basicConfig(level=logging.INFO)
 
@@ -39,7 +39,8 @@ class SearchResult(BaseModel):
     kind: Optional[str]
     source: Optional[Json]
     score: float
-    url: str
+    urn: str
+    api_url: str
 
 
 class SearchResponse(BaseModel):
@@ -47,6 +48,12 @@ class SearchResponse(BaseModel):
     results: Optional[List[SearchResult]]
     suggestions: Optional[List[str]]
     total: int
+
+
+@app.get("/api/v1/document/{uid}")
+async def search(uid: str) -> SearchResponse:
+    res = document(uid)
+    return prepare_result(res)
 
 
 @app.post("/api/v1/search")
@@ -89,17 +96,25 @@ def prepare_response(query, res):
     logging.info(json.dumps(res))
 
     for hit in res["hits"]["hits"]:
-        result = {
-            "uid": hit.get("_id", str(uuid.uuid4())),
-            "score": hit["_score"],
-            "title": hit["_source"].get("author", "unknown"),
-            "highlight": get_highlight(hit),
-            "source": json.dumps(hit["_source"]),
-            "kind": hit["_source"].get("kind", "author"),
-            "url": f'{hit.get("_index")}/_doc/{hit.get("_id")}',
-        }
+        result = prepare_result(hit)
+        result['api_url'] = f'api/v1/document/{hit.get("_id")}'
         response["results"].append(result)
 
     logging.info(json.dumps(response))
 
     return SearchResponse(**response)
+
+
+def prepare_result(hit):
+    uid = hit.get("_id", str(uuid.uuid4()))
+    url = f'{hit.get("_index")}/_doc/{hit.get("_id")}'
+    result = {
+        "uid": uid,
+        "score": hit.get("_score"),
+        "title": hit["_source"].get("author", "unknown"),
+        "highlight": get_highlight(hit),
+        "source": json.dumps(hit["_source"]),
+        "kind": hit["_source"].get("kind", "author"),
+        "urn": f'elasticsearch://{url}',
+    }
+    return result
