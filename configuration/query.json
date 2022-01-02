@@ -18,6 +18,11 @@
                     }
                 },
                 {
+                    "fuzzy": {
+                        "author": {"value": "{{query_string}}", "boost": 1.2}
+                    }
+                  },
+                          {
                     "match": {
                         "texts": {
                             "query": "{{query_string}}",
