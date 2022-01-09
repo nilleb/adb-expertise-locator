@@ -18,7 +18,7 @@
 
 <script>
 import DefaultSearchResult from './searchResults/DefaultSearchResult.vue';
-import LinearSearchResult from './searchResults/LinearSearchResult.vue';
+import AuthorSearchResult from './searchResults/AuthorSearchResult.vue';
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -32,11 +32,11 @@ export default {
   },
   components: {
       DefaultSearchResult,
-      LinearSearchResult,
+      AuthorSearchResult,
   },
   methods: {
       getComponent(kind) {
-          const validComponents = ["linear"];
+          const validComponents = ['author'];
           if (debug) {
               return 'DefaultSearchResult';
           }
