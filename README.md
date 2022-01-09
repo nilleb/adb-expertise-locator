@@ -74,5 +74,6 @@ launch `python query.py "query string"`
 ## todo
 
 - format the document on the ui
-- persist the query as a SPA parameter
-- add a route to display a single document
+- let an end user signal an error
+- cybernetics (track queries, results and clicks)
+- unicode support (hugh madden keywords seem to include non unicode chars?)
