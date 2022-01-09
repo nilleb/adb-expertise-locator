@@ -9,3 +9,4 @@ nltk
 pyyaml
 fastapi
 uvicorn[standard]
+starlette-context

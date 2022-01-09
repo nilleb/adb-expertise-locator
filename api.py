@@ -1,15 +1,27 @@
 import uuid
 import logging
 from fastapi import FastAPI
+from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Json
 from typing import Optional, List
 import json
+from starlette.requests import Request
+from starlette.responses import JSONResponse
+
+from starlette_context import context, plugins
+from starlette_context.middleware import RawContextMiddleware
+
 from backends.es import search as es_search, document
-
 logging.basicConfig(level=logging.INFO)
+middleware = [
+    Middleware(
+        RawContextMiddleware,
+        plugins=(plugins.RequestIdPlugin(), plugins.CorrelationIdPlugin()),
+    )
+]
 
-app = FastAPI()
+app = FastAPI(middleware=middleware)
 
 origins = [
     "http://localhost.nilleb.com",
@@ -26,6 +38,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.middleware("http")
+async def add_process_time_header(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Session-ID"] = request.headers.get('X-Session-ID', str(uuid.uuid4()))
+    return response
 
 class SearchQuery(BaseModel):
     query: str
@@ -56,10 +73,20 @@ async def search(uid: str) -> SearchResponse:
     return prepare_result(res)
 
 
+def track(path, params, response):
+    logging.info(f"- {context.data} {path} ({params}) -> {response}")
+
+
 @app.post("/api/v1/search")
 async def search(payload: SearchQuery) -> SearchResponse:
     res = es_search(payload.query)
+    track("search", payload.query, res)
     return prepare_response(payload.query, res)
+
+
+@app.route("/")
+async def index(request: Request):
+    return JSONResponse(context.data)
 
 
 def get_highlight(hit):
@@ -93,14 +120,10 @@ def prepare_response(query, res):
 
     response["results"] = []
 
-    logging.info(json.dumps(res))
-
     for hit in res["hits"]["hits"]:
         result = prepare_result(hit)
-        result['api_url'] = f'api/v1/document/{hit.get("_id")}'
+        result["api_url"] = f'api/v1/document/{hit.get("_id")}'
         response["results"].append(result)
-
-    logging.info(json.dumps(response))
 
     return SearchResponse(**response)
 
@@ -115,6 +138,6 @@ def prepare_result(hit):
         "highlight": get_highlight(hit),
         "source": json.dumps(hit["_source"]),
         "kind": hit["_source"].get("kind", "author"),
-        "urn": f'elasticsearch://{url}',
+        "urn": f"elasticsearch://{url}",
     }
     return result
