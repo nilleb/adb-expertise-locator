@@ -8,7 +8,7 @@ export default class AuthenticatedService {
     const token = "Bearer yolo";
     const svc = axios.create({
       baseURL: API_BASE_URL,
-      timeout: 1000,
+      timeout: 30000,
       headers: { Authorization: token },
     });
     svc.interceptors.request.use(
