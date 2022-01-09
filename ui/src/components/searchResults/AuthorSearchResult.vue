@@ -18,7 +18,7 @@
       ({{ result.score }})
       <p v-html="result.highlight"></p>
       <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
-        {{ keyword.keyword }} ({{ keyword.count }}),
+        <i>{{ keyword.keyword }}</i> ({{ keyword.count }}),
       </span>
       <br />
     </div>

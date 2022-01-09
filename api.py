@@ -13,6 +13,7 @@ from starlette_context import context, plugins
 from starlette_context.middleware import RawContextMiddleware
 
 from backends.es import search as es_search, document
+
 logging.basicConfig(level=logging.INFO)
 middleware = [
     Middleware(
@@ -38,11 +39,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
     response = await call_next(request)
-    response.headers["X-Session-ID"] = request.headers.get('X-Session-ID', str(uuid.uuid4()))
+    response.headers["X-Session-ID"] = request.headers.get(
+        "X-Session-ID", str(uuid.uuid4())
+    )
     return response
+
 
 class SearchQuery(BaseModel):
     query: str
@@ -90,18 +95,8 @@ async def index(request: Request):
 
 
 def get_highlight(hit):
-    title_highlight = hit.get("highlight", {}).get("title")
-    description_highlight = hit.get("highlight", {}).get("description")
-    if isinstance(title_highlight, list):
-        title_highlight = "".join(title_highlight)
-    if isinstance(description_highlight, list):
-        description_highlight = "".join(description_highlight)
-    highlight = ""
-    if title_highlight:
-        highlight += title_highlight
-    if description_highlight:
-        highlight += description_highlight
-    return highlight
+    highlights = hit.get("highlight", {})
+    return " ".join(value for value_list in highlights.values() for value in value_list)
 
 
 def prepare_response(query, res):
