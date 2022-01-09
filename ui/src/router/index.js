@@ -5,7 +5,10 @@ const routes = [
   {
     path: '/',
     name: 'Search',
-    component: SearchPage
+    component: SearchPage,
+    props: {
+      title: "Skills finder",
+    },
   },
   {
     path: '/view',

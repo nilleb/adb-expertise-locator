@@ -1,15 +1,30 @@
 <template>
   <div id="searchPage">
-    <h1>Portable Search Engine</h1>
-    <div>
-      <input type="text" v-model.lazy="query" v-debounce="400"/>
+    <h1>{{ title }}</h1>
+    <p>&nbsp;</p>
+    <div class="container">
+      <div style="flex: 1"><!-- empty space --></div>
+      <div style="flex: 8">
+        <input
+          type="text"
+          style="width: 100%"
+          v-model.lazy="query"
+          v-debounce="400"
+        />
+      </div>
+      <div style="flex: 1"><!-- empty space --></div>
     </div>
-    <div>
-      <span v-if="suggestions.length">You could also try:</span>
-      <span v-for="suggestion in suggestions" :key="suggestion"
-        >{{ suggestion }},
-      </span>
+    <div class="container">
+      <div style="flex: 1"><!-- empty space --></div>
+      <div style="flex: 8">
+        <span v-if="suggestions.length">You could also try:</span>
+        <span v-for="suggestion in suggestions" :key="suggestion"
+          >{{ suggestion }},
+        </span>
+      </div>
+      <div style="flex: 1"><!-- empty space --></div>
     </div>
+    <p>&nbsp;</p>
     <SearchResults :searchResults="searchResults" />
   </div>
 </template>
@@ -24,7 +39,7 @@ export default {
     SearchResults,
   },
   props: {
-    msg: String,
+    title: { type: String, default: "Portable Search Engine" },
   },
   data() {
     return {
@@ -80,5 +95,8 @@ h1 {
 }
 .demo:deep() .simple-typeahead-list {
   max-height: 200px !important;
+}
+.container {
+  display: flex;
 }
 </style>
