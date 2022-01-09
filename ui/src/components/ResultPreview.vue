@@ -19,17 +19,19 @@ export default {
   },
   methods: {
     getItem(uid) {
-      KnowledgeService.retrieve(uid).then((response) => {
+      console.log(KnowledgeService, uid);
+      /*KnowledgeService.retrieve(uid).then((response) => {
         this.content = response.result;
         console.log(response);
-      });
+      });*/
     },
   },
   mounted() {
-    if (this.$route.query.q) {
-      this.$refs.typeahead.inputValue = this.$route.query.q;
+    console.log(this.$route.query)
+    if (this.$route.query.uid) {
+      this.$data.uid = this.$route.query.uid;
     }
-    this.getItem(this.$route.query.q);
+    this.getItem(this.$route.query.uid);
   },
 };
 </script>

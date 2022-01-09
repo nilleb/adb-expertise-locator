@@ -11,7 +11,7 @@
           <iframe
             v-if="isVisible"
             class="description"
-            :src="`view?${result.uid}`"
+            :src="`view?uid=${result.uid}`"
           ></iframe
         ></a>
       </h2>
