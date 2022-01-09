@@ -7,7 +7,7 @@
       <div style="flex: 8">
         <input
           type="text"
-          style="width: 100%"
+          class="search-bar"
           v-model.lazy="query"
           v-debounce="400"
         />
@@ -17,7 +17,7 @@
     <div class="container">
       <div style="flex: 1"><!-- empty space --></div>
       <div style="flex: 8">
-        <span v-if="suggestions.length">You could also try:</span>
+        <span v-if="suggestions.length">You could also try: </span>
         <span v-for="suggestion in suggestions" :key="suggestion"
           >{{ suggestion }},
         </span>
@@ -98,5 +98,11 @@ h1 {
 }
 .container {
   display: flex;
+}
+.search-bar {
+  width: 100%;
+  padding: 2px 7px 2px;
+  line-height: 28px;
+  font-size: 16px;
 }
 </style>

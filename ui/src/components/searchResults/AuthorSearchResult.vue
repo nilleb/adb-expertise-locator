@@ -16,6 +16,8 @@
         ></a>
       </h2>
       ({{ result.score }})
+      <span @click="signalEdit(result.uid)" class="action">✏️</span>
+      <span @click="signalDelete(result.uid)" class="action">❌</span>
       <p v-html="result.highlight"></p>
       <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
         <i>{{ keyword.keyword }}</i> ({{ keyword.count }}),
@@ -33,7 +35,7 @@
 
 <script>
 export default {
-  name: "DefaultSearchResult",
+  name: "AuthorSearchResult",
   props: {
     result: Object,
   },
@@ -41,6 +43,15 @@ export default {
     return {
       isVisible: false,
     };
+  },
+  methods: {
+    signalEdit(uid) {
+      let what = prompt("What's wrong with this result?", "Something is wrong with this result..")
+      console.log(`edit ${uid}: ${what}`);
+    },
+    signalDelete(uid) {
+      console.log(`delete ${uid}`);
+    },
   },
   components: {},
 };
@@ -56,5 +67,8 @@ export default {
   border: 1px solid #000;
   width: 400px;
   height: 400px;
+}
+.action { 
+  cursor: pointer;
 }
 </style>
