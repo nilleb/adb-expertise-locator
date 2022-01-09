@@ -2,7 +2,7 @@
   <div id="searchPage">
     <h1>Portable Search Engine</h1>
     <div>
-      <input type="text" v-model="query" />
+      <input type="text" v-model.lazy="query" v-debounce="400"/>
     </div>
     <div>
       <span v-if="suggestions.length">You could also try:</span>
@@ -60,7 +60,6 @@ export default {
   mounted() {
     if (this.$route.query.q) {
       this.$data.query = this.$route.query.q;
-      this.getItems(this.$route.query.q);
     }
   },
 };
