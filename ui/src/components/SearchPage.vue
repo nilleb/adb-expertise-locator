@@ -80,6 +80,25 @@ export default {
       });
     },
   },
+  /*watch: {
+    query(string) {
+      let toBeSearched = string;
+      if (!toBeSearched) {
+        if (this.$router.query !== undefined) {
+          toBeSearched = this.$router.query.q;
+        }
+      } else {
+        this.$router.push({ name: 'Home', query: { q: toBeSearched } }).catch(() => {});
+      }
+      this.doSearch(toBeSearched);
+    },
+  },
+  mounted() {
+    if (this.$route.query.q) {
+      this.$refs.typeahead.inputValue = this.$route.query.q;
+    }
+    this.doSearch(this.$route.query.q);
+  },*/
 };
 </script>
 
