@@ -28,6 +28,7 @@ export default class AuthenticatedService {
     );
     svc.interceptors.response.use(
       (response) => {
+        localStorage.lastRequestId = response.config.headers['x-request-id'];
         if (response.status === 200 || response.status === 201) {
           return Promise.resolve(response);
         }

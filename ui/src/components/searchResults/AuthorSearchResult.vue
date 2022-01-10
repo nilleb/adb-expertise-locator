@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import KnowledgeService from '../../services/KnowledgeService';
 export default {
   name: "AuthorSearchResult",
   props: {
@@ -63,17 +64,21 @@ export default {
       let what = prompt("What's wrong with this result?", "...");
       let query = this.$route.query.q;
       console.log(`edit ${uid}: ${what} ${query}`);
+      KnowledgeService.signal('edit', uid, query, what);
     },
     signalDelete(uid) {
       console.log(`delete ${uid}`);
+      KnowledgeService.signal('delete', uid);
     },
     signalHide(uid) {
       let query = this.$route.query.q;
       console.log(`hide ${uid} ${query}`);
+      KnowledgeService.signal('hide', uid, query);
     },
     signalBoost(uid) {
       let query = this.$route.query.q;
       console.log(`boost ${uid} ${query}`);
+      KnowledgeService.signal('boost', uid, query);
     },
   },
   mounted() {

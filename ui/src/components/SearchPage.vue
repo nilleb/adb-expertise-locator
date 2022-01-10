@@ -1,6 +1,6 @@
 <template>
   <div id="searchPage">
-    <h1>{{ title }}</h1>
+    <h1>{{ title }} <span @click="enableActions" class="action">🖐</span></h1>
     <p>&nbsp;</p>
     <div class="container">
       <div style="flex: 1"><!-- empty space --></div>
@@ -49,6 +49,9 @@ export default {
     };
   },
   methods: {
+    enableActions(event) {
+      console.log(event);
+    },
     getItems(string) {
       KnowledgeService.search(string).then((response) => {
         this.suggestions = response.suggestions;
@@ -104,5 +107,8 @@ h1 {
   padding: 2px 7px 2px;
   line-height: 28px;
   font-size: 16px;
+}
+.action {
+  cursor: pointer;
 }
 </style>

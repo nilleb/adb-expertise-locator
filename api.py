@@ -72,10 +72,22 @@ class SearchResponse(BaseModel):
     total: int
 
 
+class SignalRequest(BaseModel):
+    verb: str
+    uid: str
+    query: Optional[str]
+    description: Optional[str]
+
+
 @app.get("/api/v1/document/{uid}")
-async def search(uid: str) -> SearchResponse:
+async def get_document(uid: str) -> SearchResult:
     res = document(uid)
     return prepare_result(res)
+
+
+@app.post("/api/v1/signal")
+async def signal(payload: SignalRequest) -> None:
+    track("signal", payload.dict(), None)
 
 
 def track(path, params, response):
