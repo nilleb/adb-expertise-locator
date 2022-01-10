@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="search-result-textual">
+    <div class="search-result-textual" @keypress="onKeypress">
       <h2 style="display: inline">
         <a
           :href="`view?${result.uid}`"
@@ -16,8 +16,21 @@
         ></a>
       </h2>
       ({{ result.score }})
-      <span @click="signalEdit(result.uid)" class="action">✏️</span>
-      <span @click="signalDelete(result.uid)" class="action">❌</span>
+      <span @click="signalEdit(result.uid)" v-if="displayActions" class="action"
+        >✏️</span
+      >
+      <span
+        @click="signalDelete(result.uid)"
+        v-if="displayActions"
+        class="action"
+        >❌</span
+      >
+      <span @click="signalHide(result.uid)" v-if="displayActions" class="action"
+        >🙈</span
+      >
+      <span @click="signalBoost(result.uid)" v-if="displayActions" class="action"
+        >➕</span
+      >
       <p v-html="result.highlight"></p>
       <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
         <i>{{ keyword.keyword }}</i> ({{ keyword.count }}),
@@ -42,16 +55,31 @@ export default {
   data: function () {
     return {
       isVisible: false,
+      displayActions: false,
     };
   },
   methods: {
     signalEdit(uid) {
-      let what = prompt("What's wrong with this result?", "Something is wrong with this result..")
-      console.log(`edit ${uid}: ${what}`);
+      let what = prompt("What's wrong with this result?", "...");
+      let query = this.$route.query.q;
+      console.log(`edit ${uid}: ${what} ${query}`);
     },
     signalDelete(uid) {
       console.log(`delete ${uid}`);
     },
+    signalHide(uid) {
+      let query = this.$route.query.q;
+      console.log(`hide ${uid} ${query}`);
+    },
+    signalBoost(uid) {
+      let query = this.$route.query.q;
+      console.log(`boost ${uid} ${query}`);
+    },
+  },
+  mounted() {
+    if (localStorage.displayActions === "true") {
+      this.$data.displayActions = true;
+    }
   },
   components: {},
 };
@@ -68,7 +96,7 @@ export default {
   width: 400px;
   height: 400px;
 }
-.action { 
+.action {
   cursor: pointer;
 }
 </style>
