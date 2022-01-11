@@ -2,6 +2,7 @@ import os
 import yaml
 import json
 import logging
+from urllib.parse import urlparse
 
 cwd = os.path.dirname(os.path.abspath(__file__))
 configuration_file = f"{cwd}/configuration.yml"
@@ -10,8 +11,10 @@ with open(configuration_file) as fd:
 
 
 DEFAULT_SEARCH_ENGINE = "local"
-ES_SERVER_ADDRESS = configuration["search_engines"][DEFAULT_SEARCH_ENGINE]["url"]
-ES_SERVER_PASSWORD = configuration["search_engines"][DEFAULT_SEARCH_ENGINE]["password"]
+ES_SERVER_ADDRESS = os.environ.get(
+    "ELASTICSEARCH_URL", configuration["search_engines"][DEFAULT_SEARCH_ENGINE]["url"]
+)
+ES_SERVER_PASSWORD = urlparse(ES_SERVER_ADDRESS).password
 ORGANIZATION_ID = configuration.get("organization_id")
 ES_INDEX_NAME = index = configuration.get("index_format").format(
     organization_id=ORGANIZATION_ID
