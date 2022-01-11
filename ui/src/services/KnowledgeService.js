@@ -6,8 +6,7 @@ export default class KnowledgeService extends AuthenticatedService {
   }
 
   static getDocument(uid) {
-    let payload = { uid: uid };
-    return KnowledgeService.service().post('document', payload).then((res) => res.data);
+    return KnowledgeService.service().get(`document/${uid}`).then((res) => res.data);
   }
 
   static signal(verb, uid, query, description) {

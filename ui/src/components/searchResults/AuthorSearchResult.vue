@@ -3,7 +3,7 @@
     <div class="search-result-textual" @keypress="onKeypress">
       <h2 style="display: inline">
         <a
-          :href="`view?${result.uid}`"
+          :href="`view?uid=${result.uid}`"
           class="tiptext"
           @mouseover="isVisible = true"
           @mouseout="isVisible = false"
