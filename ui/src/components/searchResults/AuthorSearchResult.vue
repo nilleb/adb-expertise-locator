@@ -7,6 +7,7 @@
           class="tiptext"
           @mouseover="isVisible = true"
           @mouseout="isVisible = false"
+          @click="signalClick(result.uid)"
           >{{ result.title }}
           <iframe
             v-if="isVisible"
@@ -82,8 +83,13 @@ export default {
     },
     signalBoost(uid) {
       let query = this.$route.query.q;
-      console.log(`boost ${uid} ${query}`);
+      console.log(`boost ${uid} "${query}"`);
       KnowledgeService.signal("boost", uid, query);
+    },
+    signalClick(uid) {
+      let query = this.$route.query.q;
+      console.log(`click ${uid} ${query}`);
+      KnowledgeService.signal("click", uid, query);
     },
   },
   mounted() {
