@@ -1,6 +1,6 @@
 import uuid
 import logging
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Json
@@ -14,11 +14,18 @@ from starlette_context.middleware import RawContextMiddleware
 
 from backends.es import search as es_search, document
 
+from starlette_context.plugins.base import PluginUUIDBase
+
+
+class SessionIDPlugin(PluginUUIDBase):
+    key = "X-Session-ID"
+
+
 logging.basicConfig(level=logging.INFO)
 middleware = [
     Middleware(
         RawContextMiddleware,
-        plugins=(plugins.RequestIdPlugin(), plugins.CorrelationIdPlugin()),
+        plugins=(plugins.RequestIdPlugin(), plugins.CorrelationIdPlugin(), SessionIDPlugin()),
     )
 ]
 
