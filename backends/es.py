@@ -6,7 +6,6 @@ from configuration import (
     ES_INDEX_NAME,
     ES_SERVER_ADDRESS,
     DEFAULT_INDEX_SETTINGS,
-    ES_SERVER_PASSWORD,
     compose_query,
 )
 
@@ -58,7 +57,7 @@ def create_indexer():
 
 
 def search(query):
-    es = Elasticsearch(http_auth=("elastic", ES_SERVER_PASSWORD))
+    es = Elasticsearch([ES_SERVER_ADDRESS])
     body = compose_query(query)
     return es.search(
         index=ES_INDEX_NAME,
@@ -67,7 +66,7 @@ def search(query):
 
 
 def document(uid):
-    es = Elasticsearch(http_auth=("elastic", ES_SERVER_PASSWORD))
+    es = Elasticsearch([ES_SERVER_ADDRESS])
     return es.get(
         id=uid,
         index=ES_INDEX_NAME,
