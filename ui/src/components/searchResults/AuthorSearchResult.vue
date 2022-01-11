@@ -36,7 +36,7 @@
         >➕</span
       >
       <p v-html="result.highlight"></p>
-      <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
+      🔑 <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
         <i>{{ keyword.keyword }}</i> ({{ keyword.count }}),
       </span>
       <br />
