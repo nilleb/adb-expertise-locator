@@ -1,0 +1,8 @@
+requirements.txt $APP
+api.py $APP
+backends/ $APP
+configuration/ $APP
+ui/* $APP (exclude: **/node_modules)
+data/intermediate/ $APP/data
+deploy/.buildpacks $APP
+deploy/Procfile $APP

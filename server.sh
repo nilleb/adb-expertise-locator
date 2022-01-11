@@ -6,4 +6,4 @@ if [[ ! -d "venv" ]]; then
 fi
 
 . venv/bin/activate
-uvicorn api:app --reload
+uvicorn api:app --reload --port $PORT

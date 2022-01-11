@@ -1,20 +1,20 @@
-import uuid
+import json
 import logging
+import uuid
+from typing import List, Optional
+
 from fastapi import FastAPI, Request
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Json
-from typing import Optional, List
-import json
 from starlette.requests import Request
 from starlette.responses import JSONResponse
-
 from starlette_context import context, plugins
 from starlette_context.middleware import RawContextMiddleware
-
-from backends.es import search as es_search, document
-
 from starlette_context.plugins.base import PluginUUIDBase
+
+from backends.es import document
+from backends.es import search as es_search
 
 
 class SessionIDPlugin(PluginUUIDBase):
