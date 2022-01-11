@@ -32,6 +32,7 @@
 <script>
 import KnowledgeService from "../services/KnowledgeService";
 import SearchResults from "./SearchResults.vue";
+import emitter from "@/services/eventbus.js";
 
 export default {
   name: "SearchPage",
@@ -49,8 +50,13 @@ export default {
     };
   },
   methods: {
-    enableActions(event) {
-      console.log(event);
+    enableActions() {
+      let displayActions = true;
+      if (localStorage.displayActions === "true") {
+        displayActions = false;
+      }
+      localStorage.displayActions = displayActions;
+      emitter.emit('displayActions', displayActions);
     },
     getItems(string) {
       KnowledgeService.search(string).then((response) => {

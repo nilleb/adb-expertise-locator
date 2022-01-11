@@ -28,7 +28,10 @@
       <span @click="signalHide(result.uid)" v-if="displayActions" class="action"
         >🙈</span
       >
-      <span @click="signalBoost(result.uid)" v-if="displayActions" class="action"
+      <span
+        @click="signalBoost(result.uid)"
+        v-if="displayActions"
+        class="action"
         >➕</span
       >
       <p v-html="result.highlight"></p>
@@ -47,7 +50,9 @@
 </template>
 
 <script>
-import KnowledgeService from '../../services/KnowledgeService';
+import KnowledgeService from "@/services/KnowledgeService";
+import emitter from "@/services/eventbus.js";
+
 export default {
   name: "AuthorSearchResult",
   props: {
@@ -64,27 +69,32 @@ export default {
       let what = prompt("What's wrong with this result?", "...");
       let query = this.$route.query.q;
       console.log(`edit ${uid}: ${what} ${query}`);
-      KnowledgeService.signal('edit', uid, query, what);
+      KnowledgeService.signal("edit", uid, query, what);
     },
     signalDelete(uid) {
       console.log(`delete ${uid}`);
-      KnowledgeService.signal('delete', uid);
+      KnowledgeService.signal("delete", uid);
     },
     signalHide(uid) {
       let query = this.$route.query.q;
       console.log(`hide ${uid} ${query}`);
-      KnowledgeService.signal('hide', uid, query);
+      KnowledgeService.signal("hide", uid, query);
     },
     signalBoost(uid) {
       let query = this.$route.query.q;
       console.log(`boost ${uid} ${query}`);
-      KnowledgeService.signal('boost', uid, query);
+      KnowledgeService.signal("boost", uid, query);
     },
   },
   mounted() {
     if (localStorage.displayActions === "true") {
       this.$data.displayActions = true;
     }
+    const that = this;
+    emitter.on("displayActions", (displayActions) => {
+      console.log(displayActions);
+      that.$data.displayActions = displayActions;
+    });
   },
   components: {},
 };
