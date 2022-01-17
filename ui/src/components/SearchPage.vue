@@ -6,6 +6,7 @@
       <div style="flex: 1"><!-- empty space --></div>
       <div style="flex: 8">
         <input
+          placeholder="Type anything here..."
           type="text"
           class="search-bar"
           v-model.lazy="query"
