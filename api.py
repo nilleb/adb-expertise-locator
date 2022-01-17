@@ -8,10 +8,11 @@ from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Json
 from starlette.requests import Request
-from starlette.responses import JSONResponse
+from starlette.responses import FileResponse, JSONResponse
 from starlette_context import context, plugins
 from starlette_context.middleware import RawContextMiddleware
 from starlette_context.plugins.base import PluginUUIDBase
+from fastapi.staticfiles import StaticFiles
 
 from backends.es import document
 from backends.es import search as es_search
@@ -25,7 +26,11 @@ logging.basicConfig(level=logging.INFO)
 middleware = [
     Middleware(
         RawContextMiddleware,
-        plugins=(plugins.RequestIdPlugin(), plugins.CorrelationIdPlugin(), SessionIDPlugin()),
+        plugins=(
+            plugins.RequestIdPlugin(),
+            plugins.CorrelationIdPlugin(),
+            SessionIDPlugin(),
+        ),
     )
 ]
 
@@ -36,6 +41,7 @@ origins = [
     "https://localhost.nilleb.com",
     "http://localhost",
     "http://localhost:8080",
+    "http://localhost:8000",
 ]
 
 app.add_middleware(
@@ -108,7 +114,7 @@ async def search(payload: SearchQuery) -> SearchResponse:
     return prepare_response(payload.query, res)
 
 
-@app.route("/")
+@app.route("/context")
 async def index(request: Request):
     return JSONResponse(context.data)
 
@@ -155,3 +161,9 @@ def prepare_result(hit):
         "urn": f"elasticsearch://{url}",
     }
     return result
+
+@app.route("/")
+async def index(request: Request):
+    return FileResponse("ui/dist/index.html")
+
+app.mount("/", StaticFiles(directory="ui/dist"), name="dist")

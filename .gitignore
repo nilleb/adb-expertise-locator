@@ -3,3 +3,4 @@ venv
 data/input/reports/pdfs/*.pdf
 __pycache__
 *.tar.gz
+*.production.yml
