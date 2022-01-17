@@ -166,4 +166,8 @@ def prepare_result(hit):
 async def index(request: Request):
     return FileResponse("ui/dist/index.html")
 
+@app.route("/view")
+async def index(request: Request):
+    return FileResponse("ui/dist/index.html")
+
 app.mount("/", StaticFiles(directory="ui/dist"), name="dist")
