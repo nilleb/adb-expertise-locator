@@ -1,7 +1,7 @@
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 
-const API_BASE_URL = process.env.VUE_APP_API_BASE_URL; // 'http://localhost:8080/api/v1'
+const API_BASE_URL = process.env.VUE_APP_API_BASE_URL;
 
 export default class AuthenticatedService {
   static service() {

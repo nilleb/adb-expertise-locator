@@ -9,7 +9,7 @@ with open(configuration_file) as fd:
     configuration = yaml.load(fd, Loader=yaml.FullLoader)
 
 
-DEFAULT_SEARCH_ENGINE = "local"
+DEFAULT_SEARCH_ENGINE = configuration["search_engine"]
 ES_SERVER_ADDRESS = os.environ.get(
     "ELASTICSEARCH_URL", configuration["search_engines"][DEFAULT_SEARCH_ENGINE]["url"]
 )
