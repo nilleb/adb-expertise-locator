@@ -1,6 +1,6 @@
 <template>
   <div id="resultsPreview">
-    <h1>Result preview : {{ uid }}</h1>
+    <h1>Result preview : {{ author }}</h1>
     <pre><span v-html="content"></span></pre>
   </div>
 </template>
@@ -42,6 +42,7 @@ export default {
   data() {
     return {
       uid: "test",
+      author: "Unknown",
       content: {},
     };
   },
@@ -50,6 +51,7 @@ export default {
       KnowledgeService.getDocument(uid).then((response) => {
         const source = JSON.parse(response.source);
         this.content = syntaxHighlight(JSON.stringify(source, undefined, 2));
+        this.author = source.author;
       });
     },
   },
