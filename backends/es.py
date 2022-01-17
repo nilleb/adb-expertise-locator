@@ -1,4 +1,3 @@
-import requests
 import logging
 from elasticsearch import Elasticsearch
 
@@ -18,36 +17,17 @@ class ElasticSearchIndexer(object):
         self.index_settings = index_settings
 
     def setup_index(self):
-        index_uri = f"{self.server_address}/{self.index_name}"
-        response = requests.put(
-            index_uri,
-            json=self.index_settings,
-            headers={"content-type": "application/json"},
-        )
-        logging.info(response)
-        if not response.ok:
-            rd = response.json()
-            if rd.get("error", {}).get("type") == "resource_already_exists_exception":
-                return
-            logging.warning(rd)
-        response.raise_for_status()
+        es = Elasticsearch([ES_SERVER_ADDRESS])
+        es.indices.create(index=self.index_name, body=self.index_settings)
 
     def index_single_document(self, document):
         doc_id = document.get("id")
         doc_uri = f"{self.server_address}/{self.index_name}/_doc/{doc_id}"
-        doc_size = sum(
-            [
-                len(value)
-                if isinstance(value, str)
-                else sum([len(sub) for sub in value])
-                for value in document.values()
-            ]
-        )
-        logging.info(f"{doc_id}, {doc_size}")
-        response = requests.put(
-            doc_uri, json=document, headers={"content-type": "application/json"}
-        )
-        logging.info(response)
+        es = Elasticsearch([ES_SERVER_ADDRESS], timeout=600)
+        try:
+            es.index(index=self.index_name, document=document, id=doc_id)
+        except:
+            logging.exception(doc_uri)
 
 
 def create_indexer():

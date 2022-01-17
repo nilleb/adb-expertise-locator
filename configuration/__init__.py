@@ -9,10 +9,22 @@ with open(configuration_file) as fd:
     configuration = yaml.load(fd, Loader=yaml.FullLoader)
 
 
-DEFAULT_SEARCH_ENGINE = configuration["search_engine"]
-ES_SERVER_ADDRESS = os.environ.get(
-    "ELASTICSEARCH_URL", configuration["search_engines"][DEFAULT_SEARCH_ENGINE]["url"]
+DEFAULT_SEARCH_ENGINE = configuration.get("search_engine", {}).get("name")
+ENVIRONMENT_ES_SERVER_ADDRESS = os.environ.get("ELASTICSEARCH_URL")
+CONFIGURATION_ES_SERVER_ADDRESS = configuration["search_engines"][
+    DEFAULT_SEARCH_ENGINE
+]["url"]
+USE_ENVIRONMENT_VARIABLE_AS = configuration.get("search_engine", {}).get(
+    "use_environment_variable_as", "none"
 )
+
+ES_SERVER_ADDRESS = {
+    "fallback": CONFIGURATION_ES_SERVER_ADDRESS or ENVIRONMENT_ES_SERVER_ADDRESS,
+    "default": ENVIRONMENT_ES_SERVER_ADDRESS or CONFIGURATION_ES_SERVER_ADDRESS,
+    "none": CONFIGURATION_ES_SERVER_ADDRESS,
+}.get(USE_ENVIRONMENT_VARIABLE_AS)
+
+
 ORGANIZATION_ID = configuration.get("organization_id")
 ES_INDEX_NAME = index = configuration.get("index_format").format(
     organization_id=ORGANIZATION_ID
