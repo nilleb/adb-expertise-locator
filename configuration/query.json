@@ -3,7 +3,8 @@
         "includes": [
             "author",
             "keywords.keyword",
-            "keywords.count"
+            "keywords.count",
+            "documents"
         ]
     },
     "query": {
