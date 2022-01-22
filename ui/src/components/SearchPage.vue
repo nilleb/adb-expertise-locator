@@ -2,6 +2,11 @@
   <div id="searchPage">
     <h1>{{ title }} <span @click="enableActions" class="action">🖐</span></h1>
     <p>&nbsp;</p>
+    <div class="container" style="justify-content: center">
+      <div>
+          disclaimer: all the personal data (telephone, email, ...) on this page is fake
+      </div>
+    </div>
     <div class="container">
       <div style="flex: 1"><!-- empty space --></div>
       <div style="flex: 8">

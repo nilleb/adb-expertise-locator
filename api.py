@@ -1,3 +1,4 @@
+import hashlib
 import json
 import logging
 import uuid
@@ -151,23 +152,39 @@ def prepare_response(query, res):
 def prepare_result(hit):
     uid = hit.get("_id", str(uuid.uuid4()))
     url = f'{hit.get("_index")}/_doc/{hit.get("_id")}'
+    source = prepare_source(uid, hit["_source"])
     result = {
         "uid": uid,
         "score": hit.get("_score"),
         "title": hit["_source"].get("author", "unknown"),
         "highlight": get_highlight(hit),
-        "source": json.dumps(hit["_source"]),
+        "source": json.dumps(source),
         "kind": hit["_source"].get("kind", "author"),
         "urn": f"elasticsearch://{url}",
     }
     return result
 
+
+def prepare_source(uid, source):
+    if not source.get("telephoneNumber"):
+        encoded = hashlib.md5(uid.encode("utf-8")).hexdigest()
+        number = int(encoded[6:12], 16)
+        source["telephoneNumber"] = f"555-{number}"
+    if not source.get("email"):
+        source["email"] = f"{uid}@adb.nilleb.com"
+    source["documents"] = list(set(source.get("documents", [])))
+    print(source)
+    return source
+
+
 @app.route("/")
 async def index(request: Request):
     return FileResponse("ui/dist/index.html")
 
+
 @app.route("/view")
 async def index(request: Request):
     return FileResponse("ui/dist/index.html")
+
 
 app.mount("/", StaticFiles(directory="ui/dist"), name="dist")

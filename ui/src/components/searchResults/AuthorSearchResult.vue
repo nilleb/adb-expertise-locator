@@ -35,9 +35,15 @@
         class="action"
         >➕</span
       >
+      <p>📞 <a :href="'tel:'+result.source.telephoneNumber">{{result.source.telephoneNumber}}</a> 📧 <a :href="'mailto:' + result.source.email">{{result.source.email}}</a></p>
       <p v-html="result.highlight"></p>
       🔑 <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
         <i>{{ keyword.keyword }}</i> ({{ keyword.count }}),
+      </span>
+      <br>
+      📚
+      <span v-for="document in result.source.documents" :key="document">
+        <a :href="document">reference, </a>
       </span>
       <br />
     </div>
