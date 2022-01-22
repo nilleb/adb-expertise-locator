@@ -1,15 +1,16 @@
 <template>
-  <!--div id="nav">
+  <div id="app">
+    <!--div id="nav">
     <router-link to="/">Search</router-link> |
     <router-link to="/view">ResultPreview</router-link>
   </div-->
-  <router-view />
+    <router-view />
+  </div>
 </template>
 
 <script>
 export default {
-  components: {
-  },
+  components: {},
   created() {},
 };
 </script>
