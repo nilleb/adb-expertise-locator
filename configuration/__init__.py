@@ -32,6 +32,10 @@ ES_INDEX_NAME = index = configuration.get("index_format").format(
 ES_QUERY_TEMPLATE_PATH = f"{cwd}/query.json"
 LIMIT = 100000
 
+linkedin_default = configuration.get("linkedin", {}).get("default", {})
+LINKEDIN_EMAIL = linkedin_default.get("email", "sample@linkedin.com")
+LINKEDIN_PASSWORD = linkedin_default.get("password", "password")
+
 
 def compose_query(query_string):
     with open(ES_QUERY_TEMPLATE_PATH) as template_fd:
