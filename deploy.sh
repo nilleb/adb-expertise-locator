@@ -7,6 +7,7 @@ cp requirements.txt /tmp/app
 cp api.py /tmp/app
 cp -R backends /tmp/app
 cp -R configuration /tmp/app
+rm -rf /tmp/app/ui
 mkdir /tmp/app/ui
 cp -R ui/dist /tmp/app/ui/dist
 mkdir /tmp/app/data
