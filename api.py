@@ -1,6 +1,7 @@
 import hashlib
 import json
 import logging
+import os
 import uuid
 from typing import List, Optional
 
@@ -172,9 +173,34 @@ def prepare_source(uid, source):
         source["telephoneNumber"] = f"555-{number}"
     if not source.get("email"):
         source["email"] = f"{uid}@adb.nilleb.com"
-    source["documents"] = list(set(source.get("documents", [])))
+    source["documents"] = prepare_documents(source.get("documents", []))
     print(source)
     return source
+
+
+def load_report_names():
+    with open("data/intermediate/sets.json") as fd:
+        sets = json.load(fd)
+    return {os.path.basename(path): path for path in sets.get("reports")}
+
+
+REPORT_NAMES = load_report_names()
+
+
+def prepare_documents(documents):
+    filenames = [os.path.basename(document) for document in documents]
+    filenames = list(set(filenames))
+
+    def short_id(filename):
+        return filename.split("-")[0]
+
+    def get_report(filename):
+        return REPORT_NAMES.get(
+            filename,
+            f"https://www.adb.org/sites/default/files/project-documents/{short_id(filename)}/{filename}",
+        )
+
+    return [get_report(filename) for filename in filenames]
 
 
 @app.route("/")

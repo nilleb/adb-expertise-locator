@@ -43,7 +43,7 @@
       <br>
       📚
       <span v-for="document in result.source.documents" :key="document">
-        <a :href="document">reference, </a>
+        <a :href="document">{{ document.replace(/^.*\/|\.[^.]*$/g, '') }}</a>,
       </span>
       <br />
     </div>
