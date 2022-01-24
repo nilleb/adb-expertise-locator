@@ -1,5 +1,6 @@
 import logging
 from elasticsearch import Elasticsearch
+from elasticsearch.exceptions import RequestError
 
 from configuration import (
     ES_INDEX_NAME,
@@ -18,7 +19,11 @@ class ElasticSearchIndexer(object):
 
     def setup_index(self):
         es = Elasticsearch([ES_SERVER_ADDRESS])
-        es.indices.create(index=self.index_name, body=self.index_settings)
+        try:
+            es.indices.create(index=self.index_name, body=self.index_settings)
+        except RequestError as re:
+            if re.error != 'resource_already_exists_exception':
+                raise
 
     def index_single_document(self, document):
         doc_id = document.get("id")
