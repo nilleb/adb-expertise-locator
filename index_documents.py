@@ -2,6 +2,7 @@ import logging
 import json
 from slugify import slugify
 import sys
+from operator import countOf
 
 from configuration import LIMIT
 from backends.es import create_indexer
@@ -34,15 +35,37 @@ def prepare_keywords(keywords):
         yield {"keyword": keyword, "count": count}
 
 
+def is_anomaly(key):
+    return len(key) > 100 or " " not in key
+
+
+def is_mild_anomaly(key):
+    final = " ".join(set(key.split(" ")))
+    return (
+        (len(key) > 50 and len(key) < 100)
+        or countOf(key, " ") > 4
+        or countOf(key, ".") > 4
+        or final != key
+    )
+
+
 def index_authors_documents(what):
     idx.setup_index()
 
     with open(DOCUMENTS_SOURCE_FORMAT.format(what=what)) as fd:
         author_documents = json.load(fd)
 
-    print(f"{len(author_documents)} to index...")
-    count = 0
+    print(f"{len(author_documents)} total documents loaded")
+    refined = {}
     for author, document in author_documents.items():
+        if is_anomaly(author) or is_mild_anomaly(author):
+            continue
+        refined[author] = document
+
+    print(f"{len(refined)} to index...")
+
+    count = 0
+    for author, document in refined.items():
         es_document = dict(document)
         es_document["id"] = slugify(author)
         es_document["author"] = author
@@ -52,7 +75,7 @@ def index_authors_documents(what):
         idx.index_single_document(es_document)
         count += 1
 
-    print(f"{count} documents indexed so far.")
+    print(f"{count} documents indexed.")
 
 
 if __name__ == "__main__":
