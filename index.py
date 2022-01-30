@@ -5,7 +5,7 @@ from . import (adb_crawler, build_expertise_db, extract_metadata_and_content,
 
 # I am preferring the adb website as a source because Google has lots of duplicates
 # and eventually returns corrupted documents
-kinds_addresses_map = adb_crawler.crawl()
+kinds_addresses_map = adb_crawler.cached_crawl()
 
 for folder, addresses in kinds_addresses_map.items():
     pdf_downloader.download_and_retry_once(folder, addresses)
