@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import glob
 import json
 import os
 
 from nltk.tag import StanfordNERTagger
 from nltk.tokenize import word_tokenize
+
+from common.folder_processor import FolderProcessor
+from common.io import write_object
 
 TAGGER = StanfordNERTagger(
     "/Users/nilleb/Downloads/stanford-ner-2020-11-17/classifiers/english.all.3class.distsim.crf.ser.gz",
@@ -19,31 +21,27 @@ def classify(text):
     return TAGGER.tag(tokenized_text)
 
 
-def process_folders(folders):
-    for folder in folders:
-        if os.path.exists(folder) and os.path.isdir(folder):
-            print(f"processing {folder}")
-        else:
-            print(f"skipping {folder}")
-            continue
+def process_single_file(path):
+    classified_path = path.replace(".regex-authors.json", ".classified.json")
+    if os.path.exists(path) and not os.path.exists(classified_path):
+        with open(path) as fd:
+            metadata = json.load(fd)
 
-        paths = glob.glob(f"{folder}/*.metadata.json")
-        for idx, path in enumerate(paths):
-            print(f"({idx}/{len(paths)}) extracting named entities from {path}")
-            classified_path = path.replace(".metadata.json", ".classified.json")
-            if os.path.exists(path) and not os.path.exists(classified_path):
-                with open(path) as fd:
-                    metadata = json.load(fd)
+        text = " ".join(metadata.get("pages", []))
+        metadata["classified_text"] = classify(text)
+        author_page = metadata.get("author_page", "")
+        metadata["classified_author_page"] = classify("".join(author_page))
 
-                metadata["classified_text"] = classify(metadata.get("content", ""))
-                author_pages = metadata.get("author_pages", "")
-                metadata["classified_author_pages"] = classify("".join(author_pages))
+        write_object(metadata, classified_path)
 
-                with open(classified_path, "w") as fd:
-                    print(f"writing {classified_path}")
-                    json.dump(metadata, fd)
+
+def main(folders=None):
+    if not folders:
+        folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
+    FolderProcessor(
+        folders, "*.regex-authors.json", process_single_file
+    ).process_folders()
 
 
 if __name__ == "__main__":
-    folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
-    process_folders(folders)
+    main()

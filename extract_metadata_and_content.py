@@ -6,6 +6,8 @@ from json import JSONEncoder
 
 import pdfplumber
 
+from common.folder_processor import FolderProcessor
+
 
 class Document(object):
     def __init__(self, path):
@@ -20,16 +22,6 @@ class Document(object):
 class MyEncoder(JSONEncoder):
     def default(self, o):
         return o.__dict__
-
-
-def process_folders(folders):
-    for folder in folders:
-        if os.path.exists(folder) and os.path.isdir(folder):
-            print(f"processing {folder}")
-        else:
-            print(f"skipping {folder}")
-            continue
-        process_folder(folder)
 
 
 def should_process_document(filepath):
@@ -48,17 +40,14 @@ def should_process_document(filepath):
     return True
 
 
-def process_folder(folder):
-    paths = glob.glob(f"{folder}/*.pdf")
-    for idx, path in enumerate(paths):
-        print(f"({idx+1}/{len(paths)}) extracting metadata and text from {path}")
-        metadata_path = f"{path}.metadata.json"
-        if should_process_document(metadata_path):
-            with open(metadata_path, "w") as fd:
-                try:
-                    json.dump(Document(path), fd, cls=MyEncoder)
-                except:
-                    logging.exception(f"exception caught processing: {path}")
+def process_single_file(path):
+    metadata_path = f"{path}.metadata.json"
+    if should_process_document(metadata_path):
+        with open(metadata_path, "w") as fd:
+            try:
+                json.dump(Document(path), fd, cls=MyEncoder)
+            except:
+                logging.exception(f"exception caught processing: {path}")
 
 
 def describe(folders):
@@ -76,7 +65,16 @@ def describe(folders):
         json.dump(documents, fd)
 
 
-if __name__ == "__main__":
-    folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
-    process_folders(folders)
+def main(folders=None):
+    if not folders:
+        folders = [
+            "data/input/pdf-generic",
+            "data/input/technical",
+            "data/input/reports",
+        ]
+    FolderProcessor(folders, "*.pdf", process_single_file).process_folders()
     describe(folders)
+
+
+if __name__ == "__main__":
+    main()

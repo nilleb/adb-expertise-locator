@@ -137,6 +137,11 @@ def test_file():
     print(process_file("data/input/reports/53314-001-rrp-en.pdf.metadata.json"))
 
 
-if __name__ == "__main__":
-    folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
+def main(folders=None):
+    if not folders:
+        folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
     FolderProcessor(folders, "*.metadata.json", process_file).process_folders()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,7 +1,7 @@
 import subprocess
 
 from . import (adb_crawler, build_expertise_db, extract_metadata_and_content,
-               extract_named_entities, pdf_downloader, index_documents)
+               extract_named_entities, pdf_downloader, index_documents, regex_authors)
 
 # I am preferring the adb website as a source because Google has lots of duplicates
 # and eventually returns corrupted documents
@@ -12,8 +12,9 @@ for folder, addresses in kinds_addresses_map.items():
 
 folders = kinds_addresses_map.keys()
 
-extract_metadata_and_content.process_folders(folders)  # generates .metadata.json
-extract_named_entities.process_folders(folders)  # generates .classified.json
+extract_metadata_and_content.main(folders)  # generates .metadata.json
+regex_authors.main(folders)  # generates .regex-authors.json
+extract_named_entities.main(folders)  # generates .classified.json
 
 build_expertise_db.build_people_indexes(folders)  # generates author_documents and person_documents
 
