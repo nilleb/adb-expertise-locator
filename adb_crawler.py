@@ -72,9 +72,30 @@ def generate_links(kind):
     except:
         urls_set = public_search(kind)
 
-    pdfs = []
+    try:
+        with open("data/intermediate/pdfs.json") as fd:
+            pdfs = json.load(fd)
+    except:
+        pdfs = []
+
+    try:
+        with open("data/intermediate/visited_projects.json") as fd:
+            visited_set = set(json.load(fd))
+    except:
+        visited_set = set()
+
     for url in urls_set:
+        if url in visited_set:
+            continue
+        logging.info(f"{len(urls_set)-len(visited_set)} to go!")
+
         pdfs.extend(visit_project(url))
+        with open("data/intermediate/pdfs.json", "w") as fd:
+            json.dump(pdfs, fd)
+
+        visited_set.add(url)
+        with open("data/intermediate/visited_projects.json", "w") as fd:
+            json.dump(list(visited_set), fd)
 
     pdfs = list(set(pdfs))
     logging.info(f"{kind}: extracted {len(pdfs)} unique pdf urls")
@@ -101,5 +122,16 @@ def cached_crawl():
     return sets
 
 
+def describe(sets):
+    with open("data/intermediate/project_urls.json") as fd:
+        data = json.load(fd)
+    for key, value in data.items():
+        logging.info(f"{key} => {len(value)} projects to analyze")
+    for key, value in sets.items():
+        logging.info(f"{key} => {len(value)} documents to download")
+        logging.info(f"{key} => {len([url for url in value if 'rrp' in url])} rrp documents to download")
+
+
 if __name__ == "__main__":
-    cached_crawl()
+    sets = cached_crawl()
+    describe(sets)
