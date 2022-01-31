@@ -14,7 +14,7 @@ class FolderProcessor(object):
         paths = glob.glob(f"{folder}/{self.pattern}")
         for idx, path in enumerate(paths):
             print(f"({idx+1}/{len(paths)}) processing {path}")
-            self.process_file(path)
+            self.process_single_file(path)
 
     def process_folders(self):
         for folder in self.folders:

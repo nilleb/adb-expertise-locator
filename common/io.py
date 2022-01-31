@@ -6,4 +6,4 @@ def read_object(path):
 
 def write_object(obj, path):
     with open(path, 'w') as fd:
-        json.dump(obj)
+        json.dump(obj, fd)
