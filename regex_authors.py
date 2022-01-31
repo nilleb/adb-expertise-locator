@@ -5,14 +5,17 @@ from common.io import read_object, write_object
 
 matches = ["This report was prepared by a team consisting of", "Team leader"]
 
+"((?P<documentRole>[ \-A-Za-z]+)  )?(?P<fullname>[A-Za-z\. ]+), (?P<role>[ A-Za-z\(\)]+)[, ]*(?P<organization>\(?[A-Za-z ]+\)?)?"
+
 FULLNAME_PATTERN = "(?P<fullname>([A-Z\. ])+ [A-Za-z \-]+)"
 ROLE_PATTERN = "(?P<role>[ A-Za-z]+)"
 ORGANIZATION_PATTERN = "(?P<organization>\(?[A-Za-z ]+\)?)?"
 AUTHOR_LINE_PATTERN = f"{FULLNAME_PATTERN},{ROLE_PATTERN}[, ]*{ORGANIZATION_PATTERN}"
+AUTHOR_LINE_PATTERN = "((?P<documentRole>[ \-A-Za-z]+)  )?(?P<fullname>[A-Za-z\. ]+), (?P<role>[ A-Za-z\(\)]+)[, ]*(?P<organization>\(?[A-Za-z ]+\)?)?"
 OPTIMIZED_PATTERN = re.compile(AUTHOR_LINE_PATTERN)
 SINGLE_LINE_AUTHOR = f"{FULLNAME_PATTERN}(\({ROLE_PATTERN}\))?"
 SINGLE_LINE_AUTHOR_ALTERNATE = "(?P<fullname>(([A-Z]\.)|([A-Za-z]+)) [A-Za-z \-]+).*"
-
+BOILERPLATE_BEGINNING = "In preparing any country program or strategy"
 logging.basicConfig(level=logging.INFO)
 
 
@@ -68,12 +71,14 @@ def extract_authors_from_single_line(page):
 
 def extract_authors_from_table(page):
     for line in page.split("\n"):
+        if BOILERPLATE_BEGINNING in line:
+            return
         match = OPTIMIZED_PATTERN.match(line)
         if match:
             author_dict = {
-                "fullname": match.group("fullname"),
-                "role": match.group("role"),
-                "organization": match.group("organization"),
+                "fullname": match.group("fullname").strip(),
+                "role": match.group("role").strip(),
+                "organization": (match.group("organization") or "").strip(),
             }
             if author_dict:
                 yield author_dict
@@ -118,6 +123,7 @@ def test():
 
 def test_file():
     print(process_file("data/input/reports/rrp-prc-33177.pdf.metadata.json"))
+    print(process_file("data/input/reports/53314-001-rrp-en.pdf.metadata.json"))
 
 
 if __name__ == "__main__":
