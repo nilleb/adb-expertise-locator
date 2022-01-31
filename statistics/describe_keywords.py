@@ -1,10 +1,9 @@
 from collections import defaultdict
-import json
-import glob
 import re
 import sys
 
-from json import JSONEncoder
+from common.folder_processor import FolderProcessor
+from common.io import MyEncoder, read_object, write_object
 
 
 class Keyword(object):
@@ -22,53 +21,44 @@ def split(value):
     return re.split("[,;]", value)
 
 
-class MyEncoder(JSONEncoder):
-    def default(self, o):
-        return o.__dict__
+DATA = {
+    "documents_without_keywords": [],
+    "keywords_distribution": {},
+    "analyzed_documents_count": 0,
+}
 
 
-def analysis(folders):
-    documents_without_keywords = []
-    keywords_data = {}
-    count = 0
-    for folder in folders:
-        paths = glob.glob(f"{folder}/*.metadata.json")
-        print(f"{folder}, {len(paths)} paths")
-        for path in paths:
-            count += 1
-            with open(path) as fd:
-                metadata = json.load(fd)
-                document_keywords = [
-                    keyword.strip() for keyword in split(metadata.get("Keywords", ""))
-                ]
-                document_keywords = [
-                    keyword.lower() for keyword in document_keywords if keyword
-                ]
-                if not document_keywords:
-                    documents_without_keywords.append(path)
-                for keyword in document_keywords:
-                    kd = keywords_data.get(keyword, Keyword(keyword))
-                    kd.count += 1
-                    kd.add_related(document_keywords)
-                    keywords_data[keyword] = kd
+def process_single_file(path):
+    try:
+        metadata = read_object(path)
+    except:
+        return
 
-    data = {}
-    data["documents_without_keywords"] = documents_without_keywords
-    data["keywords_distribution"] = keywords_data
-    data["analyzed_documents_count"] = count
-    return data
+    document_keywords = [
+        keyword.strip()
+        for keyword in split(metadata.get("metadata", {}).get("Keywords", ""))
+    ]
+    document_keywords = [keyword.lower() for keyword in document_keywords if keyword]
+    if not document_keywords:
+        DATA["documents_without_keywords"].append(path)
+    keywords_data = DATA["keywords_distribution"]
+    for keyword in document_keywords:
+        kd = keywords_data.get(keyword, Keyword(keyword))
+        kd.count += 1
+        kd.add_related(document_keywords)
+        keywords_data[keyword] = kd
+    DATA["keywords_distribution"] = keywords_data
+    DATA["analyzed_documents_count"] += 1
 
 
 analysis_path = "keywords_distribution.json"
 
 try:
-    with open(analysis_path) as fd:
-        data = json.load(fd)
+    data = read_object(analysis_path)
 except:
     folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
-    data = analysis(folders)
-    with open(analysis_path, "w") as fd:
-        json.dump(data, fd, cls=MyEncoder)
+    FolderProcessor(folders, "*.metadata.json", process_single_file).process_folders()
+    write_object(DATA, analysis_path, cls=MyEncoder)
     print("please execute this script once again")
     sys.exit(0)
 
@@ -95,3 +85,4 @@ keywords_count()
 print(
     f"word cloud built upon {data['analyzed_documents_count'] - len(data['documents_without_keywords'])} documents"
 )
+print(f"{len(data['keywords_distribution'].keys())} keywords")
