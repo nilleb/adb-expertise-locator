@@ -1,0 +1,922 @@
+INFO:root:data/input/reports/42513-014-rrp-en.pdf.metadata.json yielded 6 authors
+(2277/2600) processing data/input/reports/45203-006-rrp.pdf.metadata.json
+INFO:root:data/input/reports/45203-006-rrp.pdf.metadata.json -> Team leader  H. Zhang, Finance Specialist (Energy), SARD 
+INFO:root:data/input/reports/45203-006-rrp.pdf.metadata.json yielded 8 authors
+(2278/2600) processing data/input/reports/42151-013-mcs.pdf.metadata.json
+INFO:root:data/input/reports/42151-013-mcs.pdf.metadata.json -> Team leader  C. Kim, Lead Finance Specialist, SARD 
+INFO:root:data/input/reports/42151-013-mcs.pdf.metadata.json yielded 3 authors
+(2279/2600) processing data/input/reports/rrp-r22797.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r22797.pdf.metadata.json yielded 0 authors
+(2280/2600) processing data/input/reports/rrp-r17098.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r17098.pdf.metadata.json yielded 0 authors
+(2281/2600) processing data/input/reports/rrp-ind-31324.pdf.metadata.json
+INFO:root:data/input/reports/rrp-ind-31324.pdf.metadata.json -> This report was prepared by a team consisting of B.M. Karunaratne (Team Leader), Dewi 
+INFO:root:data/input/reports/rrp-ind-31324.pdf.metadata.json yielded 2 authors
+(2282/2600) processing data/input/reports/rrp-mon-35377.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-mon-35377.pdf.metadata.json yielded 0 authors
+(2283/2600) processing data/input/reports/52074-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52074-001-rrp-en.pdf.metadata.json -> Team leader  Matthew Hodge, Senior Country Specialist, PARD 
+INFO:root:data/input/reports/52074-001-rrp-en.pdf.metadata.json yielded 2 authors
+(2284/2600) processing data/input/reports/54171-004-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/54171-004-rrp-en.pdf.metadata.json -> Team leaders  Sakiko Tanaka, Principal Social Sector Specialist, SEHS, SERD  
+INFO:root:data/input/reports/54171-004-rrp-en.pdf.metadata.json yielded 4 authors
+(2285/2600) processing data/input/reports/41385-013-lao-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41385-013-lao-rrp.pdf.metadata.json -> Team leader  E. Baardsen, Principal Infrastructure Specialist, SERD 
+INFO:root:data/input/reports/41385-013-lao-rrp.pdf.metadata.json yielded 13 authors
+(2286/2600) processing data/input/reports/49028-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/49028-002-rrp-en.pdf.metadata.json -> Team leaders  W. Walker, Principal Social Development Specialist, EARD 
+INFO:root:data/input/reports/49028-002-rrp-en.pdf.metadata.json yielded 9 authors
+(2287/2600) processing data/input/reports/53115-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53115-001-rrp-en.pdf.metadata.json -> Team leader  Juliette Leusink, Investment Specialist, PSOD 
+INFO:root:data/input/reports/53115-001-rrp-en.pdf.metadata.json yielded 1 authors
+(2288/2600) processing data/input/reports/rrp-r10096.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r10096.pdf.metadata.json yielded 0 authors
+(2289/2600) processing data/input/reports/42091-afg-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42091-afg-rrp.pdf.metadata.json -> Team leader  T. Panella, Senior Water Resources Management Specialist, CWRD 
+INFO:root:data/input/reports/42091-afg-rrp.pdf.metadata.json yielded 6 authors
+(2290/2600) processing data/input/reports/43072-013-kir-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43072-013-kir-rrp.pdf.metadata.json -> Team leader  A. Woodruff, Infrastructure Economist, PARD 
+INFO:root:data/input/reports/43072-013-kir-rrp.pdf.metadata.json yielded 8 authors
+(2291/2600) processing data/input/reports/36155-pak-rrp.pdf.metadata.json
+INFO:root:data/input/reports/36155-pak-rrp.pdf.metadata.json -> Team leaders  J. Conrad, Senior Financial Economist, CWRD  
+INFO:root:data/input/reports/36155-pak-rrp.pdf.metadata.json yielded 3 authors
+(2292/2600) processing data/input/reports/50347-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50347-002-rrp-en.pdf.metadata.json -> Team leader  Ramola Naik Singru, Senior Urban Development Specialist, CWRD 
+WARNING:root:data/input/reports/50347-002-rrp-en.pdf.metadata.json yielded 0 authors
+(2293/2600) processing data/input/reports/43332-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43332-prc-rrp.pdf.metadata.json -> Team leader  M. Parkash, Principal Transport Specialist, EARD 
+INFO:root:data/input/reports/43332-prc-rrp.pdf.metadata.json yielded 5 authors
+(2294/2600) processing data/input/reports/49450-004-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/49450-004-rrp-en.pdf.metadata.json -> Team leader  A. Maxwell, Principal Energy Specialist, PARD 
+INFO:root:data/input/reports/49450-004-rrp-en.pdf.metadata.json yielded 9 authors
+(2295/2600) processing data/input/reports/51056-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51056-001-rrp-en.pdf.metadata.json -> Team leader  B. Huang, Senior Investment Specialist, PSOD 
+INFO:root:data/input/reports/51056-001-rrp-en.pdf.metadata.json yielded 6 authors
+(2296/2600) processing data/input/reports/38662-01-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/38662-01-prc-rrp.pdf.metadata.json -> Team leader  A. Siddiq, Principal Natural Resources Economist, EARD 
+INFO:root:data/input/reports/38662-01-prc-rrp.pdf.metadata.json yielded 6 authors
+(2297/2600) processing data/input/reports/49026-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/49026-002-rrp-en.pdf.metadata.json -> Team leaders  Huong Thi Lan Khuc, Project Officer (Agriculture and Natural 
+INFO:root:data/input/reports/49026-002-rrp-en.pdf.metadata.json yielded 13 authors
+(2298/2600) processing data/input/reports/40573-pak-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40573-pak-rrp.pdf.metadata.json -> Team leader  M. Westfall, Director, Social Sectors Division, CWRD 
+INFO:root:data/input/reports/40573-pak-rrp.pdf.metadata.json yielded 3 authors
+(2299/2600) processing data/input/reports/rrp-r65-78.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r65-78.pdf.metadata.json yielded 0 authors
+(2300/2600) processing data/input/reports/rrp-r02696.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r02696.pdf.metadata.json yielded 0 authors
+(2301/2600) processing data/input/reports/rrp-pak-34331.pdf.metadata.json
+INFO:root:data/input/reports/rrp-pak-34331.pdf.metadata.json -> This report was prepared by a team consisting of A. Tayyab (team leader), G. Curtis, S. Parvez, 
+INFO:root:data/input/reports/rrp-pak-34331.pdf.metadata.json yielded 8 authors
+(2302/2600) processing data/input/reports/48137-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/48137-001-rrp.pdf.metadata.json -> Team leader  H. Kimura, Principal Investment Specialist, PSOD 
+INFO:root:data/input/reports/48137-001-rrp.pdf.metadata.json yielded 8 authors
+(2303/2600) processing data/input/reports/53202-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53202-001-rrp-en.pdf.metadata.json -> Team leader  Susan Olsen, Senior Investment Specialist, PSOD 
+INFO:root:data/input/reports/53202-001-rrp-en.pdf.metadata.json yielded 3 authors
+(2304/2600) processing data/input/reports/43197-013-png-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43197-013-png-rrp.pdf.metadata.json -> Team leader  A. Maxwell, Senior Energy Specialist, PARD 
+INFO:root:data/input/reports/43197-013-png-rrp.pdf.metadata.json yielded 5 authors
+(2305/2600) processing data/input/reports/42936-01-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42936-01-prc-rrp.pdf.metadata.json -> Team leader  S. Pu, Investment Specialist, PSOD 
+INFO:root:data/input/reports/42936-01-prc-rrp.pdf.metadata.json yielded 7 authors
+(2306/2600) processing data/input/reports/rrp-31296.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-31296.pdf.metadata.json yielded 0 authors
+(2307/2600) processing data/input/reports/49222-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/49222-001-rrp.pdf.metadata.json -> Team leader  X. Pu, Principal Investment Specialist, PSOD 
+INFO:root:data/input/reports/49222-001-rrp.pdf.metadata.json yielded 6 authors
+(2308/2600) processing data/input/reports/rrp-prc-34476.pdf.metadata.json
+INFO:root:data/input/reports/rrp-prc-34476.pdf.metadata.json -> This report was prepared by a team consisting of P. Abeygunawardena (team leader), X. 
+INFO:root:data/input/reports/rrp-prc-34476.pdf.metadata.json yielded 7 authors
+(2309/2600) processing data/input/reports/rrp-lao-33359.pdf.metadata.json
+INFO:root:data/input/reports/rrp-lao-33359.pdf.metadata.json -> This report was prepared by a team consisting of: Eric Manes (Team Leader), 
+WARNING:root:data/input/reports/rrp-lao-33359.pdf.metadata.json yielded 0 authors
+(2310/2600) processing data/input/reports/48401-007-rrp.pdf.metadata.json
+INFO:root:data/input/reports/48401-007-rrp.pdf.metadata.json -> Team leader  S. Lim, Transport Specialist, CWRD 
+INFO:root:data/input/reports/48401-007-rrp.pdf.metadata.json yielded 8 authors
+(2311/2600) processing data/input/reports/rrp-r229-93.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r229-93.pdf.metadata.json yielded 0 authors
+(2312/2600) processing data/input/reports/49083-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/49083-001-rrp.pdf.metadata.json -> Team leader  L. Schou-Zibell, Principal Economist, CWRD 
+INFO:root:data/input/reports/49083-001-rrp.pdf.metadata.json yielded 12 authors
+(2313/2600) processing data/input/reports/39221-bhu-rrp.pdf.metadata.json
+INFO:root:data/input/reports/39221-bhu-rrp.pdf.metadata.json -> Team leader  C. Hu, Economist (Financial Sector), SARD 
+INFO:root:data/input/reports/39221-bhu-rrp.pdf.metadata.json yielded 1 authors
+(2314/2600) processing data/input/reports/42414-01-geo-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42414-01-geo-rrp.pdf.metadata.json -> Team leader  A. Dauphin, Urban Development Specialist (Transport), CWRD 
+INFO:root:data/input/reports/42414-01-geo-rrp.pdf.metadata.json yielded 10 authors
+(2315/2600) processing data/input/reports/41666-pak-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/41666-pak-rrp.pdf.metadata.json yielded 0 authors
+(2316/2600) processing data/input/reports/rrp-r14695.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r14695.pdf.metadata.json yielded 0 authors
+(2317/2600) processing data/input/reports/47924-014-rrp.pdf.metadata.json
+INFO:root:data/input/reports/47924-014-rrp.pdf.metadata.json -> Team leader  A. Patil, Senior Investment Specialist, PSOD 
+INFO:root:data/input/reports/47924-014-rrp.pdf.metadata.json yielded 7 authors
+(2318/2600) processing data/input/reports/ind-50238-001-rrp-ld-01.pdf.metadata.json
+WARNING:root:data/input/reports/ind-50238-001-rrp-ld-01.pdf.metadata.json yielded 0 authors
+(2319/2600) processing data/input/reports/rrp-r15497.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r15497.pdf.metadata.json yielded 0 authors
+(2320/2600) processing data/input/reports/38594-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/38594-prc-rrp.pdf.metadata.json -> Team leader  Q. Zhang, Senior Water Resources Engineer, EARD 
+INFO:root:data/input/reports/38594-prc-rrp.pdf.metadata.json yielded 7 authors
+(2321/2600) processing data/input/reports/45206-001-nep-rrp.pdf.metadata.json
+INFO:root:data/input/reports/45206-001-nep-rrp.pdf.metadata.json -> Team leader  J. Zhang, Principal Natural Resources and Agriculture Specialist, Regional 
+INFO:root:data/input/reports/45206-001-nep-rrp.pdf.metadata.json yielded 3 authors
+(2322/2600) processing data/input/reports/rrp-r11996.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r11996.pdf.metadata.json yielded 0 authors
+(2323/2600) processing data/input/reports/40909-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40909-prc-rrp.pdf.metadata.json -> Team leader  W. Willms, Principal Structured Finance Specialist, PSOD 
+INFO:root:data/input/reports/40909-prc-rrp.pdf.metadata.json yielded 3 authors
+(2324/2600) processing data/input/reports/41243-024-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/41243-024-rrp-en.pdf.metadata.json -> Team leader  Altantuya Jigjidsuren, Senior Social Sector Officer, EARD 
+INFO:root:data/input/reports/41243-024-rrp-en.pdf.metadata.json yielded 6 authors
+(2325/2600) processing data/input/reports/34327-pak-rrp.pdf.metadata.json
+INFO:root:data/input/reports/34327-pak-rrp.pdf.metadata.json -> This report was prepared by a team consisting of R. Hartel (team leader), M. Endelman, M. 
+INFO:root:data/input/reports/34327-pak-rrp.pdf.metadata.json yielded 9 authors
+(2326/2600) processing data/input/reports/52181-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52181-001-rrp-en.pdf.metadata.json -> Team leader  Chaorin Shim, Transport Specialist, SETC, SERD 
+INFO:root:data/input/reports/52181-001-rrp-en.pdf.metadata.json yielded 2 authors
+(2327/2600) processing data/input/reports/52200-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52200-001-rrp-en.pdf.metadata.json -> Team leader  Won Myong Hong, Investment Specialist, PSOD 
+INFO:root:data/input/reports/52200-001-rrp-en.pdf.metadata.json yielded 7 authors
+(2328/2600) processing data/input/reports/rrp-35139-ino.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-35139-ino.pdf.metadata.json yielded 0 authors
+(2329/2600) processing data/input/reports/43150-02-taj-rrp-ru.pdf.metadata.json
+WARNING:root:data/input/reports/43150-02-taj-rrp-ru.pdf.metadata.json yielded 0 authors
+(2330/2600) processing data/input/reports/42439-013-pal-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42439-013-pal-rrp.pdf.metadata.json -> Team leader  S. Blaik, Senior Urban Development Specialist, PARD 
+INFO:root:data/input/reports/42439-013-pal-rrp.pdf.metadata.json yielded 5 authors
+(2331/2600) processing data/input/reports/46293-003-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46293-003-rrp.pdf.metadata.json -> Team leader  S. Schipani, Social Sector Specialist, SERD 
+INFO:root:data/input/reports/46293-003-rrp.pdf.metadata.json yielded 10 authors
+(2332/2600) processing data/input/reports/52298-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52298-001-rrp-en.pdf.metadata.json -> Team leader  Kirsty Rowan Marcus, Transport Specialist, SARD 
+INFO:root:data/input/reports/52298-001-rrp-en.pdf.metadata.json yielded 6 authors
+(2333/2600) processing data/input/reports/51052-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51052-002-rrp-en.pdf.metadata.json -> Team leader  Ko Sakamoto, Senior Transport Specialist, CWRD 
+INFO:root:data/input/reports/51052-002-rrp-en.pdf.metadata.json yielded 5 authors
+(2334/2600) processing data/input/reports/49043-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/49043-001-rrp.pdf.metadata.json -> Team leader  P. Tharakan, Senior Climate Change Specialist, SERD 
+INFO:root:data/input/reports/49043-001-rrp.pdf.metadata.json yielded 9 authors
+(2335/2600) processing data/input/reports/38392-02-vie-rrp.pdf.metadata.json
+INFO:root:data/input/reports/38392-02-vie-rrp.pdf.metadata.json -> Team leader  K. Lao-Araya, Finance, Governance and Trade Specialist, SERD 
+INFO:root:data/input/reports/38392-02-vie-rrp.pdf.metadata.json yielded 3 authors
+(2336/2600) processing data/input/reports/rrp-sri-33249.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-sri-33249.pdf.metadata.json yielded 0 authors
+(2337/2600) processing data/input/reports/rrp-33165.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-33165.pdf.metadata.json yielded 0 authors
+(2338/2600) processing data/input/reports/40049-uzb-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40049-uzb-rrp.pdf.metadata.json -> Team leaders  W. Kubitzki, Project Implementation Specialist (Social Sector), 
+INFO:root:data/input/reports/40049-uzb-rrp.pdf.metadata.json yielded 1 authors
+(2339/2600) processing data/input/reports/46535-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46535-001-rrp.pdf.metadata.json -> Team leader  A. Mukhamedyarova, Financial Sector Specialist, CWRD 
+INFO:root:data/input/reports/46535-001-rrp.pdf.metadata.json yielded 8 authors
+(2340/2600) processing data/input/reports/42080-01-vie-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42080-01-vie-rrp.pdf.metadata.json -> Team leader  D. Ellingson, Senior Natural Resources Management Specialist, 
+INFO:root:data/input/reports/42080-01-vie-rrp.pdf.metadata.json yielded 2 authors
+(2341/2600) processing data/input/reports/37266-nep-rrp.pdf.metadata.json
+INFO:root:data/input/reports/37266-nep-rrp.pdf.metadata.json -> Team leader  N. Zhang, Portfolio Management Specialist, SARD 
+INFO:root:data/input/reports/37266-nep-rrp.pdf.metadata.json yielded 4 authors
+(2342/2600) processing data/input/reports/41380-phi-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41380-phi-rrp.pdf.metadata.json -> Team leader  J. Balbosa, Economist (Fiscal Management), SERD 
+INFO:root:data/input/reports/41380-phi-rrp.pdf.metadata.json yielded 6 authors
+(2343/2600) processing data/input/reports/35297-lao-rrp.pdf.metadata.json
+INFO:root:data/input/reports/35297-lao-rrp.pdf.metadata.json -> Team leader       M. Mitra, Senior Social Development Specialist, SERD 
+INFO:root:data/input/reports/35297-lao-rrp.pdf.metadata.json yielded 3 authors
+(2344/2600) processing data/input/reports/40272-ino-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40272-ino-rrp.pdf.metadata.json -> Team leader  P. Rajapakse, Principal Country Specialist, IRM, SERD 
+INFO:root:data/input/reports/40272-ino-rrp.pdf.metadata.json yielded 4 authors
+(2345/2600) processing data/input/reports/45918-01-reg-rrp.pdf.metadata.json
+INFO:root:data/input/reports/45918-01-reg-rrp.pdf.metadata.json -> Team leader  D. da Silva, Investment Specialist, PSOD 
+INFO:root:data/input/reports/45918-01-reg-rrp.pdf.metadata.json yielded 8 authors
+(2346/2600) processing data/input/reports/41912-kaz-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41912-kaz-rrp.pdf.metadata.json -> Team leader  W. Willms, Director, PSOD 
+INFO:root:data/input/reports/41912-kaz-rrp.pdf.metadata.json yielded 2 authors
+(2347/2600) processing data/input/reports/35174-082-nep-rrp.pdf.metadata.json
+INFO:root:data/input/reports/35174-082-nep-rrp.pdf.metadata.json -> Team leader  K. Chowdhury, Senior Social Sector Specialist, SARD 
+INFO:root:data/input/reports/35174-082-nep-rrp.pdf.metadata.json yielded 8 authors
+(2348/2600) processing data/input/reports/49273-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/49273-001-rrp.pdf.metadata.json -> Team leader  D. Lambert, Senior Finance Specialist, SARD 
+INFO:root:data/input/reports/49273-001-rrp.pdf.metadata.json yielded 8 authors
+(2349/2600) processing data/input/reports/rrp-ind-34420.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-ind-34420.pdf.metadata.json yielded 0 authors
+(2350/2600) processing data/input/reports/50296-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50296-002-rrp-en.pdf.metadata.json -> Team leader  Shanti Jagannathan, Senior Education Specialist, SARD 
+INFO:root:data/input/reports/50296-002-rrp-en.pdf.metadata.json yielded 7 authors
+(2351/2600) processing data/input/reports/44908-015-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/44908-015-rrp-en.pdf.metadata.json -> Team leader  Samarendra Singh, Senior Investment Specialist, PSOD 
+INFO:root:data/input/reports/44908-015-rrp-en.pdf.metadata.json yielded 7 authors
+(2352/2600) processing data/input/reports/48281-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/48281-001-rrp.pdf.metadata.json -> Team leader  H. Kimura, Principal Investment Specialist, PSOD 
+INFO:root:data/input/reports/48281-001-rrp.pdf.metadata.json yielded 9 authors
+(2353/2600) processing data/input/reports/35174-nep-rrp.pdf.metadata.json
+INFO:root:data/input/reports/35174-nep-rrp.pdf.metadata.json -> Team leader  A. Inagaki, Senior Education Specialist, SARD 
+INFO:root:data/input/reports/35174-nep-rrp.pdf.metadata.json yielded 2 authors
+(2354/2600) processing data/input/reports/40347-vie-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40347-vie-rrp.pdf.metadata.json -> Team leader  E. K. Izawa, Senior Education Specialist, SERD 
+INFO:root:data/input/reports/40347-vie-rrp.pdf.metadata.json yielded 4 authors
+(2355/2600) processing data/input/reports/55016-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/55016-001-rrp-en.pdf.metadata.json -> Team leaders  Ashish Narain, Principal Economist, PASP, PARD 
+WARNING:root:data/input/reports/55016-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2356/2600) processing data/input/reports/29259-vie-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/29259-vie-rrp.pdf.metadata.json yielded 0 authors
+(2357/2600) processing data/input/reports/52224-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52224-001-rrp-en.pdf.metadata.json -> Team leader  Wolfgang Pocheim, Investment Specialist, PSOD 
+INFO:root:data/input/reports/52224-001-rrp-en.pdf.metadata.json yielded 2 authors
+(2358/2600) processing data/input/reports/48098-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/48098-002-rrp-en.pdf.metadata.json -> Team leader  Yaozhou Zhou, Principal Water Resources Specialist, CWRD 
+INFO:root:data/input/reports/48098-002-rrp-en.pdf.metadata.json yielded 13 authors
+(2359/2600) processing data/input/reports/43452-023-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43452-023-rrp.pdf.metadata.json -> Team leader  W. Y. Lee, Energy Specialist, PARD 
+INFO:root:data/input/reports/43452-023-rrp.pdf.metadata.json yielded 5 authors
+(2360/2600) processing data/input/reports/41682-039-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/41682-039-rrp-en.pdf.metadata.json -> Team leader  K. Leung, Senior Finance Specialist, SERD 
+INFO:root:data/input/reports/41682-039-rrp-en.pdf.metadata.json yielded 12 authors
+(2361/2600) processing data/input/reports/rrp-r6097c1.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r6097c1.pdf.metadata.json yielded 0 authors
+(2362/2600) processing data/input/reports/rrp-ban-35466.pdf.metadata.json
+INFO:root:data/input/reports/rrp-ban-35466.pdf.metadata.json -> This report was prepared by a team consisting of M. Elerud, Energy Specialist and
+INFO:root:data/input/reports/rrp-ban-35466.pdf.metadata.json yielded 5 authors
+(2363/2600) processing data/input/reports/54177-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/54177-001-rrp-en.pdf.metadata.json -> Team leaders  Duong T. Nguyen, Financial Sector Economist, SEPF, SERD 
+INFO:root:data/input/reports/54177-001-rrp-en.pdf.metadata.json yielded 2 authors
+(2364/2600) processing data/input/reports/53345-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53345-001-rrp-en.pdf.metadata.json -> Team leader  Anqian Huang, Senior Financial Sector Specialist, EAPF, EARD 
+INFO:root:data/input/reports/53345-001-rrp-en.pdf.metadata.json yielded 5 authors
+(2365/2600) processing data/input/reports/51189-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51189-001-rrp-en.pdf.metadata.json -> Team leader  Mingyuan Fan, Senior Water Resources Specialist, EARD 
+INFO:root:data/input/reports/51189-001-rrp-en.pdf.metadata.json yielded 2 authors
+(2366/2600) processing data/input/reports/53052-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53052-001-rrp-en.pdf.metadata.json -> Team leaders  Au Shion Yee, Senior Water Resources Specialist, EAER, EARD 
+WARNING:root:data/input/reports/53052-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2367/2600) processing data/input/reports/40648-01-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40648-01-ind-rrp.pdf.metadata.json -> Team leaders  A. Kaneko, Senior Urban Development Specialist, SARD  
+INFO:root:data/input/reports/40648-01-ind-rrp.pdf.metadata.json yielded 7 authors
+(2368/2600) processing data/input/reports/43316-012-lao-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43316-012-lao-rrp.pdf.metadata.json -> Team leader  A. Jain, Senior Social Sector Specialist, SERD 
+INFO:root:data/input/reports/43316-012-lao-rrp.pdf.metadata.json yielded 10 authors
+(2369/2600) processing data/input/reports/53045-003-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53045-003-rrp-en.pdf.metadata.json -> Team leader  Juan Gonzalez, Transport Specialist, PATC, PARD 
+WARNING:root:data/input/reports/53045-003-rrp-en.pdf.metadata.json yielded 0 authors
+(2370/2600) processing data/input/reports/24385-ino-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/24385-ino-rrp.pdf.metadata.json yielded 0 authors
+(2371/2600) processing data/input/reports/48096-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/48096-002-rrp-en.pdf.metadata.json -> Team leader  Hans Woldring, Principal Natural Resources and Agriculture Specialist, 
+WARNING:root:data/input/reports/48096-002-rrp-en.pdf.metadata.json yielded 0 authors
+(2372/2600) processing data/input/reports/19186-mal-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/19186-mal-rrp.pdf.metadata.json yielded 0 authors
+(2373/2600) processing data/input/reports/54179-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/54179-001-rrp-en.pdf.metadata.json -> Team leader  Shiu R. Singh, Financial Sector Specialist, PLCO, PARD 
+INFO:root:data/input/reports/54179-001-rrp-en.pdf.metadata.json yielded 13 authors
+(2374/2600) processing data/input/reports/51370-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51370-001-rrp-en.pdf.metadata.json -> Team leader  Juhyun Jeong, Investment Specialist, PSOD 
+WARNING:root:data/input/reports/51370-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2375/2600) processing data/input/reports/43319-033-cam-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43319-033-cam-rrp.pdf.metadata.json -> Team leader  F. Steinberg, Senior Urban Development Specialist, SERD 
+INFO:root:data/input/reports/43319-033-cam-rrp.pdf.metadata.json yielded 6 authors
+(2376/2600) processing data/input/reports/54001-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/54001-001-rrp-en.pdf.metadata.json -> Team leaders  Navendu Karan, Senior Public Management Economist, SAPF, SARD 
+WARNING:root:data/input/reports/54001-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2377/2600) processing data/input/reports/34135-mon-rrp.pdf.metadata.json
+INFO:root:data/input/reports/34135-mon-rrp.pdf.metadata.json -> Team leader  S. Shrestha, Economist, ECRD 
+INFO:root:data/input/reports/34135-mon-rrp.pdf.metadata.json yielded 1 authors
+(2378/2600) processing data/input/reports/rrp-r17198.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r17198.pdf.metadata.json yielded 0 authors
+(2379/2600) processing data/input/reports/rrp-r23495.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r23495.pdf.metadata.json yielded 0 authors
+(2380/2600) processing data/input/reports/39924-reg-rrp.pdf.metadata.json
+INFO:root:data/input/reports/39924-reg-rrp.pdf.metadata.json -> Team leader    V. John, Principal Structured Finance Specialist, PSOD   
+WARNING:root:data/input/reports/39924-reg-rrp.pdf.metadata.json yielded 0 authors
+(2381/2600) processing data/input/reports/rrp-r10692.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r10692.pdf.metadata.json yielded 0 authors
+(2382/2600) processing data/input/reports/rrp-11796.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-11796.pdf.metadata.json yielded 0 authors
+(2383/2600) processing data/input/reports/47048-002-rrp.pdf.metadata.json
+INFO:root:data/input/reports/47048-002-rrp.pdf.metadata.json -> Team leader  F. Yu, Senior Economist, EARD 
+INFO:root:data/input/reports/47048-002-rrp.pdf.metadata.json yielded 8 authors
+(2384/2600) processing data/input/reports/52045-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52045-001-rrp-en.pdf.metadata.json -> Team leader  Jung Ho Kim, Senior Urban Development Specialist, CWUW, CWRD 
+WARNING:root:data/input/reports/52045-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2385/2600) processing data/input/reports/46462-003-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/46462-003-rrp-en.pdf.metadata.json -> Team leaders  S. Lee, Principal Social Sector Specialist, SARD 
+INFO:root:data/input/reports/46462-003-rrp-en.pdf.metadata.json yielded 14 authors
+(2386/2600) processing data/input/reports/40914-cam-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40914-cam-rrp.pdf.metadata.json -> Team leader    T. Norton de Matos, Senior Structured Finance Specialist, PSOD 
+INFO:root:data/input/reports/40914-cam-rrp.pdf.metadata.json yielded 2 authors
+(2387/2600) processing data/input/reports/rrp-32431.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-32431.pdf.metadata.json yielded 0 authors
+(2388/2600) processing data/input/reports/36505-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/36505-prc-rrp.pdf.metadata.json -> Team leader  Lyaziza Sabyrova, Senior Country Economist, Central and West Asia 
+INFO:root:data/input/reports/36505-prc-rrp.pdf.metadata.json yielded 8 authors
+(2389/2600) processing data/input/reports/44934-017-tar-en.pdf.metadata.json
+INFO:root:data/input/reports/44934-017-tar-en.pdf.metadata.json -> Team leader  Sabine Spohn, Senior Investment Specialist, PSOD 
+WARNING:root:data/input/reports/44934-017-tar-en.pdf.metadata.json yielded 0 authors
+(2390/2600) processing data/input/reports/48458-003-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/48458-003-rrp-en.pdf.metadata.json -> Team leaders  Cristina Lozano, Senior Trade Specialist, SERD 
+INFO:root:data/input/reports/48458-003-rrp-en.pdf.metadata.json yielded 3 authors
+(2391/2600) processing data/input/reports/40538-01-phi-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40538-01-phi-rrp.pdf.metadata.json -> Team leader  K. Bird, Economist, SERD 
+INFO:root:data/input/reports/40538-01-phi-rrp.pdf.metadata.json yielded 3 authors
+(2392/2600) processing data/input/reports/38421-cam-rrp.pdf.metadata.json
+INFO:root:data/input/reports/38421-cam-rrp.pdf.metadata.json -> Team leader  K. Bird, Senior Economist, SERD 
+INFO:root:data/input/reports/38421-cam-rrp.pdf.metadata.json yielded 2 authors
+(2393/2600) processing data/input/reports/42533-afg-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42533-afg-rrp.pdf.metadata.json -> Team leader  B. Bathula, Transport Specialist, CWRD 
+INFO:root:data/input/reports/42533-afg-rrp.pdf.metadata.json yielded 9 authors
+(2394/2600) processing data/input/reports/50292-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50292-001-rrp-en.pdf.metadata.json -> Team leader  Pamela Bracey, Principal Investment Specialist, PSOD 
+INFO:root:data/input/reports/50292-001-rrp-en.pdf.metadata.json yielded 5 authors
+(2395/2600) processing data/input/reports/45916-01-ban-rrp.pdf.metadata.json
+INFO:root:data/input/reports/45916-01-ban-rrp.pdf.metadata.json -> Team leader  M. Lemoine, Investment Specialist, PSOD 
+INFO:root:data/input/reports/45916-01-ban-rrp.pdf.metadata.json yielded 5 authors
+(2396/2600) processing data/input/reports/48274-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/48274-002-rrp-en.pdf.metadata.json -> Team leader  Y. Zhou, Principal Water Resources Specialist, Central and West 
+INFO:root:data/input/reports/48274-002-rrp-en.pdf.metadata.json yielded 11 authors
+(2397/2600) processing data/input/reports/rrp-r11288.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r11288.pdf.metadata.json yielded 0 authors
+(2398/2600) processing data/input/reports/51072-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51072-001-rrp-en.pdf.metadata.json -> Team leader  Y. Teo, Investment Specialist, PSOD 
+INFO:root:data/input/reports/51072-001-rrp-en.pdf.metadata.json yielded 7 authors
+(2399/2600) processing data/input/reports/20271-lao-rrp.pdf.metadata.json
+INFO:root:data/input/reports/20271-lao-rrp.pdf.metadata.json -> This report was prepared by a team consisting of P. Vallely, team leader; P. Broch; C. Litwin,
+INFO:root:data/input/reports/20271-lao-rrp.pdf.metadata.json yielded 6 authors
+(2400/2600) processing data/input/reports/41340-015-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41340-015-rrp.pdf.metadata.json -> Team leader  K. Mitsuhashi, Senior Energy Specialist, CWRD 
+INFO:root:data/input/reports/41340-015-rrp.pdf.metadata.json yielded 12 authors
+(2401/2600) processing data/input/reports/53228-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53228-001-rrp-en.pdf.metadata.json -> Team leader  David Barton, Senior Investment Specialist, PSIS, PSODa 
+INFO:root:data/input/reports/53228-001-rrp-en.pdf.metadata.json yielded 1 authors
+(2402/2600) processing data/input/reports/rrp-prc-37487.pdf.metadata.json
+INFO:root:data/input/reports/rrp-prc-37487.pdf.metadata.json -> This report was prepared by a team consisting of M. Parkash (team leader), M. Ojiro,  
+INFO:root:data/input/reports/rrp-prc-37487.pdf.metadata.json yielded 10 authors
+(2403/2600) processing data/input/reports/48307-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/48307-001-rrp.pdf.metadata.json -> Team leader  M. Hashimi, Investment Specialist, PSOD 
+INFO:root:data/input/reports/48307-001-rrp.pdf.metadata.json yielded 11 authors
+(2404/2600) processing data/input/reports/32507-ino-rrp.pdf.metadata.json
+INFO:root:data/input/reports/32507-ino-rrp.pdf.metadata.json -> Team leader  V.V. Subramanian, Senior Financial Sector Specialist (Capital Markets), SERD 
+INFO:root:data/input/reports/32507-ino-rrp.pdf.metadata.json yielded 3 authors
+(2405/2600) processing data/input/reports/55175-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/55175-001-rrp-en.pdf.metadata.json -> Team leader  Daniel Hersson, Senior Investment Specialist, Office of the Director 
+WARNING:root:data/input/reports/55175-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2406/2600) processing data/input/reports/52049-003-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52049-003-rrp-en.pdf.metadata.json -> Team leaders  Hiranya Mukhopadhyay, Principal Public Management Specialist, CWPF, 
+WARNING:root:data/input/reports/52049-003-rrp-en.pdf.metadata.json yielded 0 authors
+(2407/2600) processing data/input/reports/42399-024-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42399-024-rrp.pdf.metadata.json -> Team leader  Z. Wu, Transport Specialist, CWRD 
+INFO:root:data/input/reports/42399-024-rrp.pdf.metadata.json yielded 5 authors
+(2408/2600) processing data/input/reports/40005-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40005-ind-rrp.pdf.metadata.json -> Team leader  H. Iwasaki, Principal Transport Specialist, SARD 
+INFO:root:data/input/reports/40005-ind-rrp.pdf.metadata.json yielded 3 authors
+(2409/2600) processing data/input/reports/42184-02-mon-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42184-02-mon-rrp.pdf.metadata.json -> Team leader  S. Rosenthal, Senior Portfolio Management Specialist, EARD  
+INFO:root:data/input/reports/42184-02-mon-rrp.pdf.metadata.json yielded 2 authors
+(2410/2600) processing data/input/reports/rrp-r28196.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r28196.pdf.metadata.json yielded 0 authors
+(2411/2600) processing data/input/reports/45169-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/45169-001-rrp.pdf.metadata.json -> Team leader  S. Lim, Transport Specialist, CWRD 
+INFO:root:data/input/reports/45169-001-rrp.pdf.metadata.json yielded 13 authors
+(2412/2600) processing data/input/reports/40932-reg-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40932-reg-rrp.pdf.metadata.json -> Team leader  H. Ahmed, Senior Investment Specialist, PSOD 
+INFO:root:data/input/reports/40932-reg-rrp.pdf.metadata.json yielded 1 authors
+(2413/2600) processing data/input/reports/52187-002-52187-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52187-002-52187-001-rrp-en.pdf.metadata.json -> Team leader  Rainer Hartel, Lead Investment Specialist, PSOD 
+INFO:root:data/input/reports/52187-002-52187-001-rrp-en.pdf.metadata.json yielded 11 authors
+(2414/2600) processing data/input/reports/39399-034-rrp.pdf.metadata.json
+INFO:root:data/input/reports/39399-034-rrp.pdf.metadata.json -> Team leader  G. Gewali, Senior Project Officer, NRM, SARD 
+INFO:root:data/input/reports/39399-034-rrp.pdf.metadata.json yielded 6 authors
+(2415/2600) processing data/input/reports/rrp-r32302.pdf.metadata.json
+INFO:root:data/input/reports/rrp-r32302.pdf.metadata.json -> This report was prepared by a team consisting of W. McCarten (Co-Team Leader), A. 
+INFO:root:data/input/reports/rrp-r32302.pdf.metadata.json yielded 5 authors
+(2416/2600) processing data/input/reports/47335-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/47335-001-rrp.pdf.metadata.json -> Team leader  S. Pu, Principal Investment Specialist, PSOD 
+INFO:root:data/input/reports/47335-001-rrp.pdf.metadata.json yielded 10 authors
+(2417/2600) processing data/input/reports/rrp-lao-26563.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-lao-26563.pdf.metadata.json yielded 0 authors
+(2418/2600) processing data/input/reports/53047-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53047-001-rrp-en.pdf.metadata.json -> Team leaders  Stephen Schuster, Principal Financial Sector Specialist, SEPF, SERD 
+INFO:root:data/input/reports/53047-001-rrp-en.pdf.metadata.json yielded 1 authors
+(2419/2600) processing data/input/reports/52126-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52126-001-rrp-en.pdf.metadata.json -> Team leader  Mayank Choudhary, Principal Investment Specialist, PSOD 
+INFO:root:data/input/reports/52126-001-rrp-en.pdf.metadata.json yielded 1 authors
+(2420/2600) processing data/input/reports/38349-029-rrp-en.pdf.metadata.json
+WARNING:root:data/input/reports/38349-029-rrp-en.pdf.metadata.json yielded 0 authors
+(2421/2600) processing data/input/reports/25306-mon-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/25306-mon-rrp.pdf.metadata.json yielded 0 authors
+(2422/2600) processing data/input/reports/41641-02-pak-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41641-02-pak-rrp.pdf.metadata.json -> Team leader  L. Arthur, Social Sector Specialist, PRM, CWRD 
+INFO:root:data/input/reports/41641-02-pak-rrp.pdf.metadata.json yielded 3 authors
+(2423/2600) processing data/input/reports/44263-013-rrp.pdf.metadata.json
+INFO:root:data/input/reports/44263-013-rrp.pdf.metadata.json -> Team leaders  H. Aoki, Senior Financial Sector Specialist, SERD 
+INFO:root:data/input/reports/44263-013-rrp.pdf.metadata.json yielded 8 authors
+(2424/2600) processing data/input/reports/rrp-vie-34348.pdf.metadata.json
+INFO:root:data/input/reports/rrp-vie-34348.pdf.metadata.json -> This report was prepared by a team consisting of E. Bloom (team leader), A. Jain, and L. 
+INFO:root:data/input/reports/rrp-vie-34348.pdf.metadata.json yielded 4 authors
+(2425/2600) processing data/input/reports/51192-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51192-001-rrp-en.pdf.metadata.json -> Team leader  Seung Min Lee, Senior Financial Sector Specialist, EAPF, EARD 
+WARNING:root:data/input/reports/51192-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2426/2600) processing data/input/reports/rrp-r15597.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r15597.pdf.metadata.json yielded 0 authors
+(2427/2600) processing data/input/reports/42182-vie-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42182-vie-rrp.pdf.metadata.json -> Team leader  E. Baardsen, Senior Infrastructure Specialist, SERD  
+INFO:root:data/input/reports/42182-vie-rrp.pdf.metadata.json yielded 4 authors
+(2428/2600) processing data/input/reports/53049-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53049-001-rrp-en.pdf.metadata.json -> Team leaders  Mingyuan Fan, Principal Water Resources Specialist, EAER, EARD 
+INFO:root:data/input/reports/53049-001-rrp-en.pdf.metadata.json yielded 7 authors
+(2429/2600) processing data/input/reports/50102-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50102-002-rrp-en.pdf.metadata.json -> Team leader  Sameer Kamal, Urban Development Specialist, SERD 
+INFO:root:data/input/reports/50102-002-rrp-en.pdf.metadata.json yielded 9 authors
+(2430/2600) processing data/input/reports/51139-003-tasp-en.pdf.metadata.json
+INFO:root:data/input/reports/51139-003-tasp-en.pdf.metadata.json -> Team leader  Juhyun Jeong, Investment Specialist, PSOD 
+WARNING:root:data/input/reports/51139-003-tasp-en.pdf.metadata.json yielded 0 authors
+(2431/2600) processing data/input/reports/rrp-r165-99.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r165-99.pdf.metadata.json yielded 0 authors
+(2432/2600) processing data/input/reports/46902-014-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46902-014-ind-rrp.pdf.metadata.json -> Team leaders  M. Jensen, Investment Specialist, PSOD 
+INFO:root:data/input/reports/46902-014-ind-rrp.pdf.metadata.json yielded 5 authors
+(2433/2600) processing data/input/reports/46385-001-ton-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46385-001-ton-rrp.pdf.metadata.json -> Team leader  L. Tora, Senior Public Management Officer, PARD 
+INFO:root:data/input/reports/46385-001-ton-rrp.pdf.metadata.json yielded 2 authors
+(2434/2600) processing data/input/reports/44012-013-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/44012-013-prc-rrp.pdf.metadata.json -> Team leader  P. Perera, Senior Energy Specialist, EARD 
+INFO:root:data/input/reports/44012-013-prc-rrp.pdf.metadata.json yielded 9 authors
+(2435/2600) processing data/input/reports/rrp-r18499.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r18499.pdf.metadata.json yielded 0 authors
+(2436/2600) processing data/input/reports/36107-ban-rrp.pdf.metadata.json
+INFO:root:data/input/reports/36107-ban-rrp.pdf.metadata.json -> Team leader  P. Song, Head, Project Administration Unit, SARD 
+INFO:root:data/input/reports/36107-ban-rrp.pdf.metadata.json yielded 10 authors
+(2437/2600) processing data/input/reports/14014-ino-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/14014-ino-rrp.pdf.metadata.json yielded 0 authors
+(2438/2600) processing data/input/reports/rrp-tim-r10701.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-tim-r10701.pdf.metadata.json yielded 0 authors
+(2439/2600) processing data/input/reports/52007-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52007-001-rrp-en.pdf.metadata.json -> Team leaders  Kaoru Ogino, Principal Energy Specialist, EARD 
+INFO:root:data/input/reports/52007-001-rrp-en.pdf.metadata.json yielded 1 authors
+(2440/2600) processing data/input/reports/53271-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53271-001-rrp-en.pdf.metadata.json -> Team leader  Ko Sakamoto; Principal Planning and Policy Specialist; Special 
+INFO:root:data/input/reports/53271-001-rrp-en.pdf.metadata.json yielded 9 authors
+(2441/2600) processing data/input/reports/41908-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41908-prc-rrp.pdf.metadata.json -> Team leader  S. Pu, Investment Specialist, PSOD 
+INFO:root:data/input/reports/41908-prc-rrp.pdf.metadata.json yielded 6 authors
+(2442/2600) processing data/input/reports/31351-014-lao-rrp.pdf.metadata.json
+INFO:root:data/input/reports/31351-014-lao-rrp.pdf.metadata.json -> Team leader  P. Louangraj, Senior Economics Officer, LRM, SERD 
+INFO:root:data/input/reports/31351-014-lao-rrp.pdf.metadata.json yielded 10 authors
+(2443/2600) processing data/input/reports/rrp-r19898.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r19898.pdf.metadata.json yielded 0 authors
+(2444/2600) processing data/input/reports/rrp-r27196.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r27196.pdf.metadata.json yielded 0 authors
+(2445/2600) processing data/input/reports/39419-sri-rrp.pdf.metadata.json
+INFO:root:data/input/reports/39419-sri-rrp.pdf.metadata.json -> Team leader  T. Kimura, Principal Energy Specialist, SARD 
+INFO:root:data/input/reports/39419-sri-rrp.pdf.metadata.json yielded 6 authors
+(2446/2600) processing data/input/reports/46443-002-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46443-002-rrp.pdf.metadata.json -> Team leader  R. Frauendorfer, Lead Urban Development Specialist, SERD 
+INFO:root:data/input/reports/46443-002-rrp.pdf.metadata.json yielded 8 authors
+(2447/2600) processing data/input/reports/50253-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50253-001-rrp-en.pdf.metadata.json -> Team leader  Sonali Tang, Principal Investment Specialist, PSOD 
+INFO:root:data/input/reports/50253-001-rrp-en.pdf.metadata.json yielded 3 authors
+(2448/2600) processing data/input/reports/rrp-r20198.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r20198.pdf.metadata.json yielded 0 authors
+(2449/2600) processing data/input/reports/44130-022-tim-rrp.pdf.metadata.json
+INFO:root:data/input/reports/44130-022-tim-rrp.pdf.metadata.json -> Team leader  M. P. Paniagua, Urban Development Specialist, PARD 
+INFO:root:data/input/reports/44130-022-tim-rrp.pdf.metadata.json yielded 6 authors
+(2450/2600) processing data/input/reports/46260-003-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46260-003-rrp.pdf.metadata.json -> Team leader  R. Phelps, Principal Infrastructure Specialist, PARD 
+INFO:root:data/input/reports/46260-003-rrp.pdf.metadata.json yielded 3 authors
+(2451/2600) processing data/input/reports/rrp-pak-29229.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-pak-29229.pdf.metadata.json yielded 0 authors
+(2452/2600) processing data/input/reports/43934-01-reg-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43934-01-reg-rrp.pdf.metadata.json -> Team leader  J. Klein, Investment Specialist, PSOD 
+WARNING:root:data/input/reports/43934-01-reg-rrp.pdf.metadata.json yielded 0 authors
+(2453/2600) processing data/input/reports/50063-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/50063-001-rrp.pdf.metadata.json -> Team leader  J. Ning, Principal Transport Specialist, CWRD 
+INFO:root:data/input/reports/50063-001-rrp.pdf.metadata.json yielded 11 authors
+(2454/2600) processing data/input/reports/rrp-r15697.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r15697.pdf.metadata.json yielded 0 authors
+(2455/2600) processing data/input/reports/rrp-r14495.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r14495.pdf.metadata.json yielded 0 authors
+(2456/2600) processing data/input/reports/rrp-cam-30240.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-cam-30240.pdf.metadata.json yielded 0 authors
+(2457/2600) processing data/input/reports/rrp-reg-38177.pdf.metadata.json
+INFO:root:data/input/reports/rrp-reg-38177.pdf.metadata.json -> This report was prepared by a team consisting of J. Liang (team leader), L. Nazarbekova, and 
+INFO:root:data/input/reports/rrp-reg-38177.pdf.metadata.json yielded 4 authors
+(2458/2600) processing data/input/reports/45007-011-tar-en.pdf.metadata.json
+INFO:root:data/input/reports/45007-011-tar-en.pdf.metadata.json -> Team leaders  Viswanathan Ramasubramanian, Senior Safeguards Specialist 
+INFO:root:data/input/reports/45007-011-tar-en.pdf.metadata.json yielded 1 authors
+(2459/2600) processing data/input/reports/41544-091-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/41544-091-rrp-en.pdf.metadata.json -> Team leader  Priyanka Sood, Senior Financial Sector Specialist, CWRD  
+INFO:root:data/input/reports/41544-091-rrp-en.pdf.metadata.json yielded 4 authors
+(2460/2600) processing data/input/reports/55054-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/55054-001-rrp-en.pdf.metadata.json -> Team leader  Sanjay Joshi, Principal Urban Development Specialist, SAUW, 
+INFO:root:data/input/reports/55054-001-rrp-en.pdf.metadata.json yielded 7 authors
+(2461/2600) processing data/input/reports/48042-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/48042-001-rrp.pdf.metadata.json -> Team leader  B. Giap, Senior Natural Resources and Agriculture Economist, CWRD 
+INFO:root:data/input/reports/48042-001-rrp.pdf.metadata.json yielded 8 authors
+(2462/2600) processing data/input/reports/39931-reg-rrp.pdf.metadata.json
+INFO:root:data/input/reports/39931-reg-rrp.pdf.metadata.json -> Team leader  V. John, Principal Structured Finance Specialist (PSOD) 
+WARNING:root:data/input/reports/39931-reg-rrp.pdf.metadata.json yielded 0 authors
+(2463/2600) processing data/input/reports/53307-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53307-001-rrp-en.pdf.metadata.json -> Team leader  Mayumi Ozaki, Senior Portfolio Management Specialist, SAPF, SARD 
+INFO:root:data/input/reports/53307-001-rrp-en.pdf.metadata.json yielded 2 authors
+(2464/2600) processing data/input/reports/39915-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/39915-ind-rrp.pdf.metadata.json -> Team leader     D. Wiedmer, Structured Finance Specialist, PSOD 
+WARNING:root:data/input/reports/39915-ind-rrp.pdf.metadata.json yielded 0 authors
+(2465/2600) processing data/input/reports/48042-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/48042-002-rrp-en.pdf.metadata.json -> Team leader  Mohammad Hanif Ayubi, Senior Project Officer, AFRM, CWRD 
+WARNING:root:data/input/reports/48042-002-rrp-en.pdf.metadata.json yielded 0 authors
+(2466/2600) processing data/input/reports/43448-013-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43448-013-rrp.pdf.metadata.json -> Team leader  A. Cauchois, Senior Water Resources Specialist, SARD 
+INFO:root:data/input/reports/43448-013-rrp.pdf.metadata.json yielded 4 authors
+(2467/2600) processing data/input/reports/16161-lao-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/16161-lao-rrp.pdf.metadata.json yielded 0 authors
+(2468/2600) processing data/input/reports/51034-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51034-002-rrp-en.pdf.metadata.json -> Team leader  Ruoyu Hu, Urban Development Specialist, CWUW, CWRD 
+INFO:root:data/input/reports/51034-002-rrp-en.pdf.metadata.json yielded 6 authors
+(2469/2600) processing data/input/reports/38255-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/38255-ind-rrp.pdf.metadata.json -> Team leader  P. N. Seneviratne, Senior Transport Specialist, SARD 
+INFO:root:data/input/reports/38255-ind-rrp.pdf.metadata.json yielded 3 authors
+(2470/2600) processing data/input/reports/48044-004-rrp.pdf.metadata.json
+INFO:root:data/input/reports/48044-004-rrp.pdf.metadata.json -> Team leader  T. Niazi, Principal Public Management Specialist, CWRD 
+INFO:root:data/input/reports/48044-004-rrp.pdf.metadata.json yielded 5 authors
+(2471/2600) processing data/input/reports/41243-023-mon-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41243-023-mon-rrp.pdf.metadata.json -> Team leader  C. Bodart, Principal Health Specialist, EARD 
+INFO:root:data/input/reports/41243-023-mon-rrp.pdf.metadata.json yielded 4 authors
+(2472/2600) processing data/input/reports/49141-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/49141-001-rrp.pdf.metadata.json -> Team leader  A. Haydarov, Infrastructure Economist, SERD 
+INFO:root:data/input/reports/49141-001-rrp.pdf.metadata.json yielded 11 authors
+(2473/2600) processing data/input/reports/rrp-28309-vie.pdf.metadata.json
+INFO:root:data/input/reports/rrp-28309-vie.pdf.metadata.json ->      This report was prepared by a team consisting of Y. Hirosato (team leader),  
+INFO:root:data/input/reports/rrp-28309-vie.pdf.metadata.json yielded 8 authors
+(2474/2600) processing data/input/reports/40156-01-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40156-01-ind-rrp.pdf.metadata.json -> Team leader  R. Khan, Natural Resources Economist, SARD 
+INFO:root:data/input/reports/40156-01-ind-rrp.pdf.metadata.json yielded 2 authors
+(2475/2600) processing data/input/reports/50330-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50330-001-rrp-en.pdf.metadata.json -> Team leader  David Dovan, Investment Specialist, PSOD 
+INFO:root:data/input/reports/50330-001-rrp-en.pdf.metadata.json yielded 10 authors
+(2476/2600) processing data/input/reports/28261-fij-rrp.pdf.metadata.json
+INFO:root:data/input/reports/28261-fij-rrp.pdf.metadata.json -> Team leader  R. Phelps, Infrastructure Specialist, PARD 
+INFO:root:data/input/reports/28261-fij-rrp.pdf.metadata.json yielded 1 authors
+(2477/2600) processing data/input/reports/rrp-31243.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-31243.pdf.metadata.json yielded 0 authors
+(2478/2600) processing data/input/reports/48409-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/48409-002-rrp-en.pdf.metadata.json -> Team leader  Srinivasan Ancha, Principal Climate Change Specialist, SERD 
+WARNING:root:data/input/reports/48409-002-rrp-en.pdf.metadata.json yielded 0 authors
+(2479/2600) processing data/input/reports/rrp-r14798c.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r14798c.pdf.metadata.json yielded 0 authors
+(2480/2600) processing data/input/reports/49107-006-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/49107-006-rrp-en.pdf.metadata.json -> Team leader  Neeta Pokhrel, Senior Urban Development Specialist, SARD 
+INFO:root:data/input/reports/49107-006-rrp-en.pdf.metadata.json -> Co- Team leader  Saugata Dasgupta, Senior Project Officer (Urban), SARD 
+INFO:root:data/input/reports/49107-006-rrp-en.pdf.metadata.json yielded 1 authors
+(2481/2600) processing data/input/reports/50259-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50259-002-rrp-en.pdf.metadata.json -> Team leader  Hao Zhang, Principal Urban Development Specialist, CWRD 
+INFO:root:data/input/reports/50259-002-rrp-en.pdf.metadata.json yielded 8 authors
+(2482/2600) processing data/input/reports/42466-014-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42466-014-rrp.pdf.metadata.json -> Team leaders  B. Panth, Lead Education Specialist, SARD 
+INFO:root:data/input/reports/42466-014-rrp.pdf.metadata.json yielded 11 authors
+(2483/2600) processing data/input/reports/38357-sri-rrp.pdf.metadata.json
+INFO:root:data/input/reports/38357-sri-rrp.pdf.metadata.json -> Team leader  S. Widowati, Senior Project Specialist, South Asia Department 
+INFO:root:data/input/reports/38357-sri-rrp.pdf.metadata.json yielded 6 authors
+(2484/2600) processing data/input/reports/55041-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/55041-001-rrp-en.pdf.metadata.json -> Team leader  Hiroko Uchimura-Shiroishi, Senior Social Sector Specialist, SAHS, 
+WARNING:root:data/input/reports/55041-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2485/2600) processing data/input/reports/36297-ban-rrp.pdf.metadata.json
+INFO:root:data/input/reports/36297-ban-rrp.pdf.metadata.json -> Team leader  N. Mawilmada, Urban Specialist, SARD 
+INFO:root:data/input/reports/36297-ban-rrp.pdf.metadata.json yielded 4 authors
+(2486/2600) processing data/input/reports/42278-02-lao-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42278-02-lao-rrp.pdf.metadata.json -> Team leader  N. LaRocque, Education Specialist, SERD 
+INFO:root:data/input/reports/42278-02-lao-rrp.pdf.metadata.json yielded 6 authors
+(2487/2600) processing data/input/reports/41946-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41946-ind-rrp.pdf.metadata.json -> Team leader  T. Koike, Investment Specialist, PSOD 
+INFO:root:data/input/reports/41946-ind-rrp.pdf.metadata.json yielded 3 authors
+(2488/2600) processing data/input/reports/42459-013-sri-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42459-013-sri-rrp.pdf.metadata.json -> Team leader  N. Saito, Senior Urban Development Specialist, SARD 
+INFO:root:data/input/reports/42459-013-sri-rrp.pdf.metadata.json yielded 5 authors
+(2489/2600) processing data/input/reports/43456-02-kgz-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43456-02-kgz-rrp.pdf.metadata.json -> Team leader  T. Kadono, Energy Specialist, CWRD 
+INFO:root:data/input/reports/43456-02-kgz-rrp.pdf.metadata.json yielded 6 authors
+(2490/2600) processing data/input/reports/41926-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41926-prc-rrp.pdf.metadata.json -> Team leader  K. Zheng, Senior Energy Economist, EARD 
+INFO:root:data/input/reports/41926-prc-rrp.pdf.metadata.json yielded 11 authors
+(2491/2600) processing data/input/reports/52173-003-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52173-003-rrp-en.pdf.metadata.json -> Team leader  Aekapol Chongvilaivan, Economist (Public Finance), SEPF, 
+WARNING:root:data/input/reports/52173-003-rrp-en.pdf.metadata.json yielded 0 authors
+(2492/2600) processing data/input/reports/12903-ban-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/12903-ban-rrp.pdf.metadata.json yielded 0 authors
+(2493/2600) processing data/input/reports/rrp-r31588.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r31588.pdf.metadata.json yielded 0 authors
+(2494/2600) processing data/input/reports/46312-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46312-001-rrp.pdf.metadata.json -> Team leader  Y. Qian, Director, Public Management, Financial Sector, and Regional 
+INFO:root:data/input/reports/46312-001-rrp.pdf.metadata.json yielded 3 authors
+(2495/2600) processing data/input/reports/43200-024-png-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43200-024-png-rrp.pdf.metadata.json -> Team leader  H. Masood, Lead Project Administration Specialist, PARD 
+INFO:root:data/input/reports/43200-024-png-rrp.pdf.metadata.json yielded 6 authors
+(2496/2600) processing data/input/reports/47320-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/47320-001-rrp.pdf.metadata.json -> Team leader  M. Melei, Country Specialist, PARD 
+INFO:root:data/input/reports/47320-001-rrp.pdf.metadata.json yielded 12 authors
+(2497/2600) processing data/input/reports/ind-50238-001-rrp-ld-04.pdf.metadata.json
+WARNING:root:data/input/reports/ind-50238-001-rrp-ld-04.pdf.metadata.json yielded 0 authors
+(2498/2600) processing data/input/reports/51327-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51327-001-rrp-en.pdf.metadata.json -> Team leader  Michael Gabisch, Investment Specialist, PSOD 
+WARNING:root:data/input/reports/51327-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2499/2600) processing data/input/reports/rrp-r23996.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r23996.pdf.metadata.json yielded 0 authors
+(2500/2600) processing data/input/reports/40043-reg-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40043-reg-rrp.pdf.metadata.json -> Team leader  X. Humbert,  Energy Specialist, CWRD 
+INFO:root:data/input/reports/40043-reg-rrp.pdf.metadata.json yielded 3 authors
+(2501/2600) processing data/input/reports/41171-02-sol-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41171-02-sol-rrp.pdf.metadata.json -> Team leader  D. Mizusawa, Infrastructure Specialist, PARD 
+INFO:root:data/input/reports/41171-02-sol-rrp.pdf.metadata.json yielded 6 authors
+(2502/2600) processing data/input/reports/42334-014-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42334-014-rrp.pdf.metadata.json -> Team leader  S. Date, Senior Transport Specialist, SERD 
+INFO:root:data/input/reports/42334-014-rrp.pdf.metadata.json yielded 12 authors
+(2503/2600) processing data/input/reports/42010-01-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42010-01-prc-rrp.pdf.metadata.json -> Team leader  Y. Fei, Principal Urban Development Specialist, EARD 
+INFO:root:data/input/reports/42010-01-prc-rrp.pdf.metadata.json yielded 6 authors
+(2504/2600) processing data/input/reports/54056-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/54056-001-rrp-en.pdf.metadata.json -> Team leaders  Seung Duck Kim, Senior Energy Specialist, CWEN, CWRD 
+INFO:root:data/input/reports/54056-001-rrp-en.pdf.metadata.json yielded 2 authors
+(2505/2600) processing data/input/reports/42267-026-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42267-026-rrp.pdf.metadata.json -> Team leader  M. Sharma, Senior Urban Development Specialist, SARD 
+INFO:root:data/input/reports/42267-026-rrp.pdf.metadata.json yielded 7 authors
+(2506/2600) processing data/input/reports/53264-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53264-001-rrp-en.pdf.metadata.json -> Team leaders  Masahiro Nishimura, Principal Rural Development Specialist, 
+INFO:root:data/input/reports/53264-001-rrp-en.pdf.metadata.json yielded 5 authors
+(2507/2600) processing data/input/reports/49320-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/49320-001-rrp.pdf.metadata.json -> Team leader  S. Spohn, Private Sector Development Specialist, PARD 
+INFO:root:data/input/reports/49320-001-rrp.pdf.metadata.json yielded 16 authors
+(2508/2600) processing data/input/reports/51159-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51159-002-rrp-en.pdf.metadata.json -> Team leader  Thuy Trang Dang, Urban Development Specialist, SERD 
+WARNING:root:data/input/reports/51159-002-rrp-en.pdf.metadata.json yielded 0 authors
+(2509/2600) processing data/input/reports/rrp-r17298.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r17298.pdf.metadata.json yielded 0 authors
+(2510/2600) processing data/input/reports/40682-01-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40682-01-prc-rrp.pdf.metadata.json -> Team leader  Y. L. Feng, Principal Natural Resources Management Specialist, EARD 
+INFO:root:data/input/reports/40682-01-prc-rrp.pdf.metadata.json yielded 6 authors
+(2511/2600) processing data/input/reports/44469-013-fsm-rrp.pdf.metadata.json
+INFO:root:data/input/reports/44469-013-fsm-rrp.pdf.metadata.json -> Team leader  A. Maxwell, Senior Energy Specialist, PARD 
+INFO:root:data/input/reports/44469-013-fsm-rrp.pdf.metadata.json yielded 4 authors
+(2512/2600) processing data/input/reports/37399-043-bhu-rrp.pdf.metadata.json
+INFO:root:data/input/reports/37399-043-bhu-rrp.pdf.metadata.json -> Team leader  K. Ogino, Principal Energy Specialist, SARD 
+INFO:root:data/input/reports/37399-043-bhu-rrp.pdf.metadata.json yielded 5 authors
+(2513/2600) processing data/input/reports/46081-002-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46081-002-rrp.pdf.metadata.json -> Team leader  T. Ueda, Senior Natural Resources Economist, EARD 
+INFO:root:data/input/reports/46081-002-rrp.pdf.metadata.json yielded 10 authors
+(2514/2600) processing data/input/reports/36008-vie-rrp.pdf.metadata.json
+INFO:root:data/input/reports/36008-vie-rrp.pdf.metadata.json -> Team leader  E. K. Izawa, Education Specialist, SERD 
+INFO:root:data/input/reports/36008-vie-rrp.pdf.metadata.json yielded 2 authors
+(2515/2600) processing data/input/reports/44281-01-kir-rrp.pdf.metadata.json
+INFO:root:data/input/reports/44281-01-kir-rrp.pdf.metadata.json -> Team leader  R. Phelps, Senior Infrastructure Specialist, SPSO, PARD 
+INFO:root:data/input/reports/44281-01-kir-rrp.pdf.metadata.json yielded 4 authors
+(2516/2600) processing data/input/reports/50312-003-rrp-en_0.pdf.metadata.json
+INFO:root:data/input/reports/50312-003-rrp-en_0.pdf.metadata.json -> Team leader  Tsuneyuki Sakai, Senior Transport Specialist, SARD 
+INFO:root:data/input/reports/50312-003-rrp-en_0.pdf.metadata.json yielded 1 authors
+(2517/2600) processing data/input/reports/rrp-pak-32024.pdf.metadata.json
+INFO:root:data/input/reports/rrp-pak-32024.pdf.metadata.json -> This report was prepared by a team consisting of: Karin Oswald (Team Leader), Caroline 
+WARNING:root:data/input/reports/rrp-pak-32024.pdf.metadata.json yielded 0 authors
+(2518/2600) processing data/input/reports/42161-013-nep-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42161-013-nep-rrp.pdf.metadata.json -> Team leaders  N. Saito, Senior Urban Development Specialist, SARD 
+INFO:root:data/input/reports/42161-013-nep-rrp.pdf.metadata.json yielded 4 authors
+(2519/2600) processing data/input/reports/rrp-29472.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-29472.pdf.metadata.json yielded 0 authors
+(2520/2600) processing data/input/reports/34197-lao-rrp.pdf.metadata.json
+INFO:root:data/input/reports/34197-lao-rrp.pdf.metadata.json -> Team leader  P. van Klaveren, Water Supply and Sanitation Specialist, SERD 
+INFO:root:data/input/reports/34197-lao-rrp.pdf.metadata.json yielded 1 authors
+(2521/2600) processing data/input/reports/50393-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50393-002-rrp-en.pdf.metadata.json -> Team leaders  Jan Hinrichs, Senior Natural Resources Economist, EARD  
+INFO:root:data/input/reports/50393-002-rrp-en.pdf.metadata.json yielded 7 authors
+(2522/2600) processing data/input/reports/48078-005-pfrr-en.pdf.metadata.json
+INFO:root:data/input/reports/48078-005-pfrr-en.pdf.metadata.json -> Team leader  Lei Zhang, Senior Energy Specialist, CWRD 
+INFO:root:data/input/reports/48078-005-pfrr-en.pdf.metadata.json yielded 3 authors
+(2523/2600) processing data/input/reports/39364-pak-rrp.pdf.metadata.json
+INFO:root:data/input/reports/39364-pak-rrp.pdf.metadata.json -> Team leader  A. Cauchois, Rural Development Specialist, CWRD 
+INFO:root:data/input/reports/39364-pak-rrp.pdf.metadata.json yielded 6 authors
+(2524/2600) processing data/input/reports/40037-png-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40037-png-rrp.pdf.metadata.json -> Team leader  L. Cai, Infrastructure Specialist, PARD  
+INFO:root:data/input/reports/40037-png-rrp.pdf.metadata.json yielded 6 authors
+(2525/2600) processing data/input/reports/49450-008-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/49450-008-rrp-en.pdf.metadata.json -> Team leader  Anthony Maxwell, Principal Energy Specialist, PARD 
+INFO:root:data/input/reports/49450-008-rrp-en.pdf.metadata.json yielded 3 authors
+(2526/2600) processing data/input/reports/rrp-r226-93.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r226-93.pdf.metadata.json yielded 0 authors
+(2527/2600) processing data/input/reports/38049-bhu-rrp.pdf.metadata.json
+INFO:root:data/input/reports/38049-bhu-rrp.pdf.metadata.json -> Team leader  T. Ueda, Urban Development and Planning Specialist, SARD 
+INFO:root:data/input/reports/38049-bhu-rrp.pdf.metadata.json yielded 1 authors
+(2528/2600) processing data/input/reports/46900-01-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46900-01-ind-rrp.pdf.metadata.json -> Team leader  A. Patil, Investment Specialist, PSOD 
+INFO:root:data/input/reports/46900-01-ind-rrp.pdf.metadata.json yielded 9 authors
+(2529/2600) processing data/input/reports/rrp-r14595.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r14595.pdf.metadata.json yielded 0 authors
+(2530/2600) processing data/input/reports/41544-089-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41544-089-rrp.pdf.metadata.json -> Team leader  P. Sood, Senior Financial Sector Specialist, CWRD  
+INFO:root:data/input/reports/41544-089-rrp.pdf.metadata.json yielded 6 authors
+(2531/2600) processing data/input/reports/45032-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/45032-001-rrp.pdf.metadata.json -> Team leader  M. Lucich, Senior Economics Officer, PARD  
+INFO:root:data/input/reports/45032-001-rrp.pdf.metadata.json yielded 3 authors
+(2532/2600) processing data/input/reports/43467-014-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43467-014-ind-rrp.pdf.metadata.json -> Team leader  H. Gunatilake, Principal Energy Economist, SARD 
+INFO:root:data/input/reports/43467-014-ind-rrp.pdf.metadata.json yielded 3 authors
+(2533/2600) processing data/input/reports/42180-016-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/42180-016-rrp-en.pdf.metadata.json -> Team leaders  P. Marro, Principal Financial Sector Specialist, SARD 
+INFO:root:data/input/reports/42180-016-rrp-en.pdf.metadata.json yielded 9 authors
+(2534/2600) processing data/input/reports/32513-taj-rrp.pdf.metadata.json
+ERROR:root:Caught unexpected exception while accessing data/input/reports/32513-taj-rrp.pdf.metadata.json
+Traceback (most recent call last):
+  File "/Users/nilleb/dev/adb-expertise-locator/./regex_authors.py", line 84, in process_file
+    metadata = read_object(path)
+  File "/Users/nilleb/dev/adb-expertise-locator/common/io.py", line 5, in read_object
+    return json.load(fd)
+  File "/opt/homebrew/Cellar/python@3.9/3.9.9/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/opt/homebrew/Cellar/python@3.9/3.9.9/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/opt/homebrew/Cellar/python@3.9/3.9.9/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/opt/homebrew/Cellar/python@3.9/3.9.9/Frameworks/Python.framework/Versions/3.9/lib/python3.9/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+(2535/2600) processing data/input/reports/rrp-345040.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-345040.pdf.metadata.json yielded 0 authors
+(2536/2600) processing data/input/reports/37164-bhu-rrp.pdf.metadata.json
+INFO:root:data/input/reports/37164-bhu-rrp.pdf.metadata.json -> Team leader  C. Hu, Economist, SARD 
+INFO:root:data/input/reports/37164-bhu-rrp.pdf.metadata.json yielded 3 authors
+(2537/2600) processing data/input/reports/52257-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52257-001-rrp-en.pdf.metadata.json -> Team leaders  Shamit Chakravarti, Principal Social Sector Specialist, SEHS, SERD 
+INFO:root:data/input/reports/52257-001-rrp-en.pdf.metadata.json yielded 1 authors
+(2538/2600) processing data/input/reports/46009-003-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46009-003-rrp.pdf.metadata.json -> Team leaders  P. Long, Senior Project Officer, CARM, SERD 
+INFO:root:data/input/reports/46009-003-rrp.pdf.metadata.json yielded 13 authors
+(2539/2600) processing data/input/reports/rrp-r27096.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r27096.pdf.metadata.json yielded 0 authors
+(2540/2600) processing data/input/reports/36513-sam-rrp.pdf.metadata.json
+INFO:root:data/input/reports/36513-sam-rrp.pdf.metadata.json -> Team leader  K. Chowdhury, Education Specialist, PARD 
+INFO:root:data/input/reports/36513-sam-rrp.pdf.metadata.json yielded 6 authors
+(2541/2600) processing data/input/reports/51005-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51005-002-rrp-en.pdf.metadata.json -> Team leader  Rabindra Osti, Water Resources Specialist, EARD 
+INFO:root:data/input/reports/51005-002-rrp-en.pdf.metadata.json yielded 6 authors
+(2542/2600) processing data/input/reports/41903-pak-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41903-pak-rrp.pdf.metadata.json -> Team leader  M. Tornberg, Investment Specialist (Infrastructure), PSOD 
+INFO:root:data/input/reports/41903-pak-rrp.pdf.metadata.json yielded 4 authors
+(2543/2600) processing data/input/reports/rrp-ino-35144.pdf.metadata.json
+INFO:root:data/input/reports/rrp-ino-35144.pdf.metadata.json -> This report was prepared by a team consisting of F. Ahmed (team leader), A. Barend Frielink, 
+INFO:root:data/input/reports/rrp-ino-35144.pdf.metadata.json yielded 8 authors
+(2544/2600) processing data/input/reports/50164-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50164-002-rrp-en.pdf.metadata.json -> Team leaders  Aditi Bhattacharya, Investment Specialist, PSOD 
+INFO:root:data/input/reports/50164-002-rrp-en.pdf.metadata.json yielded 1 authors
+(2545/2600) processing data/input/reports/35304-lao-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/35304-lao-rrp.pdf.metadata.json yielded 0 authors
+(2546/2600) processing data/input/reports/rrp-cam-32430.pdf.metadata.json
+INFO:root:data/input/reports/rrp-cam-32430.pdf.metadata.json -> This report was prepared by a team consisting of: I. Bhushan, Senior Project Economist,
+INFO:root:data/input/reports/rrp-cam-32430.pdf.metadata.json yielded 4 authors
+(2547/2600) processing data/input/reports/rrp-ban-36296.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-ban-36296.pdf.metadata.json yielded 0 authors
+(2548/2600) processing data/input/reports/38579-phi-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/38579-phi-rrp.pdf.metadata.json yielded 0 authors
+(2549/2600) processing data/input/reports/51162-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51162-001-rrp-en.pdf.metadata.json -> Team leader  Xiaole Wang, Investment Specialist, PSOD 
+INFO:root:data/input/reports/51162-001-rrp-en.pdf.metadata.json yielded 1 authors
+(2550/2600) processing data/input/reports/rrp-afg-37075-02.pdf.metadata.json
+INFO:root:data/input/reports/rrp-afg-37075-02.pdf.metadata.json -> This report was prepared by a team consisting of D.S. Pyo (mission leader), M. Alam, M.D. 
+INFO:root:data/input/reports/rrp-afg-37075-02.pdf.metadata.json yielded 7 authors
+(2551/2600) processing data/input/reports/44932-014-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/44932-014-ind-rrp.pdf.metadata.json -> Team leader  T. Minnich, Senior Investment Specialist, PSOD 
+INFO:root:data/input/reports/44932-014-ind-rrp.pdf.metadata.json yielded 7 authors
+(2552/2600) processing data/input/reports/rrp-r183-93.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r183-93.pdf.metadata.json yielded 0 authors
+(2553/2600) processing data/input/reports/39019-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/39019-prc-rrp.pdf.metadata.json -> Team leader  S. F. Wong, Senior Financial Specialist (Energy), EARD 
+INFO:root:data/input/reports/39019-prc-rrp.pdf.metadata.json yielded 3 authors
+(2554/2600) processing data/input/reports/42378-014-ban-rrp.pdf.metadata.json
+INFO:root:data/input/reports/42378-014-ban-rrp.pdf.metadata.json -> Team leader  H. Gunatilake, Lead Energy Economist, SARD 
+INFO:root:data/input/reports/42378-014-ban-rrp.pdf.metadata.json yielded 6 authors
+(2555/2600) processing data/input/reports/49078-001-rrp.pdf.metadata.json
+INFO:root:data/input/reports/49078-001-rrp.pdf.metadata.json -> Team leader  Y. Ye, Principal Urban Development Economist, CWRD 
+INFO:root:data/input/reports/49078-001-rrp.pdf.metadata.json yielded 8 authors
+(2556/2600) processing data/input/reports/54192-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/54192-001-rrp-en.pdf.metadata.json -> Team leader  Çiğdem Akın, Senior Public Management Economist, CWPF, CWRD 
+INFO:root:data/input/reports/54192-001-rrp-en.pdf.metadata.json yielded 1 authors
+(2557/2600) processing data/input/reports/45299-001-arm-rrp.pdf.metadata.json
+INFO:root:data/input/reports/45299-001-arm-rrp.pdf.metadata.json -> Team leader  A. Torres, Senior Finance Specialist, CWRD 
+INFO:root:data/input/reports/45299-001-arm-rrp.pdf.metadata.json yielded 8 authors
+(2558/2600) processing data/input/reports/rrp-ban-26061.pdf.metadata.json
+INFO:root:data/input/reports/rrp-ban-26061.pdf.metadata.json -> This report was prepared by a team consisting of J. Sarvi (team leader), A. Djusupbekova,         
+INFO:root:data/input/reports/rrp-ban-26061.pdf.metadata.json yielded 7 authors
+(2559/2600) processing data/input/reports/45233-007-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/45233-007-rrp-en.pdf.metadata.json -> Team leaders  Laisiasa Tora, Public Management Specialist, CWPF, CWRD 
+INFO:root:data/input/reports/45233-007-rrp-en.pdf.metadata.json yielded 2 authors
+(2560/2600) processing data/input/reports/38405-rrp-pak.pdf.metadata.json
+INFO:root:data/input/reports/38405-rrp-pak.pdf.metadata.json -> Team leader  G. Cezayirli, Senior Urban Development Specialist, South Asia 
+INFO:root:data/input/reports/38405-rrp-pak.pdf.metadata.json yielded 2 authors
+(2561/2600) processing data/input/reports/37049-ino-rrp.pdf.metadata.json
+INFO:root:data/input/reports/37049-ino-rrp.pdf.metadata.json -> Team leader  C. Morris, Agriculture, Environment, and Natural Resources Division, SERD 
+INFO:root:data/input/reports/37049-ino-rrp.pdf.metadata.json yielded 6 authors
+(2562/2600) processing data/input/reports/41076-044-phi-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41076-044-phi-rrp.pdf.metadata.json -> Team leader  J. Miller, Principal Transport Specialist, SERD 
+INFO:root:data/input/reports/41076-044-phi-rrp.pdf.metadata.json yielded 4 authors
+(2563/2600) processing data/input/reports/tacr-kgz-3859.pdf.metadata.json
+WARNING:root:data/input/reports/tacr-kgz-3859.pdf.metadata.json yielded 0 authors
+(2564/2600) processing data/input/reports/43186-sol-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43186-sol-rrp.pdf.metadata.json -> Team leader  C. Sugden, Senior Economist, PARD 
+INFO:root:data/input/reports/43186-sol-rrp.pdf.metadata.json yielded 7 authors
+(2565/2600) processing data/input/reports/47381-005-pfrtr-en.pdf.metadata.json
+INFO:root:data/input/reports/47381-005-pfrtr-en.pdf.metadata.json -> Team leader  Lance Gore, Senior Water Resources Specialist, SARD 
+INFO:root:data/input/reports/47381-005-pfrtr-en.pdf.metadata.json yielded 1 authors
+(2566/2600) processing data/input/reports/40655-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40655-ind-rrp.pdf.metadata.json -> Team leader  C. Kim, Senior Finance Specialist, SARD 
+INFO:root:data/input/reports/40655-ind-rrp.pdf.metadata.json yielded 4 authors
+(2567/2600) processing data/input/reports/50016-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50016-001-rrp-en.pdf.metadata.json -> Team leader  T. Kubo, Principal Climate Change Specialist, SERD 
+INFO:root:data/input/reports/50016-001-rrp-en.pdf.metadata.json yielded 10 authors
+(2568/2600) processing data/input/reports/rrp-kaz-34234.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-kaz-34234.pdf.metadata.json yielded 0 authors
+(2569/2600) processing data/input/reports/50099-003-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50099-003-rrp-en.pdf.metadata.json -> Team leaders  Satoshi Ishii, Principal Urban Development Specialist, SERD 
+INFO:root:data/input/reports/50099-003-rrp-en.pdf.metadata.json yielded 2 authors
+(2570/2600) processing data/input/reports/50301-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50301-001-rrp-en.pdf.metadata.json -> Team leader  K. Nakai, Senior Transport Specialist, SARD 
+INFO:root:data/input/reports/50301-001-rrp-en.pdf.metadata.json yielded 10 authors
+(2571/2600) processing data/input/reports/rrp-vie-34356-0.pdf.metadata.json
+INFO:root:data/input/reports/rrp-vie-34356-0.pdf.metadata.json -> This report was prepared by a team consisting of P. Vallely (team leader), 
+INFO:root:data/input/reports/rrp-vie-34356-0.pdf.metadata.json yielded 8 authors
+(2572/2600) processing data/input/reports/39305-ban-rrp.pdf.metadata.json
+INFO:root:data/input/reports/39305-ban-rrp.pdf.metadata.json -> Team leader  S. Bonu, Principal Urban Development Specialist, SARD 
+INFO:root:data/input/reports/39305-ban-rrp.pdf.metadata.json yielded 5 authors
+(2573/2600) processing data/input/reports/48118-003-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/48118-003-rrp-en.pdf.metadata.json -> Team leaders  Ye Xu, Health Specialist, SEHS, SERD 
+INFO:root:data/input/reports/48118-003-rrp-en.pdf.metadata.json yielded 1 authors
+(2574/2600) processing data/input/reports/48337-002-rrp.pdf.metadata.json
+INFO:root:data/input/reports/48337-002-rrp.pdf.metadata.json -> Team leader  L. M. Tai, Senior Transport Specialist, SARD 
+INFO:root:data/input/reports/48337-002-rrp.pdf.metadata.json yielded 4 authors
+(2575/2600) processing data/input/reports/51010-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51010-002-rrp-en.pdf.metadata.json -> Team leader  Rouselle Lavado, Senior Health Specialist, CWRD 
+INFO:root:data/input/reports/51010-002-rrp-en.pdf.metadata.json yielded 2 authors
+(2576/2600) processing data/input/reports/44482-012-afg-rrp.pdf.metadata.json
+INFO:root:data/input/reports/44482-012-afg-rrp.pdf.metadata.json -> Team leader  D. Hill, Transport Specialist, CWRD 
+INFO:root:data/input/reports/44482-012-afg-rrp.pdf.metadata.json yielded 10 authors
+(2577/2600) processing data/input/reports/54189-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/54189-001-rrp-en.pdf.metadata.json -> Team leaders  Navendu Karan, Senior Public Management Economist, SAPF,  
+INFO:root:data/input/reports/54189-001-rrp-en.pdf.metadata.json yielded 31 authors
+(2578/2600) processing data/input/reports/rrp-r18098.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r18098.pdf.metadata.json yielded 0 authors
+(2579/2600) processing data/input/reports/44444-013-rrp.pdf.metadata.json
+INFO:root:data/input/reports/44444-013-rrp.pdf.metadata.json -> Team leader  K. Ogino, Principal Energy Specialist, SARD 
+INFO:root:data/input/reports/44444-013-rrp.pdf.metadata.json yielded 8 authors
+(2580/2600) processing data/input/reports/51309-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/51309-002-rrp-en.pdf.metadata.json -> Team leaders  Kelly Hattel, Senior Financial Sector Specialist, SEPF, SERD 
+INFO:root:data/input/reports/51309-002-rrp-en.pdf.metadata.json yielded 10 authors
+(2581/2600) processing data/input/reports/rrp-tim-r10300.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-tim-r10300.pdf.metadata.json yielded 0 authors
+(2582/2600) processing data/input/reports/43452-022-ton-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43452-022-ton-rrp.pdf.metadata.json -> Team leader  P. Hattle, Energy Specialist, PARD 
+INFO:root:data/input/reports/43452-022-ton-rrp.pdf.metadata.json yielded 5 authors
+(2583/2600) processing data/input/reports/rrp-prc-36507.pdf.metadata.json
+INFO:root:data/input/reports/rrp-prc-36507.pdf.metadata.json -> This report was prepared by a team consisting of S. Penjor, project team leader; S. Popov, 
+INFO:root:data/input/reports/rrp-prc-36507.pdf.metadata.json yielded 7 authors
+(2584/2600) processing data/input/reports/52023-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52023-001-rrp-en.pdf.metadata.json -> Team leader  Rabindra Osti, Senior Water Resources Specialist, EARD 
+INFO:root:data/input/reports/52023-001-rrp-en.pdf.metadata.json yielded 4 authors
+(2585/2600) processing data/input/reports/43096-mon-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43096-mon-rrp.pdf.metadata.json -> Co-Team leaders  C. Bodart, Senior Health Specialist, EARD 
+INFO:root:data/input/reports/43096-mon-rrp.pdf.metadata.json yielded 5 authors
+(2586/2600) processing data/input/reports/41414-vie-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41414-vie-rrp.pdf.metadata.json -> Team leader  Y. Tanaka, Transport Specialist, SERD 
+INFO:root:data/input/reports/41414-vie-rrp.pdf.metadata.json yielded 7 authors
+(2587/2600) processing data/input/reports/48207-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/48207-002-rrp-en.pdf.metadata.json -> Team leader  S. Ismail, Senior Financial Sector Specialist, SERD 
+INFO:root:data/input/reports/48207-002-rrp-en.pdf.metadata.json yielded 11 authors
+(2588/2600) processing data/input/reports/50091-002-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/50091-002-rrp-en.pdf.metadata.json -> Team leader  A. Maruyama, Education Specialist, EARD 
+INFO:root:data/input/reports/50091-002-rrp-en.pdf.metadata.json yielded 8 authors
+(2589/2600) processing data/input/reports/29694-ind-rrp.pdf.metadata.json
+WARNING:root:data/input/reports/29694-ind-rrp.pdf.metadata.json yielded 0 authors
+(2590/2600) processing data/input/reports/rrp-pak-34328.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-pak-34328.pdf.metadata.json yielded 0 authors
+(2591/2600) processing data/input/reports/38160-ton-rrp.pdf.metadata.json
+INFO:root:data/input/reports/38160-ton-rrp.pdf.metadata.json -> Team leader  S. Blaik, Water Supply and Sanitation Specialist, PARD 
+INFO:root:data/input/reports/38160-ton-rrp.pdf.metadata.json yielded 1 authors
+(2592/2600) processing data/input/reports/46049-002-rrp.pdf.metadata.json
+INFO:root:data/input/reports/46049-002-rrp.pdf.metadata.json -> Team leader  K. Katich, Urban Development Specialist, EARD 
+INFO:root:data/input/reports/46049-002-rrp.pdf.metadata.json yielded 7 authors
+(2593/2600) processing data/input/reports/40423-013-ind-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40423-013-ind-rrp.pdf.metadata.json -> Team leader  O. Tonkonojenkov, Senior Transport Specialist, SARD 
+INFO:root:data/input/reports/40423-013-ind-rrp.pdf.metadata.json yielded 2 authors
+(2594/2600) processing data/input/reports/47305-002-rrp.pdf.metadata.json
+INFO:root:data/input/reports/47305-002-rrp.pdf.metadata.json -> Team leader  B. Giap, Senior Natural Resources and Agriculture Economist, CWRD 
+INFO:root:data/input/reports/47305-002-rrp.pdf.metadata.json yielded 11 authors
+(2595/2600) processing data/input/reports/40642-prc-rrp.pdf.metadata.json
+INFO:root:data/input/reports/40642-prc-rrp.pdf.metadata.json -> Team leader  Y. Fei, Principal Urban Development Specialist, EARD 
+INFO:root:data/input/reports/40642-prc-rrp.pdf.metadata.json yielded 5 authors
+(2596/2600) processing data/input/reports/53255-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/53255-001-rrp-en.pdf.metadata.json -> Team leader  Won Myong Hong, Investment Specialist, PSOD 
+INFO:root:data/input/reports/53255-001-rrp-en.pdf.metadata.json yielded 1 authors
+(2597/2600) processing data/input/reports/41548-kgz-rrp.pdf.metadata.json
+INFO:root:data/input/reports/41548-kgz-rrp.pdf.metadata.json -> Team leader  V. Padmanabhan, Urban Development Specialist, CWRD 
+INFO:root:data/input/reports/41548-kgz-rrp.pdf.metadata.json yielded 4 authors
+(2598/2600) processing data/input/reports/rrp-r10396.pdf.metadata.json
+WARNING:root:data/input/reports/rrp-r10396.pdf.metadata.json yielded 0 authors
+(2599/2600) processing data/input/reports/52334-001-rrp-en.pdf.metadata.json
+INFO:root:data/input/reports/52334-001-rrp-en.pdf.metadata.json -> Team leaders  Mirzo Iskandar Gulamov, Country Specialist, Kazakhstan Resident 
+WARNING:root:data/input/reports/52334-001-rrp-en.pdf.metadata.json yielded 0 authors
+(2600/2600) processing data/input/reports/43009-ino-rrp.pdf.metadata.json
+INFO:root:data/input/reports/43009-ino-rrp.pdf.metadata.json -> Team leader  E. Ginting, Economist, SERD 
+INFO:root:data/input/reports/43009-ino-rrp.pdf.metadata.json yielded 8 authors
+
+adb-expertise-locator on  main [✘!+?⇡] via 🐍 v3.9.9 (venv) on ☁️  (eu-west-1) 
+❯ 

@@ -1,21 +1,23 @@
 import re
 import logging
+from operator import countOf
 from common.folder_processor import FolderProcessor
 from common.io import read_object, write_object
 
-matches = ["This report was prepared by a team consisting of", "Team leader"]
+AUTHOR_PAGE_DETECTOR = [
+    "This report was prepared by a team consisting of",
+    "Team leader",
+]
 
-"((?P<documentRole>[ \-A-Za-z]+)  )?(?P<fullname>[A-Za-z\. ]+), (?P<role>[ A-Za-z\(\)]+)[, ]*(?P<organization>\(?[A-Za-z ]+\)?)?"
 
+DOCUMENT_ROLE_PATTERN = "(?P<documentRole>[ \-A-Za-z]+)"
 FULLNAME_PATTERN = "(?P<fullname>([A-Z\. ])+ [A-Za-z \-]+)"
 ROLE_PATTERN = "(?P<role>[ A-Za-z]+)"
 ORGANIZATION_PATTERN = "(?P<organization>\(?[A-Za-z ]+\)?)?"
-AUTHOR_LINE_PATTERN = f"{FULLNAME_PATTERN},{ROLE_PATTERN}[, ]*{ORGANIZATION_PATTERN}"
-AUTHOR_LINE_PATTERN = "((?P<documentRole>[ \-A-Za-z]+)  )?(?P<fullname>[A-Za-z\. ]+), (?P<role>[ A-Za-z\(\)]+)[, ]*(?P<organization>\(?[A-Za-z ]+\)?)?"
+AUTHOR_LINE_PATTERN = f"({DOCUMENT_ROLE_PATTERN}  )?(?P<fullname>[A-Za-z’\-\. ]+), (?P<role>[ A-Za-z\(\)]+)[, ]*{ORGANIZATION_PATTERN}"
 OPTIMIZED_PATTERN = re.compile(AUTHOR_LINE_PATTERN)
 SINGLE_LINE_AUTHOR = f"{FULLNAME_PATTERN}(\({ROLE_PATTERN}\))?"
 SINGLE_LINE_AUTHOR_ALTERNATE = "(?P<fullname>(([A-Z]\.)|([A-Za-z]+)) [A-Za-z \-]+).*"
-BOILERPLATE_BEGINNING = "In preparing any country program or strategy"
 logging.basicConfig(level=logging.INFO)
 
 
@@ -71,17 +73,31 @@ def extract_authors_from_single_line(page):
 
 def extract_authors_from_table(page):
     for line in page.split("\n"):
-        if BOILERPLATE_BEGINNING in line:
-            return
         match = OPTIMIZED_PATTERN.match(line)
         if match:
+            fullname = match.group("fullname").strip()
+            if (
+                len(fullname) > 50
+                or countOf(fullname, " ") > 4
+                or countOf(fullname, ".") > 4
+                or " " not in fullname
+            ):
+                continue
+
             author_dict = {
-                "fullname": match.group("fullname").strip(),
+                "fullname": fullname,
                 "role": match.group("role").strip(),
                 "organization": (match.group("organization") or "").strip(),
             }
-            if author_dict:
-                yield author_dict
+            yield author_dict
+
+
+def is_author_page(path, page):
+    for line in page.split("\n"):
+        for match in AUTHOR_PAGE_DETECTOR:
+            if match in line:
+                logging.debug(f"{path} -> {line}")
+                return True
 
 
 def process_file(path):
@@ -95,15 +111,10 @@ def process_file(path):
         return
 
     for page in metadata.get("pages")[:5]:
-        for line in page.split("\n"):
-            for match in matches:
-                if match in line:
-                    logging.info(f"{path} -> {line}")
-                    metadata["author_page"] = page
-                    metadata["authors"] = list(extract_authors_from_table(page))
-                    metadata["authors"].extend(
-                        list(extract_authors_from_single_line(page))
-                    )
+        if is_author_page(path, page):
+            metadata["author_page"] = page
+            metadata["authors"] = list(extract_authors_from_table(page))
+            metadata["authors"].extend(list(extract_authors_from_single_line(page)))
 
     if metadata.get("authors"):
         logging.info(f"{path} yielded {len(metadata['authors'])} authors")
