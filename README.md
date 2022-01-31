@@ -41,22 +41,25 @@ It provides a sample CLI interface to query the index.
 
 ### workflow
 
-1. crawl the site
-2. download the PDFs
-3. extract text from the PDFs
+1. crawl the site (adb_crawler.py or google_crawler.py [deprecated])
+2. download the PDFs (pdf_downloader.py)
+3. extract text from the PDFs (extract_metadata_and_content.py)
    1. author pages
-   2. whole document text
-4. apply NER to the text
-5. extract athors
-6. extract people extracted from the authors page with NER
-7. extract pepple recognized by NER in the whole document corpus
-8. per every person at 5, 6, 7, build
+   2. whole document text (FIXME: without author pages)
+4. apply NER to the text (extract_named_entities.py)
+   1. StanfordNER (done)
+   2. stanza (nice to have)
+   3. flair (nice to have)
+5. extract authors from authors page with regular expression (build_expertise_db.py)
+6. extract people extracted from the authors page with NER (build_expertise_db.py)
+7. extract pepple recognized by NER in the whole document corpus (build_expertise_db.py)
+8. per every person at 5, 6, 7, build (build_expertise_db.py)
    1. the list of documents where this person appears
    2. the list of keywords associated to the documents
    3. the list of documents where the person appears
    4. the list of all the texts where the person appears
    5. (wannabe) the list of titles of those documents
-9. index all the author documents to elasticsearch
+9. index all the author documents to elasticsearch (index_documents.py)
 
 the script `index.py` is supposed to complete this workflow.
 
