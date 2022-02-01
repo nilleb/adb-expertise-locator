@@ -53,6 +53,16 @@ if __name__ == "__main__":
     print(
         f"=> {len(stanford_ner_author_reports)} authors are mentioned in the reports analyzed with Stanford NER."
     )
+    snset = set(stanford_ner_author_reports.keys())
+    rxset = set(author_reports.keys())
+    print(f"=> the intersection has {len(rxset.intersection(snset))} items")
+    print("=> the first ten elements in regex that can not be found in stanford ner")
+    for item in list(rxset.difference(snset))[:10]:
+        print(item)
+    print("=> the first ten elements in stanford ner that can not be found in regex")
+    for item in list(snset.difference(rxset))[:10]:
+        print(item)
+
     data = {
         "authors_regex": author_reports,
         "authors_stanford_ner": stanford_ner_author_reports,
