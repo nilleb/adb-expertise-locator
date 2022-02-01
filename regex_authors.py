@@ -1,8 +1,8 @@
 import re
 import logging
-from operator import countOf
 from common.folder_processor import FolderProcessor
 from common.io import read_object, write_object
+from common.filters import is_valid_author_name
 
 AUTHOR_PAGE_DETECTOR = [
     "This report was prepared by a team consisting of",
@@ -76,12 +76,7 @@ def extract_authors_from_table(page):
         match = OPTIMIZED_PATTERN.match(line)
         if match:
             fullname = match.group("fullname").strip()
-            if (
-                len(fullname) > 50
-                or countOf(fullname, " ") > 4
-                or countOf(fullname, ".") > 4
-                or " " not in fullname
-            ):
+            if not is_valid_author_name(fullname):
                 continue
 
             author_dict = {
@@ -139,7 +134,11 @@ def test_file():
 
 def main(folders=None):
     if not folders:
-        folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
+        folders = [
+            "data/input/pdf-generic",
+            "data/input/technical",
+            "data/input/reports",
+        ]
     FolderProcessor(folders, "*.metadata.json", process_file).process_folders()
 
 
