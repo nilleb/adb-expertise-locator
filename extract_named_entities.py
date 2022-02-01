@@ -13,7 +13,7 @@ from common.io import write_object
 
 TAGGER = StanfordNERTagger(
     "data/models/stanford_ner/english.all.3class.distsim.crf.ser.gz",
-    "data/models/stanford_ner/stanford-ner-4.2.0.jar",
+    "data/models/stanford_ner/stanford-ner.jar",
     encoding="utf-8",
 )
 
