@@ -12,7 +12,7 @@
                 "filter": {
                     "graph_synonyms": {
                         "type": "synonym_graph",
-                        "synonyms": "test=tset"
+                        "synonyms": "jules=ivo;hugot=bellin salarin"
                     }
                 }
             }

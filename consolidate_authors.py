@@ -17,7 +17,7 @@ def add_or_update_author(
 
     links = author.get("links", [])
     links.append(filepath.replace(f".{PATTERNS[key]}.json", ""))
-    author["links"] = links
+    author["links"] = list(set(links))
 
     keywords = author.get("keywords", {})
     for keyword in metadata.get("keywords"):
@@ -66,6 +66,7 @@ def complete_author_document(fullname, document):
     number = int(encoded[6:12], 16)
     document["telephoneNumber"] = f"555-{number}"
     document["email"] = f"{uid}@adb.nilleb.com"
+    document["id"] = uid
 
 
 def main(folders=None):

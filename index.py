@@ -1,5 +1,3 @@
-import subprocess
-
 from . import (adb_crawler, consolidate_authors, extract_metadata_and_content,
                extract_named_entities, pdf_downloader, index_documents, regex_authors)
 
@@ -17,9 +15,6 @@ regex_authors.main(folders)  # generates .regex-authors.json
 extract_named_entities.main(folders)  # generates .stanford_ner.json
 consolidate_authors.main(folders)  # generates author information (fullname, links to documents, keywords)
 
-subprocess.call(['sh', './create-synonyms.sh'])
-
-index_documents.index_authors_documents("author")
-index_documents.index_authors_documents("person")
+index_documents.index_authors_documents("regex-authors")
 
 print("OK, now you are ready to launch query.py")

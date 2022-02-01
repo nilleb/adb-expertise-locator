@@ -1,7 +1,7 @@
 {
     "_source": {
         "includes": [
-            "author",
+            "fullname",
             "keywords.keyword",
             "keywords.count",
             "documents"
@@ -12,7 +12,7 @@
             "should": [
                 {
                     "match": {
-                        "author": {
+                        "fullname": {
                             "query": "{{query_string}}",
                             "boost": 2
                         }
@@ -20,7 +20,7 @@
                 },
                 {
                     "fuzzy": {
-                        "author": {"value": "{{query_string}}", "boost": 1.2}
+                        "fullname": {"value": "{{query_string}}", "boost": 1.2}
                     }
                   },
                           {
@@ -67,7 +67,7 @@
         "text": "{{query_string}}",
         "suggest-1": {
             "term": {
-                "field": "author"
+                "field": "fullname"
             }
         },
         "suggest-2": {
