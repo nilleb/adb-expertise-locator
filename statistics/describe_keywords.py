@@ -17,9 +17,15 @@ class Keyword(object):
             self.related_keywords_distribution[keyword] += 1
 
 
-def split(value):
+def split_keyword(value):
     return re.split("[,;]", value)
 
+
+def split_keywords(metadata):
+    return [
+        keyword.strip()
+        for keyword in split_keyword(metadata.get("metadata", {}).get("Keywords", ""))
+    ]
 
 DATA = {
     "documents_without_keywords": [],
@@ -34,10 +40,7 @@ def process_single_file(path):
     except:
         return
 
-    document_keywords = [
-        keyword.strip()
-        for keyword in split(metadata.get("metadata", {}).get("Keywords", ""))
-    ]
+    document_keywords = split_keywords(metadata)
     document_keywords = [keyword.lower() for keyword in document_keywords if keyword]
     if not document_keywords:
         DATA["documents_without_keywords"].append(path)
@@ -47,23 +50,12 @@ def process_single_file(path):
         kd.count += 1
         kd.add_related(document_keywords)
         keywords_data[keyword] = kd
+
     DATA["keywords_distribution"] = keywords_data
     DATA["analyzed_documents_count"] += 1
 
 
-analysis_path = "keywords_distribution.json"
-
-try:
-    data = read_object(analysis_path)
-except:
-    folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
-    FolderProcessor(folders, "*.metadata.json", process_single_file).process_folders()
-    write_object(DATA, analysis_path, cls=MyEncoder)
-    print("please execute this script once again")
-    sys.exit(0)
-
-
-def keywords_count():
+def keywords_count(data):
     for a, b in sorted(
         data.get("keywords_distribution").items(),
         key=lambda kv: (kv[1]["count"], kv[0]),
@@ -72,17 +64,40 @@ def keywords_count():
             print(f"{b['count']}, {a}")
 
 
-def related(keyword):
+def related(data, keyword):
     dico = data["keywords_distribution"][keyword]["related_keywords_distribution"]
     for a, b in sorted(dico.items(), key=lambda kv: (kv[1], kv[0])):
         print(f"{a}, {b}")
 
 
-keywords_count()
-# print('*** keywords related to "china" ***')
-# related("china")
-# print(f"we analyzed {data['analyzed_documents_count']} documents, but {len(data['documents_without_keywords'])} had no keywords")
-print(
-    f"word cloud built upon {data['analyzed_documents_count'] - len(data['documents_without_keywords'])} documents"
-)
-print(f"{len(data['keywords_distribution'].keys())} keywords")
+def main(folders=None):
+    analysis_path = "data/intermediate/describe/keywords_distribution.json"
+
+    try:
+        data = read_object(analysis_path)
+    except:
+        if not folders:
+            folders = [
+                "data/input/pdf-generic",
+                "data/input/technical",
+                "data/input/reports",
+            ]
+        FolderProcessor(
+            folders, "*.metadata.json", process_single_file
+        ).process_folders()
+        write_object(DATA, analysis_path, cls=MyEncoder)
+        print("please execute this script once again")
+        sys.exit(0)
+
+    keywords_count(data)
+    # print('*** keywords related to "china" ***')
+    # related("china")
+    # print(f"we analyzed {data['analyzed_documents_count']} documents, but {len(data['documents_without_keywords'])} had no keywords")
+    print(
+        f"word cloud built upon {data['analyzed_documents_count'] - len(data['documents_without_keywords'])} documents"
+    )
+    print(f"{len(data['keywords_distribution'].keys())} keywords")
+
+
+if __name__ == "__main__":
+    main()

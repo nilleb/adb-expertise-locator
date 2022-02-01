@@ -1,6 +1,6 @@
 import subprocess
 
-from . import (adb_crawler, build_expertise_db, extract_metadata_and_content,
+from . import (adb_crawler, consolidate_authors, extract_metadata_and_content,
                extract_named_entities, pdf_downloader, index_documents, regex_authors)
 
 # I am preferring the adb website as a source because Google has lots of duplicates
@@ -14,9 +14,8 @@ folders = kinds_addresses_map.keys()
 
 extract_metadata_and_content.main(folders)  # generates .metadata.json
 regex_authors.main(folders)  # generates .regex-authors.json
-extract_named_entities.main(folders)  # generates .classified.json
-
-build_expertise_db.build_people_indexes(folders)  # generates author_documents and person_documents
+extract_named_entities.main(folders)  # generates .stanford_ner.json
+consolidate_authors.main(folders)  # generates author information (fullname, links to documents, keywords)
 
 subprocess.call(['sh', './create-synonyms.sh'])
 

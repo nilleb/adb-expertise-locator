@@ -8,6 +8,10 @@ stanford_ner_author_reports = defaultdict(list)
 
 def process_file(filepath):
     metadata = read_object(filepath)
+    process_single_object(metadata, filepath)
+
+
+def process_single_object(metadata, filepath):
     for author in metadata.get("authors"):
         author_reports[author.get("fullname")].append(filepath)
     for author in metadata.get("stanford_ner_authors"):
@@ -18,7 +22,16 @@ def sort_dictionary_values(dico, fun=len):
     return sorted(dico.items(), key=lambda kv: (fun(kv[1]), kv[0]))
 
 
+def get_stanford_ner_authors():
+    return stanford_ner_author_reports
+
+
+def get_regex_authors():
+    return author_reports
+
+
 if __name__ == "__main__":
+    print("this analysis is performed on *.stanford_ner.json documents")
     folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
     FolderProcessor(folders, "*.stanford_ner.json", process_file).process_folders()
 

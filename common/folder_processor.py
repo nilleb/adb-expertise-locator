@@ -2,6 +2,21 @@ import logging
 import os
 import glob
 
+from .io import read_object
+
+from configuration import configuration
+
+DEFAULT_FOLDERS = configuration.get("folder_processor", {}).get("folders", [])
+
+
+def process_single_file_holder(fun=None):
+    def process_single_file(filepath):
+        if fun:
+            metadata = read_object(filepath)
+            fun(metadata)
+
+    return process_single_file
+
 
 class FolderProcessor(object):
     def __init__(self, folders, pattern, process_single_file) -> None:
