@@ -1,4 +1,5 @@
 pdfminer.six
+pdfplumber
 prompt_toolkit
 requests
 python-slugify
