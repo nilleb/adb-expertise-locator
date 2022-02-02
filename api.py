@@ -157,7 +157,7 @@ def prepare_result(hit):
     result = {
         "uid": uid,
         "score": hit.get("_score"),
-        "title": hit["_source"].get("author", "unknown"),
+        "title": hit["_source"].get("fullname", "unknown"),
         "highlight": get_highlight(hit),
         "source": json.dumps(source),
         "kind": hit["_source"].get("kind", "author"),
@@ -173,7 +173,7 @@ def prepare_source(uid, source):
         source["telephoneNumber"] = f"555-{number}"
     if not source.get("email"):
         source["email"] = f"{uid}@adb.nilleb.com"
-    source["documents"] = prepare_documents(source.get("documents", []))
+    source["documents"] = prepare_documents(source.get("links", []))
     print(source)
     return source
 
