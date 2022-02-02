@@ -51,7 +51,7 @@ export default {
       KnowledgeService.getDocument(uid).then((response) => {
         const source = JSON.parse(response.source);
         this.content = syntaxHighlight(JSON.stringify(source, undefined, 2));
-        this.author = source.author;
+        this.author = source.fullname;
       });
     },
   },
