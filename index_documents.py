@@ -1,26 +1,54 @@
 import logging
-import sys
 import os
-from common.io import read_object
+import sys
+import re
 
-from configuration import LIMIT
 from backends.es import create_indexer
+from common.io import read_object
+from configuration import LIMIT
 from regex_authors import is_author_page
+
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 
 logging.basicConfig(level=logging.INFO)
 
+# import urllib3
+# urllib3.disable_warnings()
 
 DOCUMENTS_SOURCE_FORMAT = "data/output/{what}.json"
 
 idx = create_indexer()
 
+stop_words = set(stopwords.words("english"))
+
+
+def exclude_stop_words(text):
+    word_tokens = word_tokenize(text)
+    filtered_sentence = [w for w in word_tokens if not w.lower() in stop_words]
+    return " ".join(filtered_sentence)
+
+
+def lemmatize(text):
+    lemma = nltk.wordnet.WordNetLemmatizer()
+    word_tokens = word_tokenize(text)
+    return " ".join([lemma.lemmatize(w) for w in word_tokens])
+
+
+def squeeze(text):
+    return re.sub("\s+", " ", text)
+
 
 def shorten(texts):
+    residual_len = LIMIT - 1
     for text in texts:
-        cut = len(text) - LIMIT
-        if cut > 0:
-            text[:-cut]
-        yield text
+        text = exclude_stop_words(squeeze(text))
+        logging.info(len(text))
+        yield text[:residual_len]
+        residual_len -= len(text)
+        if residual_len < 0:
+            return
 
 
 def pages_after_author_page(path, doc):
@@ -70,6 +98,16 @@ def get_links(filenames):
     return [get_report(filename) for filename in filenames]
 
 
+def index_single_document(document):
+    es_document = dict(document)
+    filenames = get_filenames(es_document["links"])
+    es_document["texts"] = list(prepare_texts(es_document["links"]))
+    es_document["links"] = get_links(filenames)
+    es_document["texts_cut"] = list(shorten(es_document["texts"]))
+    es_document["keywords"] = list(prepare_keywords(es_document["keywords"]))
+    idx.index_single_document(es_document)
+
+
 def index_authors_documents(what):
     idx.setup_index()
 
@@ -77,16 +115,8 @@ def index_authors_documents(what):
 
     logging.info(f"{len(author_documents)} total documents loaded")
 
-    count = 0
-    for document in author_documents.values():
-        es_document = dict(document)
-        filenames = get_filenames(es_document["links"])
-        es_document["texts"] = list(prepare_texts(es_document["links"]))
-        es_document["links"] = get_links(filenames)
-        es_document["texts_cut"] = list(shorten(es_document["texts"]))
-        es_document["keywords"] = list(prepare_keywords(es_document["keywords"]))
-        idx.index_single_document(es_document)
-        count += 1
+    for count, document in enumerate(author_documents.values()):
+        index_single_document(document)
 
     logging.info(f"{count} documents indexed.")
 
@@ -95,5 +125,14 @@ if __name__ == "__main__":
     what = sys.argv[-1]
     if what in ("regex-authors", "stanford_ner"):
         index_authors_documents(what)
+    elif what:
+        author_documents = read_object(
+            DOCUMENTS_SOURCE_FORMAT.format(what="regex-authors")
+        )
+        document = author_documents.get(what)
+        if document:
+            index_single_document(document)
+        else:
+            logging.error(f"not found: {what}")
     else:
         print("please specify one of (regex-authors, stanford_ner)")
