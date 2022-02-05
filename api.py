@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import uuid
+import secrets
 from typing import List, Optional
 
 from fastapi import FastAPI, Request
@@ -127,9 +128,11 @@ def get_highlight(hit):
 
 
 def prepare_response(query, res):
+    total = res["hits"]["total"]
+    total = total.get("value") if isinstance(total, dict) else total
     response = {
         "query": query,
-        "total": res["hits"]["total"]["value"],
+        "total": total,
     }
     suggestions = set()
     for suggestion in res["suggest"]["suggest-1"]:

@@ -55,7 +55,6 @@
     },
     "highlight": {
         "require_field_match": false,
-        "max_analyzed_offset": 10000,
         "fields": {
             "texts_cut": {
                 "pre_tags": "<strong>",

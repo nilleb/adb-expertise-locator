@@ -6,7 +6,10 @@
                 "analyzer": {
                     "search_synonyms": {
                         "tokenizer": "whitespace",
-                        "filter": ["lowercase", "graph_synonyms"]
+                        "filter": [
+                            "lowercase",
+                            "graph_synonyms"
+                        ]
                     }
                 },
                 "filter": {
@@ -19,12 +22,19 @@
         }
     },
     "mappings": {
-        "properties": {
-            "keywords": {
-                "type": "nested",
-                "properties": {
-                    "keyword": {"type": "keyword", "ignore_above": 256},
-                    "count": {"type": "float"}
+        "_doc": {
+            "properties": {
+                "keywords": {
+                    "type": "nested",
+                    "properties": {
+                        "keyword": {
+                            "type": "keyword",
+                            "ignore_above": 256
+                        },
+                        "count": {
+                            "type": "float"
+                        }
+                    }
                 }
             }
         }
