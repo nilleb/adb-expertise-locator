@@ -39,8 +39,8 @@ Content-Type: application/json
 
 {
       "_source": {
-        "include": [ "fullname" ],
-        "exclude": [ "texts", "texts_cut" ]
+        "includes": [ "fullname" ],
+        "excludes": [ "texts", "texts_cut" ]
     },
   "query": {
     "match_all": {}
@@ -57,7 +57,7 @@ DELETE {{address}}/s_adb_people_v1/_doc/None
 
 ###
 # test the software 
-@query_string = fragile
+@query_string = fragile economy
 
 GET {{address}}/s_adb_people_v1/_search
 Content-Type: application/json

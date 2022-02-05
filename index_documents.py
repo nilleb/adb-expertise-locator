@@ -14,8 +14,8 @@ from nltk.tokenize import word_tokenize
 
 logging.basicConfig(level=logging.INFO)
 
-# import urllib3
-# urllib3.disable_warnings()
+import urllib3
+urllib3.disable_warnings()
 
 DOCUMENTS_SOURCE_FORMAT = "data/output/{what}.json"
 
@@ -46,7 +46,7 @@ def shorten(texts):
         text = exclude_stop_words(squeeze(text))
         logging.info(len(text))
         yield text[:residual_len]
-        residual_len -= len(text)
+        residual_len -= len(text) + 1
         if residual_len < 0:
             return
 
