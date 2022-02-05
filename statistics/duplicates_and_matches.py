@@ -41,17 +41,20 @@ print(f"=> we found {duplicates_count} duplicates")
 # David E, 3: E. David = David Elzinga = Edwin David
 # George L, 3: George Luarsabishvili = L. George = Len George
 # Xu Y, 3: Ye Xu = Yi Xu = Y. Xu
+# {'Meenakshi Aggarwal', 'Meenakshi Ajmera'}
+
 
 other_db_fullnames = set()
 
 
 def process_single_file(filepath):
     wd = read_object(filepath)
-    fullname = f"{wd.get('firstName')} {wd.get('lastName')}"
-    other_db_fullnames.add(fullname)
+    if isinstance(wd, dict):
+        fullname = f"{wd.get('firstName')} {wd.get('lastName')}"
+        other_db_fullnames.add(fullname)
 
 
-FolderProcessor("data/input/linkedin", "*.json", process_single_file).process_folders()
+FolderProcessor(["data/linkedin"], "*.json", process_single_file).process_folders()
 
 other_db_mutations = defaultdict(set)
 
@@ -61,8 +64,16 @@ for name in other_db_fullnames:
 
 common_mutations = set(other_db_mutations.keys()).intersection(set(mutations.keys()))
 if common_mutations:
-    print(
-        f"in the secondary database we found {len(common_mutations)} matching fullnames"
-    )
+    print(f"in the secondary database we found some matching mutations.")
+# there is high probablity that a matching mutation identifies the same person
+# but the probability of error is not null
+visited_fullnames = set()
+count = 0
 for mutation in common_mutations:
-    print(f"{other_db_mutations[mutation]} = {mutations[mutation]}")
+    for fullname in other_db_mutations[mutation]:
+        if fullname not in visited_fullnames:
+            visited_fullnames.add(fullname)
+            print(f"{other_db_mutations[mutation]} = {mutations[mutation]}")
+            count += 1
+
+print(f"{count} distinct matching fullnames")
