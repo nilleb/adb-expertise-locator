@@ -1,6 +1,8 @@
+import ssl
 import logging
 from elasticsearch import Elasticsearch
 from elasticsearch.exceptions import RequestError
+from elasticsearch.connection import create_ssl_context
 
 from configuration import (
     ES_INDEX_NAME,
@@ -8,6 +10,12 @@ from configuration import (
     DEFAULT_INDEX_SETTINGS,
     compose_query,
 )
+
+def create_es_connection():
+    context = create_ssl_context(cafile="configuration/ca.pem")
+    context.check_hostname = False
+    context.verify_mode = ssl.CERT_NONE
+    return Elasticsearch([ES_SERVER_ADDRESS], ssl_context=context, timeout=60)
 
 
 class ElasticSearchIndexer(object):
@@ -18,7 +26,7 @@ class ElasticSearchIndexer(object):
         self.index_settings = index_settings
 
     def setup_index(self):
-        es = Elasticsearch([ES_SERVER_ADDRESS])
+        es = create_es_connection()
         try:
             es.indices.create(index=self.index_name, body=self.index_settings)
         except RequestError as re:
@@ -28,7 +36,7 @@ class ElasticSearchIndexer(object):
     def index_single_document(self, document):
         doc_id = document.get("id")
         doc_uri = f"{self.server_address}/{self.index_name}/_doc/{doc_id}"
-        es = Elasticsearch([ES_SERVER_ADDRESS], timeout=600)
+        es = create_es_connection()
         try:
             es.index(index=self.index_name, document=document, id=doc_id)
         except:
@@ -42,7 +50,7 @@ def create_indexer():
 
 
 def search(query):
-    es = Elasticsearch([ES_SERVER_ADDRESS])
+    es = create_es_connection()
     body = compose_query(query)
     return es.search(
         index=ES_INDEX_NAME,
@@ -51,7 +59,7 @@ def search(query):
 
 
 def document(uid):
-    es = Elasticsearch([ES_SERVER_ADDRESS])
+    es = create_es_connection()
     return es.get(
         id=uid,
         index=ES_INDEX_NAME,
