@@ -15,6 +15,7 @@ from nltk.tokenize import word_tokenize
 logging.basicConfig(level=logging.INFO)
 
 import urllib3
+
 urllib3.disable_warnings()
 
 DOCUMENTS_SOURCE_FORMAT = "data/output/{what}.json"
@@ -99,6 +100,8 @@ def get_links(filenames):
 
 
 def index_single_document(document):
+    if idx.document_exists(document.get("id")):
+        return
     es_document = dict(document)
     filenames = get_filenames(es_document["links"])
     es_document["texts"] = list(prepare_texts(es_document["links"]))
