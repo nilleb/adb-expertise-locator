@@ -33,6 +33,10 @@ class ElasticSearchIndexer(object):
             if re.error != 'resource_already_exists_exception':
                 raise
 
+    def document_exists(self, doc_id):
+        es = create_es_connection()
+        return es.exists(self.index_name, doc_id)
+
     def index_single_document(self, document):
         doc_id = document.get("id")
         doc_uri = f"{self.server_address}/{self.index_name}/_doc/{doc_id}"
