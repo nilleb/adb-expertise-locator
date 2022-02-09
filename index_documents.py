@@ -3,8 +3,8 @@ import os
 import sys
 import re
 
-from backends.es import create_indexer
-from common.io import read_object
+from backends.es import IndexingException, create_indexer
+from common.io import read_object, write_object
 from configuration import LIMIT
 from regex_authors import is_author_page
 
@@ -111,6 +111,34 @@ def index_single_document(document):
     idx.index_single_document(es_document)
 
 
+REMEMBER_PATH = "data/intermediate/indexed_documents.json"
+try:
+    INDEXED_DOCUMENTS = set(read_object(REMEMBER_PATH))
+except:
+    INDEXED_DOCUMENTS = set()
+
+
+def should_process(document):
+    return document["id"] not in INDEXED_DOCUMENTS
+
+
+def remember(document):
+    INDEXED_DOCUMENTS.add(document["id"])
+    write_object(list(INDEXED_DOCUMENTS), REMEMBER_PATH)
+
+
+REMEMBER_ERRORS_PATH = "data/intermediate/failed_indexing_documents.json"
+try:
+    FAILED_DOCUMENTS = set(read_object(REMEMBER_ERRORS_PATH))
+except:
+    FAILED_DOCUMENTS = set()
+
+
+def remember_error(document):
+    FAILED_DOCUMENTS.add(document["id"])
+    write_object(list(FAILED_DOCUMENTS), REMEMBER_ERRORS_PATH)
+
+
 def index_authors_documents(what):
     idx.setup_index()
 
@@ -119,9 +147,14 @@ def index_authors_documents(what):
     logging.info(f"{len(author_documents)} total documents loaded")
 
     for count, document in enumerate(author_documents.values()):
-        index_single_document(document)
+        if should_process(document):
+            try:
+                index_single_document(document)
+                remember(document)
+            except IndexingException:
+                remember_error(document)
 
-    logging.info(f"{count} documents indexed.")
+    logging.info(f"{count + 1} documents indexed.")
 
 
 if __name__ == "__main__":

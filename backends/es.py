@@ -1,8 +1,9 @@
 import ssl
 import logging
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, TransportError
 from elasticsearch.exceptions import RequestError
 from elasticsearch.connection import create_ssl_context
+from elasticsearch_dsl import Search
 
 from configuration import (
     ES_INDEX_NAME,
@@ -11,11 +12,18 @@ from configuration import (
     compose_query,
 )
 
+
 def create_es_connection():
     context = create_ssl_context(cafile="configuration/ca.pem")
     context.check_hostname = False
     context.verify_mode = ssl.CERT_NONE
     return Elasticsearch([ES_SERVER_ADDRESS], ssl_context=context, timeout=60)
+
+
+class IndexingException(Exception):
+    def __init__(self, exception, *args: object) -> None:
+        self.inner_exception = exception
+        super().__init__(*args)
 
 
 class ElasticSearchIndexer(object):
@@ -30,12 +38,22 @@ class ElasticSearchIndexer(object):
         try:
             es.indices.create(index=self.index_name, body=self.index_settings)
         except RequestError as re:
-            if re.error != 'resource_already_exists_exception':
+            if re.error != "resource_already_exists_exception":
                 raise
 
     def document_exists(self, doc_id):
         es = create_es_connection()
-        return es.exists(self.index_name, doc_id)
+        try:
+            return es.exists(self.index_name, doc_id)
+        except TransportError:
+            return False
+
+    def all_document_ids(self):
+        # heap insufficient with 2G of ram
+        es = create_es_connection()
+        s = Search(using=es, index=self.index_name)
+        s.source([])
+        return [h.meta.id for h in s.scan()]
 
     def index_single_document(self, document):
         doc_id = document.get("id")
@@ -43,8 +61,9 @@ class ElasticSearchIndexer(object):
         es = create_es_connection()
         try:
             es.index(index=self.index_name, document=document, id=doc_id)
-        except:
+        except Exception as ex:
             logging.exception(doc_uri)
+            raise IndexingException(ex)
 
 
 def create_indexer():
