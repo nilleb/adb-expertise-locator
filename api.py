@@ -1,3 +1,4 @@
+from datetime import datetime
 import hashlib
 import json
 import logging
@@ -125,6 +126,7 @@ def _signal(verb, query, document_uid, description):
     document["query"] = query
     document["document_uid"] = document_uid
     document["description"] = description
+    document["timestamp"] = datetime.utcnow()
     indexer = create_indexer("signal")
     indexer.setup_index()
     indexer.index_single_document(document)
