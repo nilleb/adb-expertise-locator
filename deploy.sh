@@ -5,6 +5,7 @@ popd
 mkdir /tmp/app
 cp requirements.txt /tmp/app
 cp api.py /tmp/app
+cp nltk.txt /tmp/app
 cp -R backends /tmp/app
 cp -R configuration /tmp/app
 rm -rf /tmp/app/ui

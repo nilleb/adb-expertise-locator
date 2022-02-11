@@ -117,18 +117,28 @@ async def get_document(uid: str) -> SearchResult:
     return prepare_result(res)
 
 
-@app.post("/api/v1/signal")
-async def signal(payload: SignalRequest) -> None:
-    signalling = dict(payload.dict())
-    uid = context.data.get("X-Session-ID", str(uuid.uuid4()))
-    document = {"id": uid}
-    document["verb"] = signalling["verb"]
-    document["query"] = signalling.get("query", "")
-    document["document_uid"] = signalling.get("uid", "")
-    document["description"] = signalling.get("description", "")
+def _signal(verb, query, document_uid, description):
+    session_id = context.data.get("X-Session-ID", str(uuid.uuid4()))
+    uid = context.data.get("X-Request-ID", str(uuid.uuid4()))
+    document = {"id": uid, "session_id": session_id}
+    document["verb"] = verb
+    document["query"] = query
+    document["document_uid"] = document_uid
+    document["description"] = description
     indexer = create_indexer("signal")
     indexer.setup_index()
     indexer.index_single_document(document)
+
+
+@app.post("/api/v1/signal")
+async def signal(payload: SignalRequest) -> None:
+    signalling = dict(payload.dict())
+    _signal(
+        signalling["verb"],
+        signalling.get("query", ""),
+        signalling.get("uid", ""),
+        signalling.get("description", ""),
+    )
     track("signal", signalling, None)
 
 
@@ -139,6 +149,7 @@ def track(path, params, response):
 @app.post("/api/v1/search")
 async def search(payload: SearchQuery) -> SearchResponse:
     res = es_search(payload.query)
+    _signal("search", payload.query, None, None)
     track("search", payload.query, res)
     return prepare_response(payload.query, res)
 

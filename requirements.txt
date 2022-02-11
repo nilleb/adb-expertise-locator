@@ -5,6 +5,7 @@ requests
 python-slugify
 googlesearch-python
 elasticsearch
+elasticsearch_dsl
 bs4
 nltk
 pyyaml
