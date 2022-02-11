@@ -2,6 +2,16 @@
 
 ###
 
+GET {{address}}/signal/_search
+Content-Type: application/json
+
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+###
 GET {{address}}/_cat/indices
 
 ###

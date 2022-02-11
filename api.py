@@ -6,7 +6,7 @@ import uuid
 import secrets
 from typing import List, Optional
 
-from fastapi import FastAPI, Request
+from fastapi import Depends, FastAPI, Request
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Json
@@ -16,9 +16,25 @@ from starlette_context import context, plugins
 from starlette_context.middleware import RawContextMiddleware
 from starlette_context.plugins.base import PluginUUIDBase
 from fastapi.staticfiles import StaticFiles
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
-from backends.es import document
+from backends.es import create_indexer, document
 from backends.es import search as es_search
+
+
+security = HTTPBasic()
+
+
+def get_current_username(credentials: HTTPBasicCredentials = Depends(security)):
+    correct_username = secrets.compare_digest(credentials.username, "stanleyjobson")
+    correct_password = secrets.compare_digest(credentials.password, "swordfish")
+    if not (correct_username and correct_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    return credentials.username
 
 
 class SessionIDPlugin(PluginUUIDBase):
@@ -103,7 +119,17 @@ async def get_document(uid: str) -> SearchResult:
 
 @app.post("/api/v1/signal")
 async def signal(payload: SignalRequest) -> None:
-    track("signal", payload.dict(), None)
+    signalling = dict(payload.dict())
+    uid = context.data.get("X-Session-ID", str(uuid.uuid4()))
+    document = {"id": uid}
+    document["verb"] = signalling["verb"]
+    document["query"] = signalling.get("query", "")
+    document["document_uid"] = signalling.get("uid", "")
+    document["description"] = signalling.get("description", "")
+    indexer = create_indexer("signal")
+    indexer.setup_index()
+    indexer.index_single_document(document)
+    track("signal", signalling, None)
 
 
 def track(path, params, response):

@@ -66,10 +66,11 @@ class ElasticSearchIndexer(object):
             raise IndexingException(ex)
 
 
-def create_indexer():
-    return ElasticSearchIndexer(
-        ES_SERVER_ADDRESS, ES_INDEX_NAME, DEFAULT_INDEX_SETTINGS
-    )
+def create_indexer(index=None):
+    if not index:
+        index = ES_INDEX_NAME
+
+    return ElasticSearchIndexer(ES_SERVER_ADDRESS, index, DEFAULT_INDEX_SETTINGS)
 
 
 def search(query):
