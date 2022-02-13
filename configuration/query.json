@@ -4,7 +4,9 @@
             "fullname",
             "keywords.keyword",
             "keywords.count",
-            "links"
+            "links",
+            "role",
+            "organization"
         ]
     },
     "query": {

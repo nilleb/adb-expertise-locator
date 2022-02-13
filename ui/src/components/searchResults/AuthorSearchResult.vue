@@ -1,59 +1,83 @@
 <template>
-<div>
-  <div style="display: flex">
-    <div class="search-result-textual" @keypress="onKeypress">
-      <h2 style="display: inline">
-        <a
-          :href="`view?uid=${result.uid}`"
-          class="tiptext"
-          @mouseover="isVisible = true"
-          @mouseout="isVisible = false"
-          @click="signalClick(result.uid)"
-          >{{ result.title }}
-          <iframe
-            v-if="isVisible"
-            class="description"
-            :src="`view?uid=${result.uid}`"
-          ></iframe
-        ></a>
-      </h2>
-      ({{ result.score }})
-      <span @click="signalEdit(result.uid)" v-if="displayActions" class="action"
-        >✏️</span
-      >
-      <span
-        @click="signalDelete(result.uid)"
-        v-if="displayActions"
-        class="action"
-        >❌</span
-      >
-      <span @click="signalHide(result.uid)" v-if="displayActions" class="action"
-        >🙈</span
-      >
-      <span
-        @click="signalBoost(result.uid)"
-        v-if="displayActions"
-        class="action"
-        >➕</span
-      >
-      <p>📞 <a :href="'tel:'+result.source.telephoneNumber">{{result.source.telephoneNumber}}</a> 📧 <a :href="'mailto:' + result.source.email">{{result.source.email}}</a></p>
-      <p v-html="result.highlight"></p>
-      🔑 <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
-        <i>{{ keyword.keyword }}</i> ({{ keyword.count }}),
-      </span>
-      <br>
-      📚
-      <span v-for="document in result.source.documents" :key="document">
-        <a :href="document">{{ document.replace(/^.*\/|\.[^.]*$/g, '') }}</a>,
-      </span>
-      <br />
+  <div>
+    <div style="display: flex">
+      <div class="search-result-textual" @keypress="onKeypress">
+        <h2 style="display: inline">
+          <a
+            :href="`view?uid=${result.uid}`"
+            class="tiptext"
+            @mouseover="isVisible = true"
+            @mouseout="isVisible = false"
+            @click="signalClick(result.uid)"
+            >{{ result.title }}
+            <iframe
+              v-if="isVisible"
+              class="description"
+              :src="`view?uid=${result.uid}`"
+            ></iframe
+          ></a>
+        </h2>
+        ({{ result.score }})
+        <span
+          @click="signalEdit(result.uid)"
+          v-if="displayActions"
+          class="action"
+          >✏️</span
+        >
+        <span
+          @click="signalDelete(result.uid)"
+          v-if="displayActions"
+          class="action"
+          >❌</span
+        >
+        <span
+          @click="signalHide(result.uid)"
+          v-if="displayActions"
+          class="action"
+          >🙈</span
+        >
+        <span
+          @click="signalBoost(result.uid)"
+          v-if="displayActions"
+          class="action"
+          >➕</span
+        >
+        <p v-if="result.source.role || result.source.organization">
+          🎩
+          <span v-if="result.source.role">{{ result.source.role }}</span>,
+          <span v-if="result.source.organization">{{
+            result.source.organization
+          }}</span>
+        </p>
+        <p>
+          📞
+          <a :href="'tel:' + result.source.telephoneNumber">{{
+            result.source.telephoneNumber
+          }}</a>
+          📧
+          <a :href="'mailto:' + result.source.email">{{
+            result.source.email
+          }}</a>
+        </p>
+        <p v-html="result.highlight"></p>
+        🔑
+        <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
+          <i>{{ keyword.keyword }}</i> ({{ keyword.count }}),
+        </span>
+        <br />
+        📚
+        <span v-for="document in result.source.documents" :key="document.path">
+          <a :href="document.url">{{ document.title }}</a
+          >,
+        </span>
+        <br />
+      </div>
+      <div class="search-result-preview">
+        <img :src="result.previewImage" height="150" />
+      </div>
     </div>
-    <div class="search-result-preview">
-      <img :src="result.previewImage" height="150"/>
-    </div>
+    <p>&nbsp;</p>
   </div>
-  <p>&nbsp;</p>
-</div>
 </template>
 
 <script>

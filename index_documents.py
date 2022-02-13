@@ -100,8 +100,6 @@ def get_links(filenames):
 
 
 def index_single_document(document):
-    if idx.document_exists(document.get("id")):
-        return
     es_document = dict(document)
     filenames = get_filenames(es_document["links"])
     es_document["texts"] = list(prepare_texts(es_document["links"]))

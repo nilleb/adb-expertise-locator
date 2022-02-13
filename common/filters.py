@@ -7,3 +7,6 @@ def is_valid_author_name(fullname):
         and countOf(fullname, ".") < 5
         and " " in fullname
     )
+
+def strip_unwanted(title):
+    return title.replace(': Report and Recommendation of the President', '')

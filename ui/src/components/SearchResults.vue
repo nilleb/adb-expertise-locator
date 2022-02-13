@@ -13,7 +13,7 @@
         </li>
       </ul>
     </div>
-    <div class="search-results-list-footer" v-if="searchResults">
+    <div class="search-results-list-footer" v-if="searchResults.length > 0">
       Photos by <a href="https://generated.photos/">Generated Photos</a>
     </div>
   </div>

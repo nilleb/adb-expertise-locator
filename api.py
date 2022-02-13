@@ -23,6 +23,35 @@ from backends.es import create_indexer, document
 from backends.es import search as es_search
 from common.io import read_object
 
+try:
+    FACES_URLS = read_object("data/faces/all_faces_urls.json")
+except:
+    FACES_URLS = []
+
+try:
+    REPORTS_DATA = read_object("data/intermediate/documents.json")
+except:
+    REPORTS_DATA = {}
+
+ROLES = [
+    "Economist"
+    "Senior economist",
+    "Principal economist",
+    "Director",
+    "Transport specialist",
+    "Senior Transport specialist",
+    "Principal Transport specialist",
+    "Safeguard specialist",
+    "Senior Safeguard specialist",
+    "Principal Safeguard specialist",
+    "Human resources specialist",
+    "Senior Human resources specialist",
+    "Principal Human resources specialist",
+    "Energy specialist",
+    "Senior Energy specialist",
+    "Principal Energy specialist",
+]
+
 
 security = HTTPBasic()
 
@@ -205,25 +234,30 @@ def prepare_result(hit):
         "source": json.dumps(source),
         "kind": hit["_source"].get("kind", "author"),
         "urn": f"elasticsearch://{url}",
-        "previewImage": previewImage(uid),
+        "previewImage": previewImage(uid, hit["_source"]),
     }
     return result
 
 
-try:
-    FACES_URLS = read_object("data/faces/all_faces_urls.json")
-except:
-    FACES_URLS = []
-
-
-def previewImage(uid):
-    number = uid_to_number(uid)
-    return FACES_URLS[number % len(FACES_URLS)]
+def previewImage(uid, source):
+    profile_picture = source.get("profilePicture")
+    if profile_picture:
+        return profile_picture
+    return pseudo_random_choice(uid, FACES_URLS)
 
 
 def uid_to_number(uid):
     encoded = hashlib.md5(uid.encode("utf-8")).hexdigest()
     return int(encoded[6:12], 16)
+
+
+def pseudo_random_choice(uid, array):
+    number = uid_to_number(uid)
+    return array[number % len(array)]
+
+
+def random_role(uid):
+    return pseudo_random_choice(uid, ROLES)
 
 
 def prepare_source(uid, source):
@@ -232,33 +266,20 @@ def prepare_source(uid, source):
         source["telephoneNumber"] = f"555-{number}"
     if not source.get("email"):
         source["email"] = f"{uid}@adb.nilleb.com"
+    if not source.get("role"):
+        source["role"] = random_role(uid)
     source["documents"] = prepare_documents(source.get("links", []))
     return source
-
-
-def load_report_names():
-    with open("data/intermediate/sets.json") as fd:
-        sets = json.load(fd)
-    return {os.path.basename(path): path for path in sets.get("reports")}
-
-
-REPORT_NAMES = load_report_names()
 
 
 def prepare_documents(documents):
     filenames = [os.path.basename(document) for document in documents]
     filenames = list(set(filenames))
 
-    def short_id(filename):
-        return filename.split("-")[0]
+    def get_report_info(filename):
+        return REPORTS_DATA.get(filename, {})
 
-    def get_report(filename):
-        return REPORT_NAMES.get(
-            filename,
-            f"https://www.adb.org/sites/default/files/project-documents/{short_id(filename)}/{filename}",
-        )
-
-    return [get_report(filename) for filename in filenames]
+    return [get_report_info(filename) for filename in filenames]
 
 
 @app.route("/")
