@@ -6,7 +6,11 @@
             "keywords.count",
             "links",
             "role",
-            "organization"
+            "organization",
+            "profilePicture",
+            "linkedinProfileID",
+            "telephoneNumber",
+            "email"
         ]
     },
     "query": {
