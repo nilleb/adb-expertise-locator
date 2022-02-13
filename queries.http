@@ -1,8 +1,12 @@
 @address={{elasticSearchServerAddress}}
 
+# Photos by <a href="https://generated.photos/">Generated Photos</a>
+GET https://api.generated.photos/api/v1/faces?age=adult&emotion=joy&per_page=100&page=2
+Authorization: API-Key {{generatedPhotosApiKey}}
+
 ###
 
-GET {{address}}/signal/_search
+GET {{address}}/signal/_search?size=50
 Content-Type: application/json
 
 {
