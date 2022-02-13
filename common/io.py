@@ -7,6 +7,13 @@ def read_object(path):
         return json.load(fd)
 
 
+def safe_read_object(path, default=None):
+    try:
+        return read_object(path)
+    except:
+        return default
+
+
 def write_object(obj, path, cls=None):
     with open(path, "w") as fd:
         json.dump(obj, fd, cls=cls)

@@ -4,6 +4,7 @@ import sys
 import re
 
 from backends.es import IndexingException, create_indexer
+from common.constants import SETS_FILEPATH
 from common.io import read_object, write_object
 from configuration import LIMIT
 from regex_authors import is_author_page
@@ -73,7 +74,7 @@ def prepare_keywords(keywords):
 
 
 def load_report_names():
-    sets = read_object("data/intermediate/sets.json")
+    sets = read_object(SETS_FILEPATH)
     return {os.path.basename(path): path for path in sets.get("reports")}
 
 

@@ -6,12 +6,15 @@ import logging
 import requests
 from requests.exceptions import ChunkedEncodingError, SSLError
 
+from common.constants import SETS_FILEPATH
+from common.filters import should_be_downloaded
+
 logging.basicConfig(level=logging.INFO)
 
 
 def build_sets():
     try:
-        with open("data/intermediate/sets.json") as fd:
+        with open(SETS_FILEPATH) as fd:
             sets = json.load(fd)
 
     except:
@@ -27,7 +30,7 @@ def build_sets():
                         current.add(line.rstrip())
                     sets[filename] = list(current)
 
-        with open("data/intermediate/sets.json", "w") as fd:
+        with open(SETS_FILEPATH, "w") as fd:
             json.dump(sets, fd)
 
     return sets
@@ -76,7 +79,7 @@ def download_and_retry_once(key, urls):
 
 def filter_urls(urls):
     for url in urls:
-        if "rrp" in url:
+        if should_be_downloaded(url):
             yield url
 
 

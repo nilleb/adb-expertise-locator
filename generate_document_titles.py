@@ -1,11 +1,12 @@
 import logging
+from common.constants import SETS_FILEPATH
 from common.folder_processor import FolderProcessor
 from common.io import read_object, write_object
 from common.filters import strip_unwanted
 
 FILEPATH = "data/intermediate/documents.json"
 DATA = {}
-SETS = read_object("data/intermediate/sets.json")
+SETS = read_object(SETS_FILEPATH)
 REPORT_URLS = {path.split("/")[-1]: path for path in SETS.get("reports")}
 
 
