@@ -1,5 +1,6 @@
 <template>
-  <div>
+<div>
+  <div style="display: flex">
     <div class="search-result-textual" @keypress="onKeypress">
       <h2 style="display: inline">
         <a
@@ -48,12 +49,11 @@
       <br />
     </div>
     <div class="search-result-preview">
-      <img :src="result.previewImage" />
+      <img :src="result.previewImage" height="150"/>
     </div>
-    <!--pre>
-        {{ result }}
-    </pre-->
   </div>
+  <p>&nbsp;</p>
+</div>
 </template>
 
 <script>
@@ -125,5 +125,11 @@ export default {
 }
 .action {
   cursor: pointer;
+}
+.search-result-preview {
+  margin-left: auto;
+}
+img {
+  border-radius: 50%;
 }
 </style>

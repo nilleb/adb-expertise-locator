@@ -13,6 +13,8 @@ mkdir /tmp/app/ui
 cp -R ui/dist /tmp/app/ui/dist
 mkdir /tmp/app/data
 cp -R data/intermediate /tmp/app/data
+mkdir /tmp/app/data/faces
+cp data/faces/all_faces_urls.json /tmp/app/data/faces
 cp deploy/Procfile /tmp/app
 pushd /tmp/
 

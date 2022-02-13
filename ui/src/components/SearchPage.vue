@@ -4,7 +4,7 @@
     <p>&nbsp;</p>
     <div class="container" style="justify-content: center">
       <div>
-          disclaimer: all the personal data (telephone, email, ...) on this page is fake
+          disclaimer: all the personal data (telephone, email, photos, ...) on this page is fake
       </div>
     </div>
     <div class="container">

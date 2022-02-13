@@ -13,6 +13,9 @@
         </li>
       </ul>
     </div>
+    <div class="search-results-list-footer" v-if="searchResults">
+      Photos by <a href="https://generated.photos/">Generated Photos</a>
+    </div>
   </div>
 </template>
 

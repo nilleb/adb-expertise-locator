@@ -21,6 +21,7 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 from backends.es import create_indexer, document
 from backends.es import search as es_search
+from common.io import read_object
 
 
 security = HTTPBasic()
@@ -204,19 +205,34 @@ def prepare_result(hit):
         "source": json.dumps(source),
         "kind": hit["_source"].get("kind", "author"),
         "urn": f"elasticsearch://{url}",
+        "previewImage": previewImage(uid),
     }
     return result
 
 
+try:
+    FACES_URLS = read_object("data/faces/all_faces_urls.json")
+except:
+    FACES_URLS = []
+
+
+def previewImage(uid):
+    number = uid_to_number(uid)
+    return FACES_URLS[number % len(FACES_URLS)]
+
+
+def uid_to_number(uid):
+    encoded = hashlib.md5(uid.encode("utf-8")).hexdigest()
+    return int(encoded[6:12], 16)
+
+
 def prepare_source(uid, source):
     if not source.get("telephoneNumber"):
-        encoded = hashlib.md5(uid.encode("utf-8")).hexdigest()
-        number = int(encoded[6:12], 16)
+        number = uid_to_number(uid)
         source["telephoneNumber"] = f"555-{number}"
     if not source.get("email"):
         source["email"] = f"{uid}@adb.nilleb.com"
     source["documents"] = prepare_documents(source.get("links", []))
-    print(source)
     return source
 
 
