@@ -38,4 +38,4 @@ class FolderProcessor(object):
             else:
                 logging.info(f"skipping {folder}")
                 continue
-        self.process_folder(folder)
+            self.process_folder(folder)
