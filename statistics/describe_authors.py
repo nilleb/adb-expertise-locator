@@ -1,5 +1,5 @@
 from collections import defaultdict
-from common.folder_processor import FolderProcessor
+from common.folder_processor import DEFAULT_FOLDERS, FolderProcessor
 from common.io import read_object, write_object
 
 author_reports = defaultdict(list)
@@ -32,7 +32,7 @@ def get_regex_authors():
 
 if __name__ == "__main__":
     print("this analysis is performed on *.stanford_ner.json documents")
-    folders = ["data/input/pdf-generic", "data/input/technical", "data/input/reports"]
+    folders = DEFAULT_FOLDERS
     FolderProcessor(folders, "*.stanford_ner.json", process_file).process_folders()
 
     print("10 most cited authors (regex)")

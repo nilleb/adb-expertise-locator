@@ -1,6 +1,6 @@
 import logging
 from common.constants import SETS_FILEPATH
-from common.folder_processor import FolderProcessor
+from common.folder_processor import DEFAULT_FOLDERS, FolderProcessor
 from common.io import read_object, write_object
 from common.filters import strip_unwanted
 
@@ -30,11 +30,7 @@ def process_file(path):
 
 def main(folders=None):
     if not folders:
-        folders = [
-            "data/input/pdf-generic",
-            "data/input/technical",
-            "data/input/reports",
-        ]
+        folders = DEFAULT_FOLDERS
     FolderProcessor(folders, "*.metadata.json", process_file).process_folders()
     write_object(DATA, FILEPATH)
 

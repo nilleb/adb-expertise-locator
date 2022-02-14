@@ -1,6 +1,6 @@
 import re
 import logging
-from common.folder_processor import FolderProcessor
+from common.folder_processor import DEFAULT_FOLDERS, FolderProcessor
 from common.io import read_object, write_object
 from common.filters import is_valid_author_name
 
@@ -12,12 +12,16 @@ AUTHOR_PAGE_DETECTOR = [
 
 DOCUMENT_ROLE_PATTERN = "(?P<documentRole>[ \-A-Za-z]+)"
 FULLNAME_PATTERN = "(?P<fullname>([A-Z\. ])+ [A-Za-z \-]+)"
-ROLE_PATTERN = "(?P<role>[ A-Za-z]+)"
 ORGANIZATION_PATTERN = "(?P<organization>\(?[A-Za-z ]+\)?)?"
-AUTHOR_LINE_PATTERN = f"({DOCUMENT_ROLE_PATTERN}  )?(?P<fullname>[A-Za-z’\-\. ]+), (?P<role>[ A-Za-z\(\)]+)[, ]*{ORGANIZATION_PATTERN}"
+ROLE_ALTERNATE_PATTERN = "(?P<role>[\- A-Za-z\(\)]+)"
+AUTHOR_LINE_PATTERN = f"({DOCUMENT_ROLE_PATTERN}  )?(?P<fullname>[A-Za-z’\-\. ]+), {ROLE_ALTERNATE_PATTERN}[, ]*{ORGANIZATION_PATTERN}"
 OPTIMIZED_PATTERN = re.compile(AUTHOR_LINE_PATTERN)
+
+ROLE_PATTERN = "(?P<role>[ A-Za-z]+)"
+FULLNAME_ALTERNATE_PATTERN = "(?P<fullname>(([A-Z]\.)|([A-Za-z]+))"
 SINGLE_LINE_AUTHOR = f"{FULLNAME_PATTERN}(\({ROLE_PATTERN}\))?"
-SINGLE_LINE_AUTHOR_ALTERNATE = "(?P<fullname>(([A-Z]\.)|([A-Za-z]+)) [A-Za-z \-]+).*"
+SINGLE_LINE_AUTHOR_ALTERNATE = f"{FULLNAME_ALTERNATE_PATTERN} [A-Za-z \-]+).*"
+
 logging.basicConfig(level=logging.INFO)
 
 
@@ -134,11 +138,7 @@ def test_file():
 
 def main(folders=None):
     if not folders:
-        folders = [
-            "data/input/pdf-generic",
-            "data/input/technical",
-            "data/input/reports",
-        ]
+        folders = DEFAULT_FOLDERS
     FolderProcessor(folders, "*.metadata.json", process_file).process_folders()
 
 

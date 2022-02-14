@@ -58,6 +58,8 @@ def download_item_set(folder, urls):
     total, count = len(urls), 0
     for url in urls:
         count += 1
+        if not os.path.exists(f"data/input/{folder}"):
+            os.makedirs(f"data/input/{folder}")
         path = f"data/input/{folder}/{get_filename(url)}"
         logging.info(f"({count}/{total}) -> {path} (exists? {os.path.exists(path)})")
         if not os.path.exists(path):

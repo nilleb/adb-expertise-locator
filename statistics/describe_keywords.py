@@ -2,7 +2,7 @@ from collections import defaultdict
 import re
 import sys
 
-from common.folder_processor import FolderProcessor
+from common.folder_processor import DEFAULT_FOLDERS, FolderProcessor
 from common.io import MyEncoder, read_object, write_object
 
 
@@ -77,11 +77,7 @@ def main(folders=None):
         data = read_object(analysis_path)
     except:
         if not folders:
-            folders = [
-                "data/input/pdf-generic",
-                "data/input/technical",
-                "data/input/reports",
-            ]
+            folders = DEFAULT_FOLDERS
         FolderProcessor(
             folders, "*.metadata.json", process_single_file
         ).process_folders()

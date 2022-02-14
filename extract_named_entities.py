@@ -8,7 +8,7 @@ from nltk.tag import StanfordNERTagger
 from nltk.tokenize import word_tokenize
 from common.filters import is_valid_author_name
 
-from common.folder_processor import FolderProcessor
+from common.folder_processor import DEFAULT_FOLDERS, FolderProcessor
 from common.io import write_object
 
 TAGGER = StanfordNERTagger(
@@ -97,11 +97,7 @@ def process_single_object(metadata):
 
 def main(folders=None):
     if not folders:
-        folders = [
-            "data/input/pdf-generic",
-            "data/input/technical",
-            "data/input/reports",
-        ]
+        folders = DEFAULT_FOLDERS
     FolderProcessor(
         folders, "*.regex-authors.json", process_single_file
     ).process_folders()

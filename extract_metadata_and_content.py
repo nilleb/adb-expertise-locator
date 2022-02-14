@@ -1,22 +1,33 @@
 import glob
-import json
 import logging
 import os
 from json import JSONEncoder
 
 import pdfplumber
 
-from common.folder_processor import FolderProcessor
+from common.folder_processor import DEFAULT_FOLDERS, FolderProcessor
+from common.io import safe_read_object, write_object
 
 
 class Document(object):
     def __init__(self, path):
         self.path = path
         self.pages = []
-        with pdfplumber.open(path) as pdf:
-            self.metadata = pdf.metadata
-            for page in pdf.pages:
-                self.pages.append(page.extract_text())
+        try:
+            with pdfplumber.open(path) as pdf:
+                self.metadata = pdf.metadata
+                for page_idx, page in enumerate(pdf.pages):
+                    try:
+                        text = page.extract_text()
+                    except ValueError:
+                        logging.exception(
+                            "Unexpected exception caught while extracting "
+                            f"page {page_idx} of document {path}."
+                        )
+                        text = ""
+                    self.pages.append(text)
+        except:
+            logging.exception(f"Unexpected exception caught while reading {path}.")
 
 
 class MyEncoder(JSONEncoder):
@@ -28,11 +39,7 @@ def should_process_document(filepath):
     if not os.path.exists(filepath):
         return True
 
-    with open(filepath) as fd:
-        try:
-            document = json.load(fd)
-        except json.decoder.JSONDecodeError:
-            return True
+    document = safe_read_object(filepath, {})
 
     if document.get("path") and document.get("pages") and document.get("metadata"):
         return False
@@ -43,37 +50,13 @@ def should_process_document(filepath):
 def process_single_file(path):
     metadata_path = f"{path}.metadata.json"
     if should_process_document(metadata_path):
-        with open(metadata_path, "w") as fd:
-            try:
-                json.dump(Document(path), fd, cls=MyEncoder)
-            except:
-                logging.exception(f"exception caught processing: {path}")
-
-
-def describe(folders):
-    documents = {"processed": 0, "not_processed": []}
-    for folder in folders:
-        paths = glob.glob(f"{folder}/*.pdf.metadata.json")
-        for path in paths:
-            if should_process_document(path):
-                documents["processed"] += 1
-            else:
-                documents["not_processed"].append(path)
-    for key, value in documents.items():
-        print(f"{key}: {value}" if isinstance(value, int) else f"{key}: {len(value)}")
-    with open("describe_metadata.json", "w") as fd:
-        json.dump(documents, fd)
+        write_object(Document(path), metadata_path, cls=MyEncoder)
 
 
 def main(folders=None):
     if not folders:
-        folders = [
-            "data/input/pdf-generic",
-            "data/input/technical",
-            "data/input/reports",
-        ]
+        folders = DEFAULT_FOLDERS
     FolderProcessor(folders, "*.pdf", process_single_file).process_folders()
-    describe(folders)
 
 
 if __name__ == "__main__":
