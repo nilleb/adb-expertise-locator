@@ -4,7 +4,7 @@ import re
 from charset_normalizer import logging
 
 from common.folder_processor import FolderProcessor
-from common.io import read_object
+from common.io import read_object, write_object
 from statistics.describe_authors import sort_dictionary_values
 
 
@@ -13,7 +13,7 @@ def get_tokens(name):
 
 
 def compute_mutations(name):
-    tokens = sorted([string for string in get_tokens(name) if string])
+    tokens = sorted([string.strip() for string in get_tokens(name) if string.strip()])
     key = " ".join(tokens)
     yield key, name
 
@@ -50,7 +50,9 @@ def compute_all_mutations(set_of_names):
     for name in set_of_names:
         for key, value in compute_mutations(name):
             if mutations[key]:
-                check_whether_could_be_the_same_person(mutations[key], value)
+                fullnames = set(value) if isinstance(value, set) else set([value])
+                fullnames.union(mutations[key])
+                check_whether_could_be_the_same_person(list(fullnames))
             mutations[key].add(value)
     return mutations
 
@@ -97,6 +99,22 @@ def analyze_matches(primary_db_mutations, secondary_db_mutations):
     print(f"{count} distinct matching fullnames across the two databases.")
 
 
+def merge_authors():
+    authors = read_object("data/output/regex-authors.json")
+    authors_keys = set(authors.keys())
+    authors_count_before = len(authors_keys)
+    primary_db_mutations = compute_all_mutations(authors_keys)
+    for _, author_names in primary_db_mutations.items():
+        document = {}
+        for name in author_names:
+            if authors.get(name):            
+                document.update(authors.pop(name))
+        authors[name] = document
+    authors_count_after = len(authors.keys())
+    print(f"tree shaking the authors: {authors_count_before} -> {authors_count_after}")
+    write_object(authors, "data/output/regex-authors-merged.json")
+
+
 def main():
     authors = read_object("data/output/regex-authors.json")
     author_names = authors.keys()
@@ -123,4 +141,5 @@ def main():
 
 
 if __name__ == "__main__":
+    merge_authors()
     main()

@@ -34,8 +34,7 @@ except:
     REPORTS_DATA = {}
 
 ROLES = [
-    "Economist"
-    "Senior economist",
+    "Economist" "Senior economist",
     "Principal economist",
     "Director",
     "Transport specialist",
@@ -252,6 +251,10 @@ def uid_to_number(uid):
 
 
 def pseudo_random_choice(uid, array):
+    if uid == "jules-hugot":
+        return "https://pbs.twimg.com/profile_images/1064197342490898432/y8VRDD-o_400x400.jpg"
+    if uid == "dmitry-kabrelyan":
+        return "https://dgalywyr863hv.cloudfront.net/pictures/athletes/811928/179461/6/large.jpg"
     number = uid_to_number(uid)
     return array[number % len(array)]
 

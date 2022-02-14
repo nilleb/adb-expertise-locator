@@ -1,6 +1,7 @@
 import hashlib
 import sys
 from slugify import slugify
+from common.filters import should_exclude_keyword
 from statistics.describe_keywords import split_keywords
 from common.io import read_object, write_object
 from common.folder_processor import FolderProcessor, DEFAULT_FOLDERS
@@ -8,6 +9,7 @@ from common.folder_processor import FolderProcessor, DEFAULT_FOLDERS
 KEYS = ["regex", "stanford_ner"]
 PATTERNS = {"regex": "regex-authors", "stanford_ner": "stanford_ner"}
 ATTRIBUTES = {"regex": "authors", "stanford_ner": "stanford_ner_authors"}
+
 
 def add_or_update_author(
     filepath, metadata, author, storage, key="regex"
@@ -49,7 +51,9 @@ def process_single_file_holder(storage, key):
 
         document_keywords = split_keywords(metadata)
         document_keywords = [
-            keyword.lower() for keyword in document_keywords if keyword
+            keyword.lower()
+            for keyword in document_keywords
+            if keyword and not should_exclude_keyword(keyword)
         ]
         metadata["keywords"] = document_keywords
 

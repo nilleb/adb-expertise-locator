@@ -159,13 +159,16 @@ def index_authors_documents(what):
 if __name__ == "__main__":
     what = sys.argv[-1] if len(sys.argv) == 1 else sys.argv[-2]
     who = sys.argv[-1] if len(sys.argv) == 3 else None
-    if not who and what in ("regex-authors", "stanford_ner", "special-guests"):
+    if not who and what in (
+        "regex-authors",
+        "regex-authors-merged",
+        "stanford_ner",
+        "special-guests",
+    ):
         logging.info(f"indexing all {what} documents")
         index_authors_documents(what)
     else:
-        author_documents = read_object(
-            DOCUMENTS_SOURCE_FORMAT.format(what=what)
-        )
+        author_documents = read_object(DOCUMENTS_SOURCE_FORMAT.format(what=what))
         document = author_documents.get(who)
         if document:
             logging.info(f"indexing {what}/{who}")
