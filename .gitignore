@@ -5,3 +5,4 @@ __pycache__
 *.tar.gz
 *.production.yml
 data/linkedin
+*.pyc
