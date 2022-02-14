@@ -109,7 +109,7 @@ def process_file(path):
     if metadata.get("authors"):
         return
 
-    for page in metadata.get("pages")[:5]:
+    for page in metadata.get("pages", [])[:5]:
         if is_author_page(path, page):
             metadata["author_page"] = page
             metadata["authors"] = list(extract_authors_from_table(page))

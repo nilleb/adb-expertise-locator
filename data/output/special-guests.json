@@ -1,0 +1,18 @@
+{
+    "Ivo Bellin Salarin": {
+        "fullname": "Ivo Bellin Salarin",
+        "role": "Data Engineer",
+        "linkedinProfileID": "bellin",
+        "organization": "nillebco",
+        "profilePicture": "https://media-exp1.licdn.com/dms/image/C4E03AQFRoMoaIWl1Gg/profile-displayphoto-shrink_800_800/0/1585902760434?e=1650499200&v=beta&t=2ZHh6-utFqOGgOsWwZR-hDU49sNLsGV8fvkT3N0Awzg",
+        "links": [],
+        "keywords": {
+            "knowledge management": 1,
+            "search engines": 1,
+            "word clouds": 1
+        },
+        "telephoneNumber": "0033-618987645",
+        "email": "ivo@nilleb.com",
+        "id": "ivo-bellin-salarin"
+    }
+}

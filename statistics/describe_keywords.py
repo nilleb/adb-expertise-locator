@@ -56,12 +56,13 @@ def process_single_file(path):
 
 
 def keywords_count(data):
-    for a, b in sorted(
-        data.get("keywords_distribution").items(),
-        key=lambda kv: (kv[1]["count"], kv[0]),
-    ):
-        if b["count"] > 1 and "adb" not in a:
-            print(f"{b['count']}, {a}")
+    with open('data/intermediate/describe/keywords_cloud.csv', 'w') as fd:
+        for a, b in sorted(
+            data.get("keywords_distribution").items(),
+            key=lambda kv: (kv[1]["count"], kv[0]),
+        ):
+            if b["count"] > 1:
+                fd.write(f"{b['count']}, {a}\n")
 
 
 def related(data, keyword):
