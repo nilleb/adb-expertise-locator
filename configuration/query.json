@@ -6,6 +6,7 @@
             "keywords.count",
             "links",
             "role",
+            "documentRole",
             "organization",
             "profilePicture",
             "linkedinProfileID",
@@ -25,11 +26,30 @@
                     }
                 },
                 {
-                    "fuzzy": {
-                        "fullname": {"value": "{{query_string}}", "boost": 1.2}
+                    "match": {
+                        "content": {
+                            "query": "{{query_string}}",
+                            "operator": "and"
+                        }
                     }
-                  },
-                          {
+                },
+                {
+                    "match_phrase": {
+                        "content": {
+                            "query": "{{query_string}}",
+                            "boost": 2
+                        }
+                    }
+                },
+                {
+                    "fuzzy": {
+                        "fullname": {
+                            "value": "{{query_string}}",
+                            "boost": 1.2
+                        }
+                    }
+                },
+                {
                     "match": {
                         "texts": {
                             "query": "{{query_string}}",
@@ -57,6 +77,23 @@
                 }
             ],
             "minimum_should_match": 1
+        }
+    },
+    "aggs": {
+        "roles": {
+            "terms": {
+                "field": "role.keyword"
+            }
+        },
+        "document roles": {
+            "terms": {
+                "field": "documentRole.keyword"
+            }
+        },
+        "organizations": {
+            "terms": {
+                "field": "organization.keyword"
+            }
         }
     },
     "highlight": {

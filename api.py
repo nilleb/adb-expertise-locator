@@ -127,11 +127,22 @@ class SearchResult(BaseModel):
     api_url: str
 
 
+class SearchBucket(BaseModel):
+    key: str
+    doc_count: int
+
+
+class SearchFacet(BaseModel):
+    name: str
+    buckets: List[SearchBucket]
+
+
 class SearchResponse(BaseModel):
     query: str
     results: Optional[List[SearchResult]]
     suggestions: Optional[List[str]]
     total: int
+    facets: Optional[List[SearchFacet]]
 
 
 class SignalRequest(BaseModel):
@@ -217,6 +228,12 @@ def prepare_response(query, res):
         result = prepare_result(hit)
         result["api_url"] = f'api/v1/document/{hit.get("_id")}'
         response["results"].append(result)
+
+    response["facets"] = []
+    for name, facet in res.get("aggregations", {}).items():
+        buckets = [bucket for bucket in facet.get("buckets", [])]
+        facet_object = {"name": name, "buckets": buckets}
+        response["facets"].append(facet_object)
 
     return SearchResponse(**response)
 
