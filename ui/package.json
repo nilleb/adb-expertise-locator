@@ -9,6 +9,7 @@
     "start": "vue-cli-service serve --port $PORT"
   },
   "dependencies": {
+    "@vueform/multiselect": "^2.3.2",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "highlight.js": "^11.3.1",

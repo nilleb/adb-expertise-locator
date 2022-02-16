@@ -1,15 +1,15 @@
 <template>
   <div id="searchPage">
-    <h1>{{ title }} <span @click="enableActions" class="action">🖐</span></h1>
-    <p>&nbsp;</p>
-    <div class="container" style="justify-content: center">
+    <h1 style="margin-bottom: 40px;">{{ title }} <span @click="enableActions" class="action">🖐</span></h1>
+    <div class="container" style="justify-content: center; margin-bottom: 40px">
       <div>
-          disclaimer: all the personal data (telephone, email, photos, ...) on this page is fake
+        disclaimer: all the personal data (telephone, email, photos, ...) on
+        this page is fake
       </div>
     </div>
-    <div class="container">
+    <div class="container" style="margin-bottom: 10px">
       <div style="flex: 1"><!-- empty space --></div>
-      <div style="flex: 8">
+      <div style="flex: 9">
         <input
           placeholder="Type anything here..."
           type="text"
@@ -20,15 +20,38 @@
       </div>
       <div style="flex: 1"><!-- empty space --></div>
     </div>
-    <div class="container">
-      <div style="flex: 1"><!-- empty space --></div>
-      <div style="flex: 8">
-        <span v-if="suggestions.length">You could also try: </span>
-        <span v-for="suggestion in suggestions" :key="suggestion"
-          >{{ suggestion }},
-        </span>
-      </div>
-      <div style="flex: 1"><!-- empty space --></div>
+    <div class="container" style="justify-content: center; margin-bottom: 20px">
+      <span>{{ total }} results found.&nbsp;</span>
+      <span v-if="suggestions.length"
+        >You could also try: {{ suggestions.join(", ") }}.</span
+      >
+    </div>
+    <div
+      class="container"
+      style="justify-content: center; margin-top: 5px; margin-bottom: 5px"
+    >
+      <span>Drill down the search results&nbsp;</span>
+    </div>
+    <div v-if="facets" class="container">
+      <div style="flex: 2" />
+      <Multiselect
+        style="flex: 3; margin-left: 20px; margin-right: 20px"
+        v-model="selected[facet.name]"
+        v-for="facet in facets"
+        :key="facet.name"
+        :placeholder="facet.name"
+        mode="multiple"
+        :close-on-select="false"
+        :options="
+          Object.assign(
+            {},
+            ...facet.buckets.map((b) => ({
+              [b.key]: `${b.key} (${b.doc_count})`,
+            }))
+          )
+        "
+      />
+      <div style="flex: 2" />
     </div>
     <p>&nbsp;</p>
     <SearchResults :searchResults="searchResults" />
@@ -39,11 +62,13 @@
 import KnowledgeService from "../services/KnowledgeService";
 import SearchResults from "./SearchResults.vue";
 import emitter from "@/services/eventbus.js";
+import Multiselect from "@vueform/multiselect";
 
 export default {
   name: "SearchPage",
   components: {
     SearchResults,
+    Multiselect,
   },
   props: {
     title: { type: String, default: "Portable Search Engine" },
@@ -53,6 +78,9 @@ export default {
       query: "",
       suggestions: [],
       searchResults: [],
+      total: 0,
+      facets: [],
+      selected: {},
     };
   },
   methods: {
@@ -62,12 +90,19 @@ export default {
         displayActions = false;
       }
       localStorage.displayActions = displayActions;
-      emitter.emit('displayActions', displayActions);
+      emitter.emit("displayActions", displayActions);
+    },
+    toFacets(){
+      let that = this;
+      return Object.keys(that.selected).map(key => ({name: key, values: that.selected[key]}));
     },
     getItems(string) {
-      KnowledgeService.search(string).then((response) => {
+      let rf = this.toFacets();
+      KnowledgeService.search(string, rf).then((response) => {
         this.suggestions = response.suggestions;
         this.searchResults = response.results;
+        this.total = response.total;
+        this.facets = response.facets;
         console.log(response);
       });
     },
@@ -80,12 +115,14 @@ export default {
           toBeSearched = this.$router.query.q;
         }
       } else {
+        // FIXME serialize also the facets
         this.$router
           .push({ name: "Search", query: { q: toBeSearched } })
           .catch(() => {});
       }
       this.getItems(toBeSearched);
     },
+    // FIXME watch also the selected facets/buckets
   },
   mounted() {
     if (this.$route.query.q) {
@@ -94,6 +131,8 @@ export default {
   },
 };
 </script>
+
+<style src="@vueform/multiselect/themes/default.css"></style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
