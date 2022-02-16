@@ -9,6 +9,7 @@ cp nltk.txt /tmp/app
 cp -R backends /tmp/app
 cp -R common /tmp/app
 cp -R configuration /tmp/app
+cp configuration/configuration.production.yml /tmp/app/configuration/configuration.yml
 rm -rf /tmp/app/ui
 mkdir /tmp/app/ui
 cp -R ui/dist /tmp/app/ui/dist
