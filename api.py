@@ -111,8 +111,14 @@ async def add_process_time_header(request: Request, call_next):
     return response
 
 
+class SearchQueryFacet(BaseModel):
+    name: str
+    values: List[str]
+
+
 class SearchQuery(BaseModel):
     query: str
+    facets: Optional[List[SearchQueryFacet]]
 
 
 class SearchResult(BaseModel):
@@ -190,7 +196,8 @@ def track(path, params, response):
 
 @app.post("/api/v1/search")
 async def search(payload: SearchQuery) -> SearchResponse:
-    res = es_search(payload.query)
+    facets = payload.dict().get('facets')
+    res = es_search(payload.query, facets)
     _signal("search", payload.query, None, None)
     track("search", payload.query, res)
     return prepare_response(payload.query, res)

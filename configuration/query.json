@@ -17,33 +17,13 @@
     "query": {
         "bool": {
             "must_not": {
-                "bool": {
-                    "should": [
-                        {
-                            "match": {
-                                "documentRole": "Vice-President"
-                            }
-                        },
-                        {
-                            "match": {
-                                "documentRole": "Directors"
-                            }
-                        },
-                        {
-                            "match": {
-                                "documentRole": "Director General"
-                            }
-                        },
-                        {
-                            "match": {
-                                "documentRole": "President"
-                            }
-                        },
-                        {
-                            "match": {
-                                "documentRole": "Director"
-                            }
-                        }
+                "terms": {
+                    "documentRole.keyword": [
+                        "Vice-President",
+                        "Directors",
+                        "Director General",
+                        "President",
+                        "Director"
                     ]
                 }
             },
@@ -108,23 +88,6 @@
                 }
             ],
             "minimum_should_match": 1
-        }
-    },
-    "aggs": {
-        "roles": {
-            "terms": {
-                "field": "role.keyword"
-            }
-        },
-        "document roles": {
-            "terms": {
-                "field": "documentRole.keyword"
-            }
-        },
-        "organizations": {
-            "terms": {
-                "field": "organization.keyword"
-            }
         }
     },
     "highlight": {

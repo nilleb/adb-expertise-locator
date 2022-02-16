@@ -73,9 +73,9 @@ def create_indexer(index=None):
     return ElasticSearchIndexer(ES_SERVER_ADDRESS, index, DEFAULT_INDEX_SETTINGS)
 
 
-def search(query):
+def search(query, facets):
     es = create_es_connection()
-    body = compose_query(query)
+    body = compose_query(query, facets)
     return es.search(
         index=ES_INDEX_NAME,
         **body,

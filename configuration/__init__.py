@@ -1,5 +1,6 @@
 import os
 import yaml
+import re
 import json
 import logging
 
@@ -37,12 +38,46 @@ LINKEDIN_EMAIL = linkedin_default.get("email", "sample@linkedin.com")
 LINKEDIN_PASSWORD = linkedin_default.get("password", "password")
 
 
-def compose_query(query_string):
+CONFIGURED_FACETS = configuration.get("faceted search")
+
+
+def camel_case_to_spaces(label):
+    return re.sub(r"((?<=[a-z])[A-Z]|(?<!\A)[A-Z](?=[a-z]))", r" \1", label).lower()
+
+
+def spaces_to_camel_case(label):
+    field = "".join(x for x in label.title() if not x.isspace())
+    return field[:1].lower() + field[1:]
+
+
+def aggregations():
+    aggs = {
+        f"{camel_case_to_spaces(field)}s": {"terms": {"field": f"{field}.keyword"}}
+        for field in CONFIGURED_FACETS
+    }
+
+    return aggs
+
+
+def facets_to_query(facets):
+    must_array = []
+    for facet in facets:
+        field = spaces_to_camel_case(facet.get("name")).rstrip("s")
+        must_array.append({"terms": {f"{field}.keyword": facet.get("values", [])}})
+
+    return must_array
+
+
+def compose_query(query_string, facets):
     with open(ES_QUERY_TEMPLATE_PATH) as template_fd:
         template = template_fd.read()
     template = template.replace("{{query_string}}", query_string)
     body = json.loads(template)
-    logging.info(body)
+    must = facets_to_query(facets)
+    if must:
+        body["query"]["bool"]["must"] = must
+    body["aggs"] = aggregations()
+    logging.info(json.dumps(body))
     return body
 
 
