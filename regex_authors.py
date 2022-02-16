@@ -76,6 +76,7 @@ def extract_authors_from_single_line(page):
 
 
 def extract_authors_from_table(page):
+    document_role = ""
     for line in page.split("\n"):
         match = OPTIMIZED_PATTERN.match(line)
         if match:
@@ -83,7 +84,12 @@ def extract_authors_from_table(page):
             if not is_valid_author_name(fullname):
                 continue
 
+            dr = (match.group("documentRole") or "").strip()
+            if dr:
+                document_role = dr
+
             author_dict = {
+                "documentRole": document_role,
                 "fullname": fullname,
                 "role": match.group("role").strip(),
                 "organization": (match.group("organization") or "").strip(),
@@ -122,7 +128,7 @@ def process_file(path):
         logging.warning(f"{path} yielded 0 authors")
 
 
-def test():
+def test_line_regex():
     test_lines = [
         "This report was prepared by a team consisting of E. Hassing (team leader), R. Clendon,  \nS. Hasnie, B. Lin, D. Millison, and M. Pajarillo. ",
         "This report was prepared by a team consisting of  Sangay Penjor, Project Team Leader; S. Popov, Project Specialist (Environment); X. Peng, Sr. Counsel; S. Ferguson, Resettlement Specialist; and Sheryl Guisihan, Administrative Assistant.",
@@ -132,8 +138,9 @@ def test():
 
 
 def test_file():
-    print(process_file("data/input/reports/rrp-prc-33177.pdf.metadata.json"))
-    print(process_file("data/input/reports/53314-001-rrp-en.pdf.metadata.json"))
+    process_file("data/input/ta/rrp-prc-33177.pdf.metadata.json")
+    process_file("data/input/ta/53314-001-rrp-en.pdf.metadata.json")
+    process_file("data/input/ta/52045-001-rrp-en.pdf.metadata.json")
 
 
 def main(folders=None):
@@ -143,4 +150,5 @@ def main(folders=None):
 
 
 if __name__ == "__main__":
+    test_file()
     main()

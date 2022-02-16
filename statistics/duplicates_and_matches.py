@@ -99,6 +99,15 @@ def analyze_matches(primary_db_mutations, secondary_db_mutations):
     print(f"{count} distinct matching fullnames across the two databases.")
 
 
+concat_keys = set(["role", "documentRole", "organization"])
+dict_keys = set(["keywords"])
+
+
+def to_list(document, key):
+    val = document.get(key, []) or []
+    val = val if isinstance(val, list) else [val]
+    return val
+
 def merge_authors():
     authors = read_object("data/output/regex-authors.json")
     authors_keys = set(authors.keys())
@@ -107,8 +116,22 @@ def merge_authors():
     for _, author_names in primary_db_mutations.items():
         document = {}
         for name in author_names:
-            if authors.get(name):            
-                document.update(authors.pop(name))
+            if authors.get(name):
+                author = authors.pop(name)
+                for key in concat_keys:
+                    val = to_list(document, key)
+                    aval = to_list(author, key)
+                    val.extend(aval)
+                    document[key] = list(set(val))
+                for key in dict_keys:
+                    for k, v in author.get(key, {}).items():
+                        tou = document.get(key, {}) or {}
+                        tou[k] = tou.get(k, 0) + v
+                        document[key] = tou
+                for key, value in author.items():
+                    if key in concat_keys.union(dict_keys):
+                        continue
+                    document[key] = value
         authors[name] = document
     authors_count_after = len(authors.keys())
     print(f"tree shaking the authors: {authors_count_before} -> {authors_count_after}")

@@ -106,7 +106,7 @@ def index_single_document(document):
     es_document["texts"] = list(prepare_texts(es_document["links"]))
     es_document["links"] = get_links(filenames)
     es_document["texts_cut"] = list(shorten(es_document["texts"]))
-    es_document["keywords"] = list(prepare_keywords(es_document["keywords"]))
+    es_document["keywords"] = list(prepare_keywords(es_document.get("keywords", {})))
     idx.index_single_document(es_document)
 
 
@@ -118,7 +118,7 @@ except:
 
 
 def should_process(document):
-    return document["id"] not in INDEXED_DOCUMENTS
+    return document and document["id"] not in INDEXED_DOCUMENTS
 
 
 def remember(document):
@@ -157,8 +157,9 @@ def index_authors_documents(what):
 
 
 if __name__ == "__main__":
-    what = sys.argv[-1] if len(sys.argv) == 1 else sys.argv[-2]
+    what = sys.argv[-1] if len(sys.argv) == 2 else sys.argv[-2]
     who = sys.argv[-1] if len(sys.argv) == 3 else None
+    print(what)
     if not who and what in (
         "regex-authors",
         "regex-authors-merged",
