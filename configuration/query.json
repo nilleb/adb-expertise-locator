@@ -16,6 +16,37 @@
     },
     "query": {
         "bool": {
+            "must_not": {
+                "bool": {
+                    "should": [
+                        {
+                            "match": {
+                                "documentRole": "Vice-President"
+                            }
+                        },
+                        {
+                            "match": {
+                                "documentRole": "Directors"
+                            }
+                        },
+                        {
+                            "match": {
+                                "documentRole": "Director General"
+                            }
+                        },
+                        {
+                            "match": {
+                                "documentRole": "President"
+                            }
+                        },
+                        {
+                            "match": {
+                                "documentRole": "Director"
+                            }
+                        }
+                    ]
+                }
+            },
             "should": [
                 {
                     "match": {
