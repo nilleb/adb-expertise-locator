@@ -1,4 +1,5 @@
 @address={{elasticSearchServerAddress}}
+@index=s_adb_people_v2
 
 # Photos by <a href="https://generated.photos/">Generated Photos</a>
 GET https://api.generated.photos/api/v1/faces?age=adult&emotion=joy&per_page=100&page=2
@@ -24,15 +25,11 @@ GET {{address}}/_cluster/health?pretty
 
 ###
 
-GET {{address}}/s_adb_people_v1/_doc/a-fraile
-
-###
-
-GET {{address}}/s_adb_people_v1/_settings
+GET {{address}}/{{index}}/_settings
 
 ###
 # scalingo, reset the index state
-PUT {{address}}/s_adb_people_v1/_settings
+PUT {{address}}/{{index}}/_settings
 Content-Type: application/json
 
 {
@@ -44,11 +41,11 @@ Content-Type: application/json
 }
 
 ###
-GET {{address}}/s_adb_people_v1
+GET {{address}}/{{index}}
 
 ###
 # count all the documents in the index
-GET {{address}}/s_adb_people_v1/_search
+GET {{address}}/{{index}}/_search
 Content-Type: application/json
 
 {
@@ -62,105 +59,34 @@ Content-Type: application/json
 }
 
 ###
-DELETE {{address}}/s_adb_people_v1
+DELETE {{address}}/{{index}}
 Content-Type: application/json
 
 ###
 
-DELETE {{address}}/s_adb_people_v1/_doc/None
+DELETE {{address}}/{{index}}/_doc/None
 
 ###
 # test the software 
 @query_string = fragile economy
 
-GET {{address}}/s_adb_people_v1/_search
+GET {{address}}/{{index}}/_search
 Content-Type: application/json
 
 <@ configuration/query.json
 
 ###
-
-GET {{address}}/s_adb_people_v1/_search
-Content-Type: application/json
-
-{
-  "_source": {
-    "includes": [
-      "fullname",
-      "keywords.keyword",
-      "keywords.count",
-      "texts_cut"
-    ]
-  },
-  "query": {
-    "bool": {
-      "should": [
-        {
-          "match": {
-              "fullname": {"query": "{{query_string}}", "boost": 2}
-          }
-        },
-        {
-          "fuzzy": {
-              "fullname": {"value": "{{query_string}}", "boost": 1.2}
-          }
-        },
-        {
-          "match": {
-            "texts": {
-              "query": "{{query_string}}",
-              "analyzer": "search_synonyms"
-            }
-          }
-        },
-        {
-          "nested": {
-            "path": "keywords",
-            "score_mode": "sum",
-            "query": {
-              "function_score": {
-                "query": {
-                  "match": {
-                    "keywords.keyword": "{{query_string}}"
-                  }
-                },
-                "field_value_factor": {
-                  "field": "keywords.count"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "minimum_should_match": 1
-    }
-  },
-  "highlight": {
-    "require_field_match": false,
-    "fields": {
-      "texts_cut": {
-        "pre_tags": "<strong>",
-        "post_tags": "</strong>"
-      }
-    }
-  },
-    "suggest": {
-    "text": "{{query_string}}",
-    "suggest-1": {
-      "term": {
-        "field": "fullname"
-      }
-    },
-    "suggest-2": {
-      "term": {
-        "field": "keywords.keyword"
-      }
-    }
-  }
-}
+@doc_id = stephen-groff
+GET {{address}}/{{index}}/_doc/{{doc_id}}
 
 ###
-GET {{address}}/s_adb_people_v1/_explain/jules-hugot
+GET {{address}}/{{index}}/_explain/{{doc_id}}
+Content-Type: application/json
+
+<@ configuration/query.json
+
+###
+GET {{address}}/{{index}}/_explain/{{doc_id}}
 Content-Type: application/json
 
 {
@@ -208,7 +134,7 @@ Content-Type: application/json
 }
 ###
 
-PUT {{address}}/s_adb_people_v1
+PUT {{address}}/{{index}}
 Content-Type: application/json
 
 < configuration/index_settings.json
@@ -220,9 +146,9 @@ Content-Type: application/json
 
 {
   "source": {
-    "index": "s_adb_people_v1"
+    "index": "{{index}}"
   },
   "dest": {
-    "index": "s_adb_people_v2"
+    "index": "new_index"
   }
 }
