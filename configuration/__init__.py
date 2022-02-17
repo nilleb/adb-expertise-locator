@@ -38,7 +38,7 @@ LINKEDIN_EMAIL = linkedin_default.get("email", "sample@linkedin.com")
 LINKEDIN_PASSWORD = linkedin_default.get("password", "password")
 
 
-CONFIGURED_FACETS = configuration.get("faceted search")
+CONFIGURED_FACETS = set(configuration.get("faceted search"))
 
 
 def camel_case_to_spaces(label):
@@ -63,7 +63,8 @@ def facets_to_query(facets):
     must_array = []
     for facet in facets:
         field = spaces_to_camel_case(facet.get("name")).rstrip("s")
-        must_array.append({"terms": {f"{field}.keyword": facet.get("values", [])}})
+        if field in CONFIGURED_FACETS:
+            must_array.append({"terms": {f"{field}.keyword": facet.get("values", [])}})
 
     return must_array
 
