@@ -51,6 +51,18 @@ ROLES = [
     "Principal Energy specialist",
 ]
 
+ORGANIZATIONS = [
+    "SERD",
+    "SARD",
+    "CWRD",
+    "EARD",
+    "PSOD",
+    "PARD",
+    "SDCC",
+    "Office of the General Counsel",
+    "RSDD",
+    "ERCD",
+]
 
 security = HTTPBasic()
 
@@ -196,7 +208,7 @@ def track(path, params, response):
 
 @app.post("/api/v1/search")
 async def search(payload: SearchQuery) -> SearchResponse:
-    facets = payload.dict().get('facets')
+    facets = payload.dict().get("facets")
     res = es_search(payload.query, facets)
     _signal("search", payload.query, None, None)
     track("search", payload.query, res)
@@ -263,6 +275,10 @@ def prepare_result(hit):
 
 
 def previewImage(uid, source):
+    if uid == "jules-hugot":
+        return "https://pbs.twimg.com/profile_images/1064197342490898432/y8VRDD-o_400x400.jpg"
+    if uid == "dmitry-kabrelyan":
+        return "https://dgalywyr863hv.cloudfront.net/pictures/athletes/811928/179461/6/large.jpg"
     profile_picture = source.get("profilePicture")
     if profile_picture:
         return profile_picture
@@ -275,16 +291,16 @@ def uid_to_number(uid):
 
 
 def pseudo_random_choice(uid, array):
-    if uid == "jules-hugot":
-        return "https://pbs.twimg.com/profile_images/1064197342490898432/y8VRDD-o_400x400.jpg"
-    if uid == "dmitry-kabrelyan":
-        return "https://dgalywyr863hv.cloudfront.net/pictures/athletes/811928/179461/6/large.jpg"
     number = uid_to_number(uid)
-    return array[number % len(array)]
+    return f"{array[number % len(array)]} (🎲)"
 
 
 def random_role(uid):
     return pseudo_random_choice(uid, ROLES)
+
+
+def random_organization(uid):
+    return pseudo_random_choice(uid, ORGANIZATIONS)
 
 
 def prepare_source(uid, source):
@@ -293,8 +309,17 @@ def prepare_source(uid, source):
         source["telephoneNumber"] = f"555-{number}"
     if not source.get("email"):
         source["email"] = f"{uid}@adb.nilleb.com"
+
     if not source.get("role"):
         source["role"] = random_role(uid)
+    elif isinstance(source["role"], list):
+        source["role"] = source["role"][0]
+
+    if not source.get("organization"):
+        source["organization"] = random_organization(uid)
+    elif isinstance(source["organization"], list):
+        source["organization"] = source["organization"][0]
+
     source["documents"] = prepare_documents(source.get("links", []))
     return source
 
