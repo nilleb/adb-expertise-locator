@@ -29,6 +29,14 @@
             },
             "should": [
                 {
+                    "wildcard": {
+                        "fullname": {
+                            "value": "{{query_string}}",
+                            "boost": 0.5
+                        }
+                    }
+                },
+                {
                     "match": {
                         "fullname": {
                             "query": "{{query_string}}",
