@@ -326,7 +326,7 @@ def prepare_source(uid, source):
     source["keywords"] = [
         keyword
         for keyword in source.get("keywords", [])
-        if not should_exclude_keyword(keyword)
+        if not should_exclude_keyword(keyword['keyword'])
     ]
 
     return source

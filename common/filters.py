@@ -12,7 +12,9 @@ def is_valid_author_name(fullname):
 
 
 def strip_unwanted(title):
-    title = title.replace(": Report and Recommendation of the President", "")
+    title = title.replace("Report and Recommendation of the President", "")
+    title = title.replace("Technical Assistance Report", "")
+    title = title.replace("TAR", "")
     title = NUMERIC_REGEX.sub("", title)
     title = title.strip(':')
     title = title.strip()
