@@ -21,6 +21,7 @@ from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 from backends.es import create_indexer, document
 from backends.es import search as es_search
+from common.filters import should_exclude_keyword
 from common.io import read_object
 
 try:
@@ -321,6 +322,13 @@ def prepare_source(uid, source):
         source["organization"] = source["organization"][0]
 
     source["documents"] = prepare_documents(source.get("links", []))
+
+    source["keywords"] = [
+        keyword
+        for keyword in source.get("keywords", [])
+        if not should_exclude_keyword(keyword)
+    ]
+
     return source
 
 

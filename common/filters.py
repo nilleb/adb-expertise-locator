@@ -1,3 +1,4 @@
+import re
 from operator import countOf
 
 
@@ -18,12 +19,25 @@ def should_be_downloaded(url):
     return "rrp" in url or "tar" in url
 
 
+NUMERIC_REGEX = re.compile("[0-9]+\-[0-9]+")
+
+
 def should_exclude_keyword(keyword):
-    return "adb" in keyword or "ta " in keyword or "rrp" in keyword or keyword in USELESS_KEYWORDS
+    return (
+        "adb" in keyword
+        or "ta " in keyword
+        or "rrp" in keyword
+        or NUMERIC_REGEX.match(keyword)
+        or keyword in USELESS_KEYWORDS
+    )
 
 
 USELESS_KEYWORDS = set(
     [
+        "ppp",
+        "ksta",
+        "trta",
+        "project approval",
         # "adb rrp report recommendation president",
         # "adb technical assistance ta report",
         "tar",
