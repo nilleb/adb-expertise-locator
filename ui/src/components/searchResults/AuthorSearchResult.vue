@@ -17,7 +17,7 @@
             ></iframe
           ></a>
         </h2>
-        ({{ result.score }})
+        <span v-if="displayActions">({{ result.score }})</span>
         <span
           @click="signalEdit(result.uid)"
           v-if="displayActions"
@@ -68,7 +68,7 @@
         📚
         <span v-for="document in result.source.documents" :key="document.path">
           <a :href="document.url">{{ document.title }}</a
-          >,
+          > 💠
         </span>
         <br />
       </div>
