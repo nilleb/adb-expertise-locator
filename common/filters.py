@@ -12,14 +12,18 @@ def is_valid_author_name(fullname):
 
 
 def strip_unwanted(title):
-    return title.replace(": Report and Recommendation of the President", "")
+    title = title.replace(": Report and Recommendation of the President", "")
+    title = NUMERIC_REGEX.sub("", title)
+    title = title.strip(':')
+    title = title.strip()
+    return title
 
 
 def should_be_downloaded(url):
     return "rrp" in url or "tar" in url
 
 
-NUMERIC_REGEX = re.compile("[0-9]+\-[0-9]+")
+NUMERIC_REGEX = re.compile("[0-9]{3,}\-[0-9]{3,}")
 
 
 def should_exclude_keyword(keyword):
