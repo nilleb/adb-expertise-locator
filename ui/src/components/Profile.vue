@@ -1,5 +1,6 @@
 <template>
   <div>
+    <avatar background="lightgray" color="black" class="topright" :name="`${firstName} ${lastName}`"></avatar>
     <h1>Hey, {{ firstName }}!</h1>
 
     <h2>Your skills</h2>
@@ -11,17 +12,22 @@
       @before-adding-tag="pushTag"
       @before-deleting-tag="removeTag"
       v-debounce="600"
+      placeholder="Add a skill name - press enter when complete."
     />
+    <h2>What do we know about you?</h2>
+    ...
   </div>
 </template>
 
 <script>
 import VueTagsInput from "@sipec/vue3-tags-input";
 import KnowledgeService from "../services/KnowledgeService";
+import Avatar from "vue3-avatar";
 
 export default {
   components: {
     VueTagsInput,
+    Avatar,
   },
   data() {
     return {
@@ -30,6 +36,7 @@ export default {
       autocompleteItems: [],
       userEmail: "ivo@nilleb.com",
       firstName: "Ivo",
+      lastName: "Bellin Salarin"
     };
   },
   watch: {
@@ -68,3 +75,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.topright {
+    float: right;
+}
+</style>
