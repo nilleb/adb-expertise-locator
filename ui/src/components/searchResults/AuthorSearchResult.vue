@@ -60,6 +60,7 @@
           }}</a>
         </p>
         <p v-html="result.highlight"></p>
+        <tags :tags="result.source.skills?.map((kw) => `${kw.skill} (${kw.endorsedCount})` )" />
         🔑
         <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
           <i>{{ keyword.keyword }}</i> ({{ keyword.count }}),
@@ -83,6 +84,7 @@
 <script>
 import KnowledgeService from "@/services/KnowledgeService";
 import emitter from "@/services/eventbus.js";
+import Tags from "@/components/Tags.vue";
 
 export default {
   name: "AuthorSearchResult",
@@ -132,7 +134,7 @@ export default {
       that.$data.displayActions = displayActions;
     });
   },
-  components: {},
+  components: {Tags},
 };
 </script>
 
