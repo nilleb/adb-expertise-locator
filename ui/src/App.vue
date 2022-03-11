@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <!--div id="nav">
-    <router-link to="/">Search</router-link> |
-    <router-link to="/view">ResultPreview</router-link>
-  </div-->
+    <div id="nav" style="float: right;">
+      <router-link to="/profile">Profile</router-link> |
+      <router-link to="/">Search</router-link>
+    </div>
     <router-view />
   </div>
 </template>
@@ -14,3 +14,7 @@ export default {
   created() {},
 };
 </script>
+
+<style scoped>
+#app { font-family: Avenir, Helvetica, Arial, sans-serif; }
+</style>
