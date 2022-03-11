@@ -9,6 +9,7 @@
     "start": "vue-cli-service serve --port $PORT"
   },
   "dependencies": {
+    "@sipec/vue3-tags-input": "^3.0.4",
     "@vueform/multiselect": "^2.3.2",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",

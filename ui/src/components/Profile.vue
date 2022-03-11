@@ -1,0 +1,44 @@
+<template>
+  <div>
+    <vue-tags-input
+      v-model="tag"
+      :tags="tags"
+      :autocomplete-items="filteredItems"
+      @tags-changed="newTags => tags = newTags"
+    />
+  </div>
+</template>
+
+<script>
+import VueTagsInput from "@sipec/vue3-tags-input";
+
+export default {
+  components: {
+    VueTagsInput,
+  },
+  data() {
+    return {
+      tag: '',
+      tags: [],
+      autocompleteItems: [{
+        text: 'Spain',
+      }, {
+        text: 'France',
+      }, {
+        text: 'USA',
+      }, {
+        text: 'Germany',
+      }, {
+        text: 'China',
+      }],
+    };
+  },
+  computed: {
+    filteredItems() {
+      return this.autocompleteItems.filter(i => {
+        return i.text.toLowerCase().indexOf(this.tag.toLowerCase()) !== -1;
+      });
+    },
+  },
+};
+</script>

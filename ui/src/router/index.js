@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import SearchPage from '@/components/SearchPage.vue'
+import Profile from '@/components/Profile.vue'
 
 const routes = [
   {
@@ -9,6 +10,11 @@ const routes = [
     props: {
       title: "Skills finder",
     },
+  },
+  {
+    path: '/profile',
+    name: "Profile",
+    component: Profile,
   },
   {
     path: '/view',
