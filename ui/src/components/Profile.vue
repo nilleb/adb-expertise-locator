@@ -89,8 +89,9 @@ export default {
     initItems() {
       if (this.tag.length < 2) return;
 
-      KnowledgeService.autocompleteSkill(this.tag).then((response) => {
+      KnowledgeService.autocompleteTag(this.tag).then((response) => {
         this.autocompleteItems = response.suggestions;
+        console.log(this.autocompleteItems);
         /* expects: list of items with a .text property */
       });
     },

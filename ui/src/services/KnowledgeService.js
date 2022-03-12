@@ -20,9 +20,9 @@ export default class KnowledgeService extends AuthenticatedService {
       .then((res) => res.data);
   }
 
-  static autocompleteSkill(prefix) {
+  static autocompleteTag(prefix) {
     return KnowledgeService.service()
-      .post("autocompleteSkills", { prefix: prefix })
+      .post("autocompleteTag", { prefix: prefix })
       .then((res) => res.data);
   }
 

@@ -1,0 +1,13 @@
+{
+    "_source": "tags",
+    "size": 0,
+    "suggest": {
+        "tags-suggest": {
+            "prefix": "{{query_string}}",
+            "completion": {
+                "field": "tags.text.suggest",
+                "fuzzy": true
+            }
+        }
+    }
+}

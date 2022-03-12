@@ -21,6 +21,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 from backends.es import create_indexer, document
+from backends.es import complete as es_complete
 from backends.es import search as es_search
 from common.filters import should_exclude_keyword
 from common.io import read_object
@@ -135,6 +136,10 @@ class SearchQueryFacet(BaseModel):
 class SearchQuery(BaseModel):
     query: str
     facets: Optional[List[SearchQueryFacet]]
+
+
+class AutocompleteRequest(BaseModel):
+    prefix: str
 
 
 class Tag(BaseModel):
@@ -374,9 +379,29 @@ async def profile(request: Request):
 @app.post("/api/v1/updateTags")
 async def update_tags(payload: UpdateTagsRequest) -> None:
     indexer = create_indexer()
-    res = indexer.update_document(payload.uid, tags=payload.dict().get('tags'))
+    res = indexer.update_document(payload.uid, tags=payload.dict().get("tags"))
     _signal("updateTags", payload.uid, None, repr(payload.dict()))
     track("updateTags", payload.uid, res)
+
+
+@app.post("/api/v1/autocompleteTag")
+async def autocomplete(payload: AutocompleteRequest) -> None:
+    res = es_complete(payload.prefix)
+    _signal("autocomplete", payload.prefix, None, None)
+    track("autocomplete", payload.prefix, res)
+    return prepare_suggestions(payload.prefix, res)
+
+
+def prepare_suggestions(prefix, res):
+    suggestions = set()
+    for suggestion in res["suggest"]["tags-suggest"]:
+        for opt in suggestion["options"]:
+            suggestions.add(opt.get("text"))
+
+    return {
+        "prefix": prefix,
+        "suggestions": [{"text": suggestion} for suggestion in suggestions],
+    }
 
 
 app.mount("/", StaticFiles(directory="ui/dist"), name="dist")

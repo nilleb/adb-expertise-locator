@@ -31,6 +31,7 @@ ES_INDEX_NAME = index = configuration.get("index_format").format(
     organization_id=ORGANIZATION_ID
 )
 ES_QUERY_TEMPLATE_PATH = f"{cwd}/query.json"
+ES_AUTOCOMPLETE_TEMPLATE_PATH = f"{cwd}/autocomplete.json"
 LIMIT = 100000
 
 linkedin_default = configuration.get("linkedin", {}).get("default", {})
@@ -78,6 +79,15 @@ def compose_query(query_string, facets):
     if must:
         body["query"]["bool"]["must"] = must
     body["aggs"] = aggregations()
+    logging.info(json.dumps(body))
+    return body
+
+
+def compose_autocomplete(query_string):
+    with open(ES_AUTOCOMPLETE_TEMPLATE_PATH) as template_fd:
+        template = template_fd.read()
+    template = template.replace("{{query_string}}", query_string)
+    body = json.loads(template)
     logging.info(json.dumps(body))
     return body
 

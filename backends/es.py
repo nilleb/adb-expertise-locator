@@ -9,6 +9,7 @@ from configuration import (
     ES_INDEX_NAME,
     ES_SERVER_ADDRESS,
     DEFAULT_INDEX_SETTINGS,
+    compose_autocomplete,
     compose_query,
 )
 
@@ -73,6 +74,7 @@ class ElasticSearchIndexer(object):
             logging.exception(uid)
             raise IndexingException(ex)
 
+
 def create_indexer(index=None):
     if not index:
         index = ES_INDEX_NAME
@@ -83,6 +85,15 @@ def create_indexer(index=None):
 def search(query, facets):
     es = create_es_connection()
     body = compose_query(query, facets)
+    return es.search(
+        index=ES_INDEX_NAME,
+        **body,
+    )
+
+
+def complete(prefix):
+    es = create_es_connection()
+    body = compose_autocomplete(prefix)
     return es.search(
         index=ES_INDEX_NAME,
         **body,

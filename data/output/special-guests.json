@@ -11,6 +11,7 @@
             "search engines": 1,
             "word clouds": 1
         },
+        "tags": [{ "text": "python"}, {"text": "search engines"} ],
         "telephoneNumber": "0033-618987645",
         "email": "ivo@nilleb.com",
         "id": "ivo-bellin-salarin"

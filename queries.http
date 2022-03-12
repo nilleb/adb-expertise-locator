@@ -1,5 +1,6 @@
 @address={{elasticSearchServerAddress}}
 @index=s_adb_people_v2
+@new_index=s_adb_people_v3
 
 # Photos by <a href="https://generated.photos/">Generated Photos</a>
 GET https://api.generated.photos/api/v1/faces?age=adult&emotion=joy&per_page=100&page=2
@@ -48,7 +49,7 @@ Content-Type: application/json
 }
 
 ###
-GET {{address}}/{{index}}
+GET {{address}}/{{new_index}}
 
 ###
 # count all the documents in the index
@@ -99,6 +100,25 @@ Content-Type: application/json
   }
 }
 
+###
+# test the software 
+
+GET {{address}}/{{new_index}}/_search
+Content-Type: application/json
+
+{
+  "_source": "tags",
+  "size": 0,
+  "suggest": {
+      "tags-suggest": {
+          "prefix": "py",
+          "completion": {
+              "field": "tags.text.suggest",
+              "fuzzy": true
+          }
+      }
+  }
+}
 ###
 @doc_id = t-iwaki
 GET {{address}}/{{index}}/_doc/{{doc_id}}
@@ -209,10 +229,60 @@ Content-Type: application/json
 }
 ###
 
-PUT {{address}}/{{index}}
+PUT {{address}}/{{new_index}}
 Content-Type: application/json
 
 < configuration/index_settings.json
+
+###
+
+PUT {{address}}/{{index}}/_mapping
+Content-Type: application/json
+
+{
+  "properties": {
+      "keywords": {
+          "type": "nested",
+          "properties": {
+              "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+              },
+              "count": {
+                  "type": "float"
+              }
+          }
+      },
+      "countries": {
+          "type": "nested",
+          "properties": {
+              "country": {
+                  "type": "keyword",
+                  "ignore_above": 256
+              },
+              "count": {
+                  "type": "float"
+              }
+          }
+      },
+      "tags": {
+          "properties": {
+              "text": {
+                  "type": "text",
+                  "fields": {
+                      "suggest": {
+                          "type": "completion"
+                      },
+                      "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
 
 ###
 
@@ -224,6 +294,6 @@ Content-Type: application/json
     "index": "{{index}}"
   },
   "dest": {
-    "index": "new_index"
+    "index": "{{new_index}}"
   }
 }
