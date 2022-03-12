@@ -65,6 +65,13 @@ class ElasticSearchIndexer(object):
             logging.exception(doc_uri)
             raise IndexingException(ex)
 
+    def update_document(self, uid, **kwargs):
+        es = create_es_connection()
+        try:
+            return es.update(index=self.index_name, doc_type="_doc", id=uid, doc=kwargs)
+        except Exception as ex:
+            logging.exception(uid)
+            raise IndexingException(ex)
 
 def create_indexer(index=None):
     if not index:

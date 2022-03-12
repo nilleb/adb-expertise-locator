@@ -26,14 +26,9 @@ export default class KnowledgeService extends AuthenticatedService {
       .then((res) => res.data);
   }
 
-  static addSkill(email, tag) {
+  static updateTags(uid, tags) {
     return KnowledgeService.service()
-      .post("saveSkill", { email: email, tag: tag })
-      .then((res) => res.data);
-  }
-  static removeSkill(email, tag) {
-    return KnowledgeService.service()
-      .post("removeSkill", { email: email, tag: tag })
+      .post("updateTags", { uid: uid, tags: tags })
       .then((res) => res.data);
   }
 }

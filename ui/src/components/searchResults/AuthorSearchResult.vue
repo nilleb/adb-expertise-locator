@@ -60,7 +60,7 @@
           }}</a>
         </p>
         <p v-html="result.highlight"></p>
-        <tags :tags="result.source.skills?.map((kw) => `${kw.skill} (${kw.endorsedCount})` )" />
+        <tags :tags="result.source.tags?.map((kw) => `${kw.text}` + (kw.count ? `(${kw.count})` : '') )" />
         🔑
         <span v-for="keyword in result.source.keywords" :key="keyword.keyword">
           <i>{{ keyword.keyword }}</i> ({{ keyword.count }}),

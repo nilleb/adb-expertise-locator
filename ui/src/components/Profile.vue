@@ -14,8 +14,6 @@
       :tags="tags"
       :autocomplete-items="autocompleteItems"
       @tags-changed="update"
-      @before-adding-tag="pushTag"
-      @before-deleting-tag="removeTag"
       v-debounce="600"
       placeholder="Add a skill name - press enter when complete."
     />
@@ -82,26 +80,11 @@ export default {
     tag: "initItems",
   },
   methods: {
-    pushTag(params) {
-      console.log(params.addTag);
-      console.log(params.tag);
-      if (!params.tag.tiClasses.includes(["ti-invalid"])) {
-        KnowledgeService.addSkill(this.userEmail, params.tag.text);
-      }
-      params.addTag();
-    },
-    removeTag(params) {
-      console.log(params.deleteTag);
-      console.log(params.tag);
-      if (!params.tag.tiClasses.includes(["ti-invalid"])) {
-        KnowledgeService.removeSkill(this.userEmail, params.tag.text);
-      }
-      params.deleteTag();
-    },
     update(newTags) {
       this.autocompleteItems = [];
       this.tags = newTags;
       console.log(newTags);
+      KnowledgeService.updateTags(this.uid, newTags);
     },
     initItems() {
       if (this.tag.length < 2) return;
@@ -117,7 +100,7 @@ export default {
         this.user = source;
         this.user.firstName = source.fullname.split(" ")[0];
         this.user.lastName = source.fullname.split(" ")[-1];
-        this.tags = [{ text: "tag1" }, { text: "tag2" }];
+        this.tags = source.tags;
       });
     },
   },

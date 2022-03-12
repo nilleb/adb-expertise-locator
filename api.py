@@ -6,6 +6,7 @@ import os
 import uuid
 import secrets
 from typing import List, Optional
+import platform
 
 from fastapi import Depends, FastAPI, Request
 from fastapi.middleware import Middleware
@@ -96,6 +97,8 @@ middleware = [
     )
 ]
 
+environment = platform.node()
+
 app = FastAPI(middleware=middleware)
 
 origins = [
@@ -132,6 +135,16 @@ class SearchQueryFacet(BaseModel):
 class SearchQuery(BaseModel):
     query: str
     facets: Optional[List[SearchQueryFacet]]
+
+
+class Tag(BaseModel):
+    text: str
+    count: Optional[int]
+
+
+class UpdateTagsRequest(BaseModel):
+    uid: str
+    tags: List[Tag]
 
 
 class SearchResult(BaseModel):
@@ -181,6 +194,7 @@ def _signal(verb, query, document_uid, description):
     session_id = context.data.get("X-Session-ID", str(uuid.uuid4()))
     uid = context.data.get("X-Request-ID", str(uuid.uuid4()))
     document = {"id": uid, "session_id": session_id}
+    document["environment"] = environment
     document["verb"] = verb
     document["query"] = query
     document["document_uid"] = document_uid
@@ -204,7 +218,7 @@ async def signal(payload: SignalRequest) -> None:
 
 
 def track(path, params, response):
-    logging.info(f"- {context.data} {path} ({params}) -> {response}")
+    logging.info(f"- {environment} {context.data} {path} ({params}) -> {response}")
 
 
 @app.post("/api/v1/search")
@@ -217,7 +231,7 @@ async def search(payload: SearchQuery) -> SearchResponse:
 
 
 @app.route("/context")
-async def index(request: Request):
+async def context_endpoint(request: Request):
     return JSONResponse(context.data)
 
 
@@ -326,7 +340,7 @@ def prepare_source(uid, source):
     source["keywords"] = [
         keyword
         for keyword in source.get("keywords", [])
-        if not should_exclude_keyword(keyword['keyword'])
+        if not should_exclude_keyword(keyword["keyword"])
     ]
 
     return source
@@ -348,8 +362,21 @@ async def index(request: Request):
 
 
 @app.route("/view")
-async def index(request: Request):
+async def view(request: Request):
     return FileResponse("ui/dist/index.html")
+
+
+@app.route("/profile")
+async def profile(request: Request):
+    return FileResponse("ui/dist/index.html")
+
+
+@app.post("/api/v1/updateTags")
+async def update_tags(payload: UpdateTagsRequest) -> None:
+    indexer = create_indexer()
+    res = indexer.update_document(payload.uid, tags=payload.dict().get('tags'))
+    _signal("updateTags", payload.uid, None, repr(payload.dict()))
+    track("updateTags", payload.uid, res)
 
 
 app.mount("/", StaticFiles(directory="ui/dist"), name="dist")

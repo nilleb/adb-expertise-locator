@@ -28,6 +28,10 @@ GET {{address}}/_cluster/health?pretty
 
 ###
 
+GET {{address}}/{{index}}
+
+###
+
 GET {{address}}/{{index}}/_settings
 
 ###
@@ -71,7 +75,7 @@ DELETE {{address}}/{{index}}/_doc/None
 
 ###
 # test the software 
-@query_string = fragile economy
+@query_string = python
 
 GET {{address}}/{{index}}/_search
 Content-Type: application/json
@@ -79,61 +83,129 @@ Content-Type: application/json
 <@ configuration/query.json
 
 ###
-@doc_id = stephen-groff
+# test the software 
+
+GET {{address}}/{{index}}/_search
+Content-Type: application/json
+
+{
+  "query": {
+    "match": {
+        "tags.text": {
+            "query": "python",
+            "boost": 50
+        }
+    }
+  }
+}
+
+###
+@doc_id = t-iwaki
 GET {{address}}/{{index}}/_doc/{{doc_id}}
 
 ###
-GET {{address}}/{{index}}/_explain/{{doc_id}}
+GET {{address}}/{{index}}/_doc/{{doc_id}}/_explain
 Content-Type: application/json
 
 <@ configuration/query.json
 
 ###
-GET {{address}}/{{index}}/_explain/{{doc_id}}
+GET {{address}}/{{index}}/_doc/{{doc_id}}/_explain
 Content-Type: application/json
 
 {
-  "query": {
-    "bool": {
-      "should": [
-        {
-          "match": {
-              "author": {
-                  "query": "{{query_string}}",
-                  "boost": 2
-              }
-          }
-        },
-        {
-          "match": {
-            "texts": {
-              "query": "{{query_string}}",
-              "analyzer": "search_synonyms"
-            }
-          }
-        },
-        {
-          "nested": {
-            "path": "keywords",
-            "score_mode": "sum",
-            "query": {
-              "function_score": {
-                "query": {
-                  "match": {
-                    "keywords.keyword": "{{query_string}}"
-                  }
-                },
-                "field_value_factor": {
-                  "field": "keywords.count"
+    "query": {
+        "bool": {
+            "must_not": {
+                "terms": {
+                    "documentRole.keyword": [
+                        "Vice-President",
+                        "Directors",
+                        "Director General",
+                        "President",
+                        "Director"
+                    ]
                 }
-              }
-            }
-          }
+            },
+            "should": [
+                {
+                    "wildcard": {
+                        "fullname": {
+                            "value": "{{query_string}}",
+                            "boost": 0.5
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "fullname": {
+                            "query": "{{query_string}}",
+                            "boost": 2
+                        }
+                    }
+                },
+                {
+                    "fuzzy": {
+                        "fullname": {
+                            "value": "{{query_string}}",
+                            "boost": 1.2
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "texts": {
+                            "query": "{{query_string}}",
+                            "operator": "and"
+                        }
+                    }
+                },
+                {
+                    "match_phrase": {
+                        "texts": {
+                            "query": "{{query_string}}",
+                            "boost": 2
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "texts": {
+                            "query": "{{query_string}}",
+                            "analyzer": "search_synonyms"
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "tags.text.keyword": {
+                            "query": "{{query_string}}",
+                            "boost": 50
+                        }
+                    }
+                },
+                {
+                    "nested": {
+                        "path": "keywords",
+                        "score_mode": "sum",
+                        "query": {
+                            "function_score": {
+                                "query": {
+                                    "match": {
+                                        "keywords.keyword": "{{query_string}}"
+                                    }
+                                },
+                                "field_value_factor": {
+                                    "field": "keywords.count"
+                                }
+                            }
+                        }
+                    }
+                }
+            ],
+            "minimum_should_match": 1
         }
-      ],
-      "minimum_should_match": 1
     }
-  }
 }
 ###
 

@@ -11,7 +11,8 @@
             "profilePicture",
             "linkedinProfileID",
             "telephoneNumber",
-            "email"
+            "email",
+            "tags"
         ]
     },
     "query": {
@@ -45,22 +46,6 @@
                     }
                 },
                 {
-                    "match": {
-                        "content": {
-                            "query": "{{query_string}}",
-                            "operator": "and"
-                        }
-                    }
-                },
-                {
-                    "match_phrase": {
-                        "content": {
-                            "query": "{{query_string}}",
-                            "boost": 2
-                        }
-                    }
-                },
-                {
                     "fuzzy": {
                         "fullname": {
                             "value": "{{query_string}}",
@@ -72,7 +57,31 @@
                     "match": {
                         "texts": {
                             "query": "{{query_string}}",
+                            "operator": "and"
+                        }
+                    }
+                },
+                {
+                    "match_phrase": {
+                        "texts": {
+                            "query": "{{query_string}}",
+                            "boost": 2
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "texts": {
+                            "query": "{{query_string}}",
                             "analyzer": "search_synonyms"
+                        }
+                    }
+                },
+                {
+                    "match": {
+                        "tags.text": {
+                            "query": "{{query_string}}",
+                            "boost": 50
                         }
                     }
                 },
