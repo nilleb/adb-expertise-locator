@@ -27,12 +27,13 @@
       >
     </div>
     <div
+      v-if="facetsEnabled && facets"
       class="container"
       style="justify-content: center; margin-top: 5px; margin-bottom: 5px"
     >
       <span>Drill down the search results&nbsp;</span>
     </div>
-    <div v-if="facets" class="container">
+    <div v-if="facetsEnabled && facets" class="container">
       <div style="flex: 2" />
       <Multiselect
         style="flex: 3; margin-left: 20px; margin-right: 20px"
@@ -42,6 +43,7 @@
         :placeholder="facet.name"
         mode="multiple"
         :close-on-select="false"
+        @change="valueSelected"
         :options="
           Object.assign(
             {},
@@ -80,6 +82,7 @@ export default {
       searchResults: [],
       total: 0,
       facets: [],
+      facetsEnabled: false,
       selected: {},
     };
   },
@@ -106,6 +109,9 @@ export default {
         console.log(response);
       });
     },
+    valueSelected() {
+      this.getItems(this.query);
+    }
   },
   watch: {
     query(string) {
@@ -121,8 +127,7 @@ export default {
           .catch(() => {});
       }
       this.getItems(toBeSearched);
-    },
-    // FIXME watch also the selected facets/buckets
+    }
   },
   mounted() {
     if (this.$route.query.q) {

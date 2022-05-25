@@ -6,7 +6,7 @@ API_KEY = configuration.get('generated-photos-api-key')
 
 url = "https://api.generated.photos/api/v1/faces"
 
-for page in range(24, 50):
+for page in range(11, 24):
     querystring = {
         "age": "adult",
         "emotion": "joy",

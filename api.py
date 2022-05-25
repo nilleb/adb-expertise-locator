@@ -300,8 +300,8 @@ def previewImage(uid, source):
     if uid == "dmitry-kabrelyan":
         return "https://dgalywyr863hv.cloudfront.net/pictures/athletes/811928/179461/6/large.jpg"
     profile_picture = source.get("profilePicture")
-    if profile_picture:
-        return profile_picture
+    # if profile_picture:
+    #    return profile_picture
     return pseudo_random_choice(uid, FACES_URLS)
 
 
@@ -312,15 +312,15 @@ def uid_to_number(uid):
 
 def pseudo_random_choice(uid, array):
     number = uid_to_number(uid)
-    return f"{array[number % len(array)]} (🎲)"
+    return array[number % len(array)]
 
 
 def random_role(uid):
-    return pseudo_random_choice(uid, ROLES)
+    return f"{pseudo_random_choice(uid, ROLES)}  (🎲)"
 
 
 def random_organization(uid):
-    return pseudo_random_choice(uid, ORGANIZATIONS)
+    return f"{pseudo_random_choice(uid, ORGANIZATIONS)} (🎲)"
 
 
 def prepare_source(uid, source):
