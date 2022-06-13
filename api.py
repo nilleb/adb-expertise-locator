@@ -4,13 +4,18 @@ import json
 import logging
 import os
 import uuid
-import secrets
+import httpx
 from typing import List, Optional
 import platform
 
+from configuration import configuration
 from fastapi import Depends, FastAPI, Request
 from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
+from fastapi_msal.models import AuthToken
+from starlette.middleware.sessions import SessionMiddleware
+from fastapi_msal import MSALAuthorization, UserInfo, MSALClientConfig
 from pydantic import BaseModel, Json
 from starlette.requests import Request
 from starlette.responses import FileResponse, JSONResponse
@@ -18,7 +23,6 @@ from starlette_context import context, plugins
 from starlette_context.middleware import RawContextMiddleware
 from starlette_context.plugins.base import PluginUUIDBase
 from fastapi.staticfiles import StaticFiles
-from fastapi.security import HTTPBasic, HTTPBasicCredentials
 
 from backends.es import create_indexer, document
 from backends.es import complete as es_complete
@@ -67,20 +71,6 @@ ORGANIZATIONS = [
     "ERCD",
 ]
 
-security = HTTPBasic()
-
-
-def get_current_username(credentials: HTTPBasicCredentials = Depends(security)):
-    correct_username = secrets.compare_digest(credentials.username, "stanleyjobson")
-    correct_password = secrets.compare_digest(credentials.password, "swordfish")
-    if not (correct_username and correct_password):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password",
-            headers={"WWW-Authenticate": "Basic"},
-        )
-    return credentials.username
-
 
 class SessionIDPlugin(PluginUUIDBase):
     key = "X-Session-ID"
@@ -117,6 +107,29 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+client_config: MSALClientConfig = MSALClientConfig()
+client_config.client_id = configuration["authorization"]["microsoft"]["client_id"]
+client_config.client_credential = configuration["authorization"]["microsoft"][
+    "client_secret"
+]
+client_config.tenant = "common"
+client_config.scopes = ["User.ReadBasic.All"]
+
+
+def redirect_handler(uri, code=None, state=None):
+    if state:
+        return state
+    return uri
+
+
+app.add_middleware(SessionMiddleware, secret_key=configuration["session"]["secret_key"])
+msal_auth = MSALAuthorization(
+    client_config=client_config,
+    redirect_handler=redirect_handler,
+)
+app.include_router(msal_auth.router)
 
 
 @app.middleware("http")
@@ -402,6 +415,43 @@ def prepare_suggestions(prefix, res):
         "prefix": prefix,
         "suggestions": [{"text": suggestion} for suggestion in suggestions],
     }
+
+
+@app.get("/api/v1/users/me/token/claims")
+async def read_users_me(request: Request):
+    token: Optional[AuthToken] = await msal_auth.get_session_token(request=request)
+    if not token or not token.access_token:
+        return RedirectResponse(url="/_login_route")
+    logging.info(f"oidc claims: {token.id_token_claims}")
+    return token.id_token_claims
+
+
+@app.get("/api/v1/users/me/oidc/claims")
+async def oidc_me(request: Request):
+    token: Optional[AuthToken] = await msal_auth.get_session_token(request=request)
+    if not token or not token.access_token:
+        return RedirectResponse(url="/_login_route")
+    async with httpx.AsyncClient() as client:
+        resp = await client.get(
+            "https://graph.microsoft.com/oidc/userinfo",
+            headers={"Authorization": "Bearer " + token.access_token},
+        )
+    logging.info(f"oidc claims: {resp.json()}")
+    return resp.json()
+
+
+@app.get("/api/v1/users/list")
+async def oidc_me(request: Request):
+    token: Optional[AuthToken] = await msal_auth.get_session_token(request=request)
+    if not token or not token.access_token:
+        return RedirectResponse(url=f"/_login_route?state={request.url._url}")
+    async with httpx.AsyncClient() as client:
+        resp = await client.get(
+            "https://graph.microsoft.com/v1.0/users",
+            headers={"Authorization": "Bearer " + token.access_token},
+        )
+    logging.info(f"users list: {resp.json()}")
+    return resp.json()
 
 
 app.mount("/", StaticFiles(directory="ui/dist"), name="dist")

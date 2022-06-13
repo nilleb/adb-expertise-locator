@@ -22,5 +22,5 @@ pushd /tmp/
 
 rm app.tar.gz
 tar czvf app.tar.gz --exclude='app/data/input' --exclude='app/.git' --exclude='app/.vscode' --exclude='app/venv' --exclude='app/node_modules' --exclude='app/__pycache__' --exclude='app/backends/__pycache__' --exclude='app/configuration/__pycache__' --exclude='app/.DS_Store' app
-scalingo deploy --app adb-skills-finder app.tar.gz v0.0.8
+scalingo deploy --app adb-skills-finder app.tar.gz v0.1
 popd
